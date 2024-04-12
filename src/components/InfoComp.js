@@ -13,6 +13,12 @@ function LocationInfo({ location }) {
       />
       <div className="location-details">
         <span className="location-name">{location.name}</span>
+        &nbsp;        
+        
+        <span className="location-name">-</span>
+
+        &nbsp;        
+
         <span className="location-exit">{location.exit}</span>
       </div>
     </div>
@@ -20,7 +26,7 @@ function LocationInfo({ location }) {
 }
 
 function DateTimeInfo({ dateTime, timezone }) {
-  const formattedDateTime = new Date(dateTime).toLocaleString('en-US', {
+  const formattedDateTime = new Date(dateTime).toLocaleString(undefined, {
     timeZone: timezone,
     day: '2-digit',
     month: '2-digit',

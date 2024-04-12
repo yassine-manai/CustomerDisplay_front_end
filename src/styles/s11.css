@@ -10,7 +10,7 @@
   .content {
     width: 100%;
     max-width: 98%;
-    margin-top: 25px;
+    margin-top: 23px;
   }
   @media (max-width: 991px) {
     .content {
@@ -48,12 +48,12 @@
   @media (max-width: 991px) {
     .apology-container {
       max-width: 100%;
-      margin-top: 27px;
+      margin-top: 25px;
     }
   }
   .apology-image-container {
     position: relative;
-    width: 88%;
+    width: 88.4%;
     padding: 73px 60px;
     display: flex;
     justify-content: center;
@@ -76,7 +76,7 @@
   }
   
   .apology-heading {
-    margin-top: 170px;
+    margin-top: 160px;
     color: var(--main-blue, #2f5eab);
     font: 700 43px/100% Public Sans, -apple-system, Roboto, Helvetica,
       sans-serif;

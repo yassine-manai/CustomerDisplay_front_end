@@ -64,7 +64,6 @@ const timezones = [
     "Asia/Doha",
     "Asia/Gaza",
     "Asia/Hebron",
-    "Asia/Jerusalem",
     "Asia/Kuwait",
     "Asia/Nicosia",
     "Asia/Qatar",

@@ -4,7 +4,6 @@
     flex-direction: column;
     color: #6d6e71;
     font-weight: 500;
-    padding: 16px 18px;
   }
   .info-container {
     border-radius: 6px;
@@ -14,7 +13,6 @@
     width: 96.5%;
     gap: 20px;
     justify-content: space-between;
-    padding: 10px 24px;
   }
   @media (max-width: 991px) {
     .info-container {
@@ -56,8 +54,8 @@
     margin: auto 0;
   }
   .map-image {
-    width: 100%;
-    margin-top: 16px;
+    width: 90%;
+    margin-top: 10px;
   }
   @media (max-width: 991px) {
     .map-image {

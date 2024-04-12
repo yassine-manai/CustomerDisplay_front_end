@@ -10,7 +10,7 @@ import barrierclose from "../assets/barrierclose.svg"
 function S_four() {
 
   const orderSummaryData = {
-    licencePlate: "E22714",
+    licencePlate: "E227",
     entryTime: "21-02-2024 14:36",
     exitTime: "21-02-2024 14:36",
     lengthOfStay: "2 hours 31 minutes",
