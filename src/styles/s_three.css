@@ -1,0 +1,129 @@
+.container {
+    background-color: #f8f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px;
+  }
+
+  .payment-success-section {
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
+    background-color: #fff;
+    margin-top: 25px;
+    width: 92.5%;
+    height: 50%;
+    max-width: 100%;
+    padding: 78px 80px 78px 23px;
+    background-image: url(../assets/sucess.svg);
+    background-repeat: no-repeat;
+    background-position-x: top;
+    background-size: 100%;
+  }
+
+  @media (max-width: 991px) {
+    .payment-success-section {
+      padding: 0 20px;
+    }
+  }
+
+  .payment-success-content {
+    display: flex;
+    gap: 20px;
+  }
+
+  @media (max-width: 991px) {
+    .payment-success-content {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0px;
+    }
+  }
+
+  .message-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 72%;
+    margin-left: 0px;
+  }
+
+  @media (max-width: 991px) {
+    .message-column {
+      width: 100%;
+    }
+  }
+
+  .payment-success-message {
+    display: flex;
+    flex-direction: column;
+    font-size: 58px;
+    font-weight: 700;
+  }
+
+  @media (max-width: 991px) {
+    .payment-success-message {
+      max-width: 100%;
+      margin-top: 40px;
+      font-size: 40px;
+    }
+  }
+
+  .success-text {
+    color: var(--main-green, #00ab53);
+    font-family: Public Sans, sans-serif;
+    line-height: 89%;
+  }
+
+  @media (max-width: 991px) {
+    .success-text {
+      max-width: 100%;
+      font-size: 40px;
+    }
+  }
+
+  .visit-message {
+    color: var(--main-gray, #6d6e71);
+    font-family: Public Sans, sans-serif;
+    line-height: 77px;
+    margin-top: 32px;
+  }
+
+  @media (max-width: 991px) {
+    .visit-message {
+      max-width: 100%;
+      font-size: 40px;
+      line-height: 59px;
+    }
+  }
+
+  .qr-code-column {
+    display: flex;
+    flex-direction: column;
+    line-height: normal;
+    width: 28%;
+    margin-left: 20px;
+  }
+
+  @media (max-width: 991px) {
+    .qr-code-column {
+      width: 100%;
+    }
+  }
+
+  .qr-code {
+    background-image: url(../assets/barrierclose2.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    aspect-ratio: 1;
+    object-fit: auto;
+    object-position: center;
+    margin-top: 29px;
+  }
+
+  @media (max-width: 991px) {
+    .qr-code {
+      margin-top: 40px;
+    }
+  }
+

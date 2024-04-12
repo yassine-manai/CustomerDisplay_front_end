@@ -1,0 +1,71 @@
+
+
+
+.container {
+    background-color: #f8f7fa;
+    display: flex;
+    flex-direction: column;
+    color: #6d6e71;
+    font-weight: 500;
+    padding: 16px 18px;
+  }
+  .info-container {
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
+    background-color: #fff;
+    display: flex;
+    width: 96.5%;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px 24px;
+  }
+  @media (max-width: 991px) {
+    .info-container {
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+  }
+  .location-info {
+    display: flex;
+    gap: 10px;
+    font-size: 22px;
+    margin: auto 0;
+  }
+  .location-icon {
+    width: 18px;
+  }
+  .location-details {
+    font-family: Inter, sans-serif;
+    margin: auto 0;
+  }
+  .location-name {
+    font-family: Public Sans, sans-serif;
+    font-weight: 700;
+  }
+  .date-time-info {
+    border-radius: 30.1px;
+    background-color: #f1f0f2;
+    display: flex;
+    gap: 7px;
+    font-size: 23px;
+    text-align: right;
+    padding: 5px 11px;
+  }
+  .calendar-icon {
+    width: 33px;
+  }
+  .date-time {
+    font-family: Public Sans, sans-serif;
+    margin: auto 0;
+  }
+  .map-image {
+    width: 100%;
+    margin-top: 16px;
+  }
+  @media (max-width: 991px) {
+    .map-image {
+      max-width: 100%;
+    }
+  }
+
+

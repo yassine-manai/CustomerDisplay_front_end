@@ -1,0 +1,202 @@
+.container {
+    background-color: #f8f7fa;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 0;
+  }
+  
+  .content {
+    width: 100%;
+    max-width: 98%;
+    margin-top: 25px;
+  }
+  @media (max-width: 991px) {
+    .content {
+      max-width: 100%;
+    }
+  }
+  .columns {
+    display: flex;
+    width: 100%;
+    gap: 30px;
+  }
+  @media (max-width: 991px) {
+    .columns {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+  .column {
+    width: 100%;
+  }
+  @media (max-width: 991px) {
+    .column {
+      width: 100%;
+    }
+  }
+  .apology-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
+  }
+  @media (max-width: 991px) {
+    .apology-container {
+      max-width: 100%;
+      margin-top: 27px;
+    }
+  }
+  .apology-image-container {
+    position: relative;
+    width: 88%;
+    padding: 73px 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @media (max-width: 991px) {
+    .apology-image-container {
+      padding: 0 20px;
+    }
+  }
+  .apology-background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    border-radius: 6px;
+
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .apology-heading {
+    margin-top: 170px;
+    color: var(--main-blue, #2f5eab);
+    font: 700 43px/100% Public Sans, -apple-system, Roboto, Helvetica,
+      sans-serif;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 991px) {
+    .apology-heading {
+      margin-top: 1px;
+    }
+  }
+  .apology-description {
+    color: var(--main-blue, #2f5eab);
+    font: 700 30px/40px Public Sans, -apple-system, Roboto, Helvetica,
+      sans-serif;
+    text-align: center;
+    margin-bottom: 110px;
+  }
+  @media (max-width: 991px) {
+    .apology-description {
+      max-width: 100%;
+    }
+  }
+  .help-container {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
+  }
+  @media (max-width: 991px) {
+    .help-container {
+      max-width: 100%;
+      margin-top: 35px;
+    }
+  }
+  .help-background {
+    padding: 55px 90px 0;
+    background: linear-gradient(
+      180deg,
+      rgba(47, 94, 171, 0.16) 0%,
+      rgba(47, 94, 171, 0.52) 100%
+    );
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;  
+  }
+  @media (max-width: 991px) {
+    .help-background {
+      padding: 0 20px;
+    }
+  }
+  .help-icon-container {
+    width: 197px;
+    height: 230px;
+    background-image: url(../assets/cashier.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: -58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    filter: drop-shadow(0px 2.649px 2.649px rgba(0, 0, 0, 0.25));
+  }
+  @media (max-width: 991px) {
+    .help-icon-container {
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+  }
+  .help-icon {
+    width: 100%;
+    aspect-ratio: 1.01;
+    object-fit: contain;
+  }
+  .help-description {
+    margin-top: 150px;
+    margin-bottom: 125px;
+    align-self: center;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--main-gray, #6d6e71);
+    font: 600 30px/40px Public Sans, -apple-system, Roboto, Helvetica,
+      sans-serif;
+    text-align: center;
+  }
+  @media (max-width: 991px) {
+    .help-description {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+  .footer {
+    position: relative;
+    width: 100%;
+    min-height: 116px;
+    margin-top: 21px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+  }
+  @media (max-width: 991px) {
+    .footer {
+      max-width: 100%;
+      padding-right: 20px;
+    }
+  }
+  .footer-background {
+    position: absolute;
+    inset: 0;
+    width: 99%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .pumc-logo {
+    width: 551px;
+    max-width: 100%;
+    margin-top: 10px;
+    aspect-ratio: 4.76;
+    object-fit: contain;
+  }
