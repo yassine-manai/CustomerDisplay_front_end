@@ -1,6 +1,7 @@
 import React from "react";
 import '../styles/s_ten.css';
 
+
 function ApologyMessage() {
   return (
     <div className="apology-message">

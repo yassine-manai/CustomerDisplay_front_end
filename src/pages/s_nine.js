@@ -2,54 +2,51 @@ import * as React from "react";
 import '../styles/s_nine.css';
 
 
-function MainContent() {
+
+function ApologyMessage({message}) {
   return (
-    <main className="main-content">
-      <div className="content-wrapper">
-        <section className="message-section">
-          <div className="message-container">
-            <div className="icon-container">
-              <div
-                loading="lazy"
-                alt=""
-                className="exclamation-icon"
-                height={300}
-                width={300}
-              />
-            </div>
-            <p className="error-message">
-              We apologize, the license plate is not recognized or not found in
-              our system !
-            </p>
-            <p className="help-message">
-              Our help desk cashier will help you to pay your fees
-            </p>
-          </div>
-        </section>
-        <section className="image-section">
-          <div className="image-container">
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/284ba0fe61dd9637f707740982d5deadca43a78ed31a2e3cb6818f9325b9efeb?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&"
-              alt="Car parking illustration"
-              className="parking-image"
-            />
-          </div>
-        </section>
+    <div className="apology-message">
+      <div className="icon-container">
+        {/* Placeholder for the apology icon */}
+        <div className="apology-icon" />
       </div>
-    </main>
-  );
-}
-
-
-export default function S_nine() {
-
+      <h2 className="apology-title"> </h2>
+      <p className="apology-description">
+      {message}     
+       </p>
+      <br />
+      <br />
   
-  return (
-    <>
-      <div className="container">
-        <MainContent />
-      </div>
-    </>
+    </div>
   );
 }
+
+function ImageSection({ imageUrl }) {
+  return (
+    <div className="image-section">
+      {/* Render the image with the provided URL */}
+      <img loading="lazy" src={imageUrl} alt="Parking lot" className="parking-lot-image" height={527} width={300} />
+    </div>
+  );
+}
+
+function S_ten({ imageUrl, message }) {
+  return (
+    <div className="container">
+      <main className="main-content">
+        <div className="content-wrapper">
+          <section className="apology-section">
+            <ApologyMessage message={message} />
+          </section>
+          <br />
+          <section className="image-wrapper">
+            {/* Pass the imageUrl prop to the ImageSection component */}
+            <ImageSection imageUrl={imageUrl} />
+          </section>
+        </div>
+      </main>
+    </div>
+  );
+}
+
+export default S_ten;
