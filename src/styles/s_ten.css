@@ -217,6 +217,7 @@
   flex-grow: 1;
   justify-content: center;
   padding: 24px;
+  height:605px;
   width: 100%;
 }
 
@@ -229,15 +230,20 @@
 }
 
 .parking-lot-image {
-  aspect-ratio: 1.05;
-  object-fit: auto;
+  aspect-ratio: 1;
+  object-fit:fill;
   object-position: center;
   width: 100%;
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 @media (max-width: 991px) {
   .parking-lot-image {
     max-width: 100%;
+    
   }
 }
 

@@ -1,6 +1,8 @@
-.main-container {
+
+
+/* .main-container {
   margin-top: 25px;
-}
+} */
 @media (max-width: 991px) {
   .main-container {
     max-width: 100%;
@@ -154,7 +156,7 @@
   }
 }
 .order-summary-content {
-  margin: 25px 19px 0;
+  margin: 19px 0;
 }
 @media (max-width: 991px) {
   .order-summary-content {
@@ -370,7 +372,6 @@
 .amount-deducted-currency {
   font-weight: 300;
 }
-
 
 
 

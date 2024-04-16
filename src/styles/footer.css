@@ -4,7 +4,6 @@
     overflow: hidden;
     align-self: stretch;
     position: relative;
-    min-height: 130px;
     margin-top: 10px;
     width: 99.8%;
     align-items: start;
@@ -18,19 +17,16 @@
     }
   }
 
+  @media (max-height: 1920px) {
+    .footer {
+      max-height:0%;
+    }
+  }
+
   .footer-background {
     position: absolute;
     inset: 0;
-    height: 100%;
     width: 100%;
     object-fit: cover;
-    object-position: center;
-  }
-
-  .footer-logo {
-    width: 551px;
-    max-width: 100%;
-    aspect-ratio: 4.86;
-    object-fit: auto;
     object-position: center;
   }

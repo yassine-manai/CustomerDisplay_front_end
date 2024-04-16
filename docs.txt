@@ -1,0 +1,58 @@
+
+normal data : {"message": 11,}
+--------------------------------------------------------------
+
+S7 - params data
+
+
+--------------------------------------------------------------
+S8 - params data 
+
+{
+  "message": 8,
+  "name": "Mr. Sofiene",
+  "thankYouMessage": "Your subscription is expired",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lengthOfStay": "2 hours 31 minutes",
+  "amountDeducted": "10.00",
+  "carImage": "path"
+}
+
+--------------------------------------------------------------
+
+S9 - params data 
+
+{
+  "message": 9,
+  "apologyMessage": " We apologize, the license plate is not recognized or not found in our system !",
+  "carModelImage": "path_to_carModel_image.svg"
+}
+
+--------------------------------------------------------------
+
+S10 - - params data 
+
+{
+  "message": 10,
+  "apologyTitle": "We apologize !",
+  "apologyDescription": "The license plate is not recognized or not found in our system!Our help desk cashier will help you to pay your fees.",
+  "carModelImage": "path_to_carModel_image.svg"
+}
+
+-----------------------------------------------------------------
+
+S11 - params data 
+
+{
+  "message": 11,
+  "apologyHeading": "We apologize !",
+  "apologyDescription": "The license plate is not recognized or not found in our system!",
+  "helpDescription": "Our help desk cashier will help you to pay your fees.",
+  "carModelImage": "path_to_carModel_image.svg"
+}
+
+
+
+

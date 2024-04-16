@@ -73,7 +73,6 @@
   background-color: #fff;
   display: flex;
   width: 96.5%;
-  margin-top: 25px;
   align-items: end;
   gap: 20px;
   justify-content: space-between;
@@ -156,11 +155,10 @@
 }
 .amount-container {
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 6px;
   background-color: rgba(0, 171, 83, 0.16);
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 18px;
+  margin-top: 38px;
   flex-direction: column;
   color: var(--main-green, #00ab53);
   text-align: center;
@@ -210,7 +208,7 @@
   margin-top: 41px;
   width: 2px;
   /* height: 426px; */
-  height: 455px;
+  height: 460px;
 }
 
 .separator_vertical {
@@ -220,7 +218,7 @@
   background-color: #dbdade;
   margin-top: 2px;
   height: 2px;
-  width:172.9%;
+  width:175%;
 }
 @media (max-width: 991px) {
   .separator {
@@ -244,12 +242,11 @@
   gap: 12px;
 }
 .plate-image {
-  aspect-ratio: 1.6;
+  aspect-ratio: 1.49;
   object-fit: auto;
   object-position: center;
   width: 100%;
   margin-top: 11px;
-  margin-bottom: 18px;
 }
 @media (max-width: 991px) {
   .plate-image {
@@ -477,7 +474,8 @@
   overflow: hidden;
   flex-shrink: 0;
 }
-.car-icon {
+.car-icon,
+.e22714 {
   position: relative;
 }
 .it-2 {
