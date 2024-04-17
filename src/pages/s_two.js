@@ -30,7 +30,7 @@ function S_TWO() {
 
   return (
 
-        <div className="container">
+        <div className="container2">
 
         <div className="order-summary">
       <div className="order-details">

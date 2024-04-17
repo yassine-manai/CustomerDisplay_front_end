@@ -1,3 +1,13 @@
+
+.container {
+  background-color: #f8f7fa;
+  display: flex;
+  flex-direction: column;
+  color: #6d6e71;
+  font-weight: 500;
+  padding: 16px 18px;
+}
+
 .main-container {
   margin-top: 25px;
 }

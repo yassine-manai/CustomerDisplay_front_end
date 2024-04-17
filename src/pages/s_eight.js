@@ -34,56 +34,56 @@ export default function S_eight({
 
   }) {
     return (
-      <div className="order-summary">
-        <div className="order-summary-title">Order Summary</div>
-        <div className="order-summary-divider" />
-        <div className="order-summary-content">
-          <div className="order-summary-row">
-            <div className="order-summary-image-column">
+      <div className="order-summary8">
+        <div className="order-summary-title8">Order Summary</div>
+        <div className="order-summary-divider8" />
+        <div className="order-summary-content8">
+          <div className="order-summary-row8">
+            <div className="order-summary-image-column8">
               <img
                 loading="lazy"
                 src={carImage}
-                className="order-summary-image"
+                className="order-summary-image8"
                 alt="Order summary"
                 height={200}
                 width={200}
               />
             </div>
-            <div className="order-summary-details-column">
-              <div className="order-summary-details">
-                <div className="order-summary-detail">
+            <div className="order-summary-details-column8">
+              <div className="order-summary-details8">
+                <div className="order-summary-detail8">
                   <CarIcon />
-                  <div className="order-summary-detail-label">Licence Plate</div>
-                  <div className="order-summary-detail-value">{licencePlate}</div>
+                  <div className="order-summary-detail-label8">Licence Plate</div>
+                  <div className="order-summary-detail-value8">{licencePlate}</div>
                 </div>
-                <div className="order-summary-detail">
+                <div className="order-summary-detail8">
                   <ClockIcon />
-                  <div className="order-summary-detail-label">Entry Time</div>
-                  <div className="order-summary-detail-value">{entryTime}</div>
+                  <div className="order-summary-detail-label8">Entry Time</div>
+                  <div className="order-summary-detail-value8">{entryTime}</div>
                 </div>
-                <div className="order-summary-detail">
+                <div className="order-summary-detail8">
                   <ExitIcon />
-                  <div className="order-summary-detail-label">Exit Time</div>
-                  <div className="order-summary-detail-value">{exitTime}</div>
+                  <div className="order-summary-detail-label8">Exit Time</div>
+                  <div className="order-summary-detail-value8">{exitTime}</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="order-summary-footer">
-          <div className="order-summary-footer-row">
-            <div className="order-summary-footer-column">
-              <div className="order-summary-length-of-stay">
-                <div className="order-summary-length-of-stay-label">Length of Stay</div>
-                <div className="order-summary-length-of-stay-value">{lengthOfStay}</div>
+        <div className="order-summary-footer8">
+          <div className="order-summary-footer-row8">
+            <div className="order-summary-footer-column8">
+              <div className="order-summary-length-of-stay8">
+                <div className="order-summary-length-of-stay-label8">Length of Stay</div>
+                <div className="order-summary-length-of-stay-value8">{lengthOfStay}</div>
               </div>
             </div>
-            <div className="order-summary-footer-column">
-              <div className="order-summary-amount-deducted">
-                <div className="order-summary-amount-deducted-label">Amount to Pay</div>
-                <div className="order-summary-amount-deducted-value">
-                  <span className="amount-deducted-value">{amountDeducted}</span>
-                  <span className="amount-deducted-currency"> {currency}</span>
+            <div className="order-summary-footer-column8">
+              <div className="order-summary-amount-deducted8">
+                <div className="order-summary-amount-deducted-label8">Amount to Pay</div>
+                <div className="order-summary-amount-deducted-value8">
+                  <span className="amount-deducted-value8">{amountDeducted}</span>
+                  <span className="amount-deducted-currency8"> {currency}</span>
                 </div>
               </div>
             </div>
@@ -95,28 +95,30 @@ export default function S_eight({
 
   function ThankYouMessage({ name, message }) {
     return (
-      <div className="thank-you-message-container">
-        <div className="thank-you-avatar-container">
+      <div className="thank-you-message-container8">
+        <div className="thank-you-avatar-container8">
           <img
             loading="lazy"
-            alt="Avatar"
-            className="thank-you-avatar"
+            alt=" "
+            height={300}
+            width={300}
+            className="thank-you-avatar8"
           />
         </div>
-        <div className="drive-safe-message">Hello {name}</div>
-        <div className="thank-you-message">{message}</div>
+        <div className="drive-safe-message8">Hello {name}</div>
+        <div className="thank-you-message8">{message}</div>
       </div>
     );
   }
 
   return (
-    <div className="container">
-      <main className="main-container">
-        <div className="content-wrapper">
-          <div className="column-container">
+    <div className="container8">
+      <main className="main-container8">
+        <div className="content-wrapper8">
+          <div className="column-container8">
             <ThankYouMessage name={name} message={thankYouMessage} />
           </div>
-          <div className="column-container">
+          <div className="column-container8">
             <OrderSummary {...orderSummaryData} />
           </div>
         </div>
