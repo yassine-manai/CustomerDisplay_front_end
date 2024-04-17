@@ -49,7 +49,7 @@ function DateTimeInfo({ dateTime, timezone }) {
   );
 }
 
-function InfoContainer({ location, timezone }) {
+export default function InfoContainer({ location, timezone }) {
   const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -68,4 +68,3 @@ function InfoContainer({ location, timezone }) {
   );
 }
 
-export default InfoContainer;

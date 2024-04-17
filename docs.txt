@@ -1,8 +1,37 @@
 
-normal data : {"message": 11,}
+normal data : {"message": 11}
+
 
 --------------------------------------------------------------
+s1- params data 
 
+{
+  "message": 1,
+  "img":"path"
+}
+
+--------------------------------------------------------------
+S2 - params data
+
+{
+  "message": 2,
+  "entryTime":"21-02-2024 14:36",
+  "exitTime":"21-02-2024 14:36",
+  "length":"2 hours",
+  "amount":"150",
+  "currency":"KWD",
+  "licencePlate":"ABC123",
+  "pathImage":""
+}
+
+--------------------------------------------------------------
+S3 - params data
+
+{
+  "message": 3,  
+  "paymentSuccess":"Payment Done Successfully",
+  "visitMessage":"Thank you for your visit, Drive Safe !"
+}
 
 --------------------------------------------------------------
 S4 - params data
@@ -63,6 +92,7 @@ S7 - params data
   "amountDeducted": "10.00",
   "carImage":"path"
 }
+
 --------------------------------------------------------------
 S8 - params data 
 
@@ -110,10 +140,6 @@ S11 - params data
   "helpDescription": "Our help desk cashier will help you to pay your fees.",
   "carModelImage": "path_to_carModel_image.svg"
 }
-
-
-
-
 
 --------------------------------------------------------------------------------------------
 

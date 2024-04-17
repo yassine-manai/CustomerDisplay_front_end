@@ -1,11 +1,11 @@
-.container {
+.container1 {
     background-color: #f8f7fa;
     display: flex;
     flex-direction: column;
     color: #6d6e71;
     font-weight: 500;
   }
-  .info-container {
+  .info-container1 {
     border-radius: 6px;
     box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
     background-color: #fff;
@@ -15,29 +15,29 @@
     justify-content: space-between;
   }
   @media (max-width: 991px) {
-    .info-container {
+    .info-container1 {
       flex-wrap: wrap;
       padding: 0 20px;
     }
   }
-  .location-info {
+  .location-info1 {
     display: flex;
     gap: 10px;
     font-size: 22px;
     margin: auto 0;
   }
-  .location-icon {
+  .location-icon1 {
     width: 18px;
   }
-  .location-details {
+  .location-details1 {
     font-family: Inter, sans-serif;
     margin: auto 0;
   }
-  .location-name {
+  .location-name1 {
     font-family: Public Sans, sans-serif;
     font-weight: 700;
   }
-  .date-time-info {
+  .date-time-info1 {
     border-radius: 30.1px;
     background-color: #f1f0f2;
     display: flex;
@@ -46,19 +46,22 @@
     text-align: right;
     padding: 5px 11px;
   }
-  .calendar-icon {
+  .calendar-icon1 {
     width: 33px;
   }
-  .date-time {
+  .date-time1 {
     font-family: Public Sans, sans-serif;
     margin: auto 0;
   }
-  .map-image {
-    width: 90%;
+  .map-image1 {
+    width: 100%;
+    height: 100%;
     margin-top: 10px;
   }
   @media (max-width: 991px) {
-    .map-image {
-      max-width: 100%;
+    .map-image1 {
+      width: 100%;
+      height: 100%;
+      margin-top: 10px;
     }
   }

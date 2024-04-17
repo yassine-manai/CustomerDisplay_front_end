@@ -7,24 +7,34 @@ import exit from "../assets/icons/EXIT.svg"
 import clock from "../assets/icons/clock.svg"
 
 
-function S_TWO() {
+export default function S_TWO(
+  {
+    entryTime,
+    exitTime,
+    length,
+    amount,
+    curreny,
+    pathImage,
+    licencePlate
+  }
+) {
 
 
-  const [orderDetails, setOrderDetails] = useState([
+  const [orderDetails] = useState([
     {
       icon: entry,
       label: "Entry Time",
-      value: "21-02-2024 14:36",
+      value: entryTime,
     },
     {
       icon: exit,
       label: "Exit time",
-      value: "21-02-2024 14:36",
+      value: exitTime,
     },
     {
       icon: clock, 
       label: "Length of stay",
-      value: "2 hours 31 minutes",
+      value: length,
     },
   ]);
 
@@ -32,41 +42,45 @@ function S_TWO() {
 
         <div className="container2">
 
-        <div className="order-summary">
-      <div className="order-details">
-        <h2 className="order-title">Order Summary</h2>
-        <div className="separator_vertical" />
+        <div className="order-summary2">
+      <div className="order-details2">
+        <h2 className="order-title2">Order Summary</h2>
+        <div className="separator_vertical2" />
 
         {orderDetails.map((detail, index) => (
-          <div key={index} className="detail-row">
-            <div className="detail-label">
-              <div className="icon-container">
+          <div key={index} className="detail-row2">
+            <div className="detail-label2">
+              <div className="icon-container2">
                 <img src={detail.icon} alt="" className="icon" />
               </div>
-              <div className="label">{detail.label}</div>
+              <div className="label2">{detail.label}</div>
             </div>
-            <div className="detail-value">{detail.value}</div>
+            <div className="detail-value2">{detail.value}</div>
           </div>
         ))}
-        <div className="amount-container">
-          <div className="amount-label">Amount to pay</div>
-          <div className="amount-value">
-            <span className="amount">0.400</span>{" "}
-            <span className="currency">KWD</span>
+        <div className="amount-container2">
+          <div className="amount-label2">Amount to pay</div>
+          <div className="amount-value2">
+            <span className="amount2">{amount}</span>{" "}
+            <span className="currency2">{curreny}</span>
           </div>
         </div>
       </div>
-      <div className="separator" />
-      <div className="plate-number">
-        <div className="plate-label">
-          <div className="icon-container">
+      <div className="separator2" />
+      <div className="plate-number2">
+        <div className="plate-label2">
+          <div className="icon-container2">
             <img src={carIcon}
-             alt="" className="icon" />
+             alt="" className="icon2" />
           </div>
-          <div className="label">E22714</div>
+          <div className="label2">{licencePlate}</div>
         </div>
-        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/fdd590999e484b2609125fd20c5ce9b98f3b5d73d03954284cb3832ff751c513?apiKey=3a9f9b98de3f493789d8094471d44942&" 
-        alt="Plate number" className="plate-image" />
+        <img src={pathImage} 
+        alt="Plate number"
+        height={440}
+        width={400}
+        className="plate-image2"
+         />
       </div>
      </div>
 
@@ -75,4 +89,3 @@ function S_TWO() {
 }
 
 
-export default S_TWO;

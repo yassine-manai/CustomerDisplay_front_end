@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import InfoContainer from './components/InfoComp';
 import pumc from './assets/pumc.svg';
+import kfc from './assets/kfc.png';
 import Footer from './components/footer';
 import S_ONE from './pages/s_one';
-import S_Two from './pages/s_two';
+import S_TWO from './pages/s_two';
 import S_Three from './pages/s_three';
 import S_Four from './pages/s_four';
 import S_Five from './pages/s_five';
@@ -15,8 +16,9 @@ import S_nine from './pages/s_nine';
 import S_ten from './pages/s_ten';
 import S11 from './pages/s11';
 
-function App() {
-  const [data, setData] = useState(null);
+function App() 
+{
+  const [data, setData] = useState(<S_ONE img={kfc}/>); // Start with S_ONE component shown
   const [ws, setWs] = useState(null);
 
   const locationData = {
@@ -61,13 +63,28 @@ function App() {
     switch (message) 
     {
       case 1:
-        setData(<S_ONE />);
+        setData(<S_ONE
+            img={extraData.img}
+           />);
         break;
       case 2:
-        setData(<S_Two />);
+        setData(
+        <S_TWO
+          entryTime={extraData.entryTime}
+          exitTime={extraData.exitTime}
+          length={extraData.length}
+          amount={extraData.amount}
+          curreny={extraData.currency}
+          licencePlate ={extraData.licencePlate}
+          pathImage={extraData.pathImage}
+        />);
         break;
       case 3:
-        setData(<S_Three />);
+        setData(
+        <S_Three
+          paymentSuccess={extraData.paymentSuccess}
+          visitMessage={extraData.visitMessage}
+        />);
         break;
       case 4:
         setData(
@@ -173,8 +190,15 @@ function App() {
         break;
 
       default:
-        setData(<S_ONE />);
+        setData(<S_ONE img={kfc}/>);
       break;
+    }
+
+    if (message !== 1) 
+    {
+      setTimeout(() => {
+        setData(<S_ONE img={kfc}/>);
+      }, 5000);
     }
   };
 
