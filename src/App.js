@@ -54,10 +54,12 @@ function App() {
     };
   }, []);
 
-  const handleWebSocketMessage = (message, extraData) => {
+  const handleWebSocketMessage = (message, extraData) => 
+  {
     console.log('Received message from WebSocket:', extraData);
 
-    switch (message) {
+    switch (message) 
+    {
       case 1:
         setData(<S_ONE />);
         break;
@@ -68,7 +70,18 @@ function App() {
         setData(<S_Three />);
         break;
       case 4:
-        setData(<S_Four />);
+        setData(
+        <S_Four
+          name={extraData.name}
+          thankYouMessage={extraData.thankYouMessage}
+          licencePlate={extraData.licencePlate}
+          entryTime={extraData.entryTime}
+          exitTime={extraData.exitTime}
+          lengthOfStay={extraData.lengthOfStay}
+          currency={extraData.currency}
+          amountDeducted={extraData.amountDeducted}
+          carImage={extraData.carImage}
+        />);
         break;
       case 5:
         setData
@@ -83,6 +96,7 @@ function App() {
           carImage={extraData.carImage}
         />);
         break;
+
       case 6:
         setData(
           <S_Six
@@ -97,6 +111,7 @@ function App() {
             currency={extraData.currency}
           />);
         break;
+
       case 7:
         setData(
           <S_Seven 
@@ -111,6 +126,7 @@ function App() {
             currency={extraData.currency}
           />);
         break;
+
         case 8:
           setData(
             <S_eight
@@ -126,6 +142,7 @@ function App() {
             />
           );
         break;
+
       case 9:
         setData(
           <S_nine
@@ -133,6 +150,7 @@ function App() {
           carModelImage ={extraData.carModelImage}
         />);
         break;
+
       case 10:
         setData(
           <S_ten
@@ -142,6 +160,7 @@ function App() {
           />
         );
         break;
+
       case 11:
         setData(
           <S11
@@ -152,18 +171,23 @@ function App() {
           />
         );
         break;
+
       default:
-        setData(null); // Clear data if the received number is not handled
-        break;
+        setData(<S_ONE />);
+      break;
     }
   };
 
   // Function to send WebSocket message with additional data
-  const sendMessage = (message, extraData = {}) => {
-    if (ws && ws.readyState === WebSocket.OPEN) {
+  const sendMessage = (message, extraData = {}) => 
+  {
+    if (ws && ws.readyState === WebSocket.OPEN) 
+    {
       const messageObj = { message, ...extraData };
       ws.send(JSON.stringify(messageObj));
-    } else {
+    } 
+    else 
+    {
       console.error('WebSocket connection is not open.');
     }
   };

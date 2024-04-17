@@ -1,20 +1,27 @@
+import React from "react";
 import '../styles/s_four.css';
-import * as React from "react";
-import { useState } from "react";
-import entry from "../assets/icons/ENTRY.svg"
-import exit from "../assets/icons/EXIT.svg"
-import clock from "../assets/icons/clock.svg"
-import {CarIcon , ClockIcon , ExitIcon} from "../components/icons.js"
-import barrierclose from "../assets/barrierclose.svg"
 
-function S_four() {
+import { ClockIcon, CarIcon, ExitIcon } from "../components/icons";
 
+
+export default function s_four({
+  name,
+  thankYouMessage,
+  licencePlate,
+  entryTime,
+  exitTime,
+  lengthOfStay,
+  amountDeducted,
+  currency,
+  carImage
+}) {
   const orderSummaryData = {
-    licencePlate: "E227",
-    entryTime: "21-02-2024 14:36",
-    exitTime: "21-02-2024 14:36",
-    lengthOfStay: "2 hours 31 minutes",
-    amountDeducted: "1.400",
+    licencePlate,
+    entryTime,
+    exitTime,
+    lengthOfStay,
+    amountDeducted,
+    currency,
   };
 
   function OrderSummary({
@@ -23,162 +30,100 @@ function S_four() {
     exitTime,
     lengthOfStay,
     amountDeducted,
+    currency,
+
   }) {
     return (
-      <div className="order-summary">
-        {" "}
-        <div className="order-summary-title">Order Summary</div>{" "}
-        <div className="order-summary-divider" />{" "}
-        <div className="order-summary-content">
-          {" "}
-          <div className="order-summary-row">
-            {" "}
-            <div className="order-summary-image-column">
-              {" "}
+      <div className="order-summary4">
+        <div className="order-summary-title4">Order Summary</div>
+        <div className="order-summary-divider4" />
+        <div className="order-summary-content4">
+          <div className="order-summary-row4">
+            <div className="order-summary-image-column4">
               <img
                 loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/274d95565356b4f68717c93fe1f6a8558b08d62b56b5c5922090c936304b6b6c?apiKey=3a9f9b98de3f493789d8094471d44942&"
-                className="order-summary-image"
+                src={carImage}
+                className="order-summary-image4"
                 alt="Order summary"
-              />{" "}
-            </div>{" "}
-            <div className="order-summary-details-column">
-              {" "}
-              <div className="order-summary-details">
-                {" "}
-                <div className="order-summary-detail">
-                  {" "}
-                  <CarIcon />{" "}
-                  <div className="order-summary-detail-label">
-                    Licence Plate
-                  </div>{" "}
-                  <div className="order-summary-detail-value-lpn">{licencePlate}</div>{" "}
-                </div>{" "}
-                <div className="order-summary-detail">
-                  {" "}
-                  <ClockIcon />{" "}
-                  <div className="order-summary-detail-label">
-                    Entry Time
-                  </div>{" "}
-                  <div className="order-summary-detail-value">{entryTime}</div>{" "}
-                </div>{" "}
-                <div className="order-summary-detail">
-                  {" "}
-                  <ExitIcon />{" "}
-                  <div className="order-summary-detail-label">Exit time</div>{" "}
-                  <div className="order-summary-detail-value">{exitTime}</div>{" "}
-                </div>{" "}
-              </div>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
-        <div className="order-summary-footer">
-          {" "}
-          <div className="order-summary-footer-row">
-            {" "}
-            <div className="order-summary-footer-column">
-              {" "}
-              <div className="order-summary-length-of-stay">
-                {" "}
-                <div className="order-summary-length-of-stay-label">
-                  {" "}
-                  Length of stay{" "}
-                </div>{" "}
-                <div className="order-summary-length-of-stay-value">
-                  {" "}
-                  {lengthOfStay}{" "}
-                </div>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div className="order-summary-footer-column">
-              {" "}
-              <div className="order-summary-amount-deducted">
-                {" "}
-                <div className="order-summary-amount-deducted-label">
-                  {" "}
-                  Amount Deducted From Wallet{" "}
-                </div>{" "}
-                <div className="order-summary-amount-deducted-value">
-                  {" "}
-                  <span className="amount-deducted-value">
-                    {amountDeducted}
-                  </span>{" "}
-                  <span className="amount-deducted-currency">KWD</span>{" "}
-                </div>{" "}
-              </div>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
+                height={200}
+                width={200}
+              />
+            </div>
+            <div className="order-summary-details-column4">
+              <div className="order-summary-details4">
+                <div className="order-summary-detail4">
+                  <CarIcon />
+                  <div className="order-summary-detail-label4">Licence Plate</div>
+                  <div className="order-summary-detail-value4">{licencePlate}</div>
+                </div>
+                <div className="order-summary-detail4">
+                  <ClockIcon />
+                  <div className="order-summary-detail-label4">Entry Time</div>
+                  <div className="order-summary-detail-value4">{entryTime}</div>
+                </div>
+                <div className="order-summary-detail4">
+                  <ExitIcon />
+                  <div className="order-summary-detail-label4">Exit Time</div>
+                  <div className="order-summary-detail-value4">{exitTime}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="order-summary-footer4">
+          <div className="order-summary-footer-row4">
+            <div className="order-summary-footer-column4">
+              <div className="order-summary-length-of-stay4">
+                <div className="order-summary-length-of-stay-label4">Length of Stay</div>
+                <div className="order-summary-length-of-stay-value4">{lengthOfStay}</div>
+              </div>
+            </div>
+            <div className="order-summary-footer-column4">
+              <div className="order-summary-amount-deducted4">
+                <div className="order-summary-amount-deducted-label4">Amount Deduced From Wallet</div>
+                <div className="order-summary-amount-deducted-value4">
+                  <span className="amount-deducted-value4">{amountDeducted}</span>
+                  <span className="amount-deducted-currency4"> {currency} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
-  function ThankYouMessage({ name }) {
+
+  function ThankYouMessage({ name, message }) {
     return (
-      <div className="thank-you-message-container">
-        {" "}
-        <div className="thank-you-avatar-container">
-          {" "}
-          <div
+      <div className="thank-you-message-container4">
+        <div className="thank-you-avatar-container4">
+          <img
             loading="lazy"
-            className="thank-you-avatar"
             alt=" "
-          />{" "}
-        </div>{" "}     
-        <div className="thank-you-message">
-        <br />
-          {" "}
-          Thank you for your visit, <br /> {name} <br />{" "}
-        </div>{" "}
-        <div className="drive-safe-message">Drive Safe !</div>{" "}
+            height={300}
+            width={300}
+            className="thank-you-avatar4"
+          />
+        </div>
+        <div className="drive-safe-message4">Hello {name}</div>
+        <div className="thank-you-message4">{message}</div>
       </div>
     );
   }
-  
-  const [orderDetails, setOrderDetails] = useState([
-    {
-      icon: entry,
-      label: "Entry Time",
-      value: "21-02-2024 14:36",
-    },
-    {
-      icon: exit,
-      label: "Exit time",
-      value: "21-02-2024 14:36",
-    },
-    {
-      icon: clock, 
-      label: "Length of stay",
-      value: "2 hours 31 minutes",
-    },
-  ]);
-
-
-
 
   return (
-    <div className="container">
-        
-        <>
-      {" "}
-      <main className="main-container">
-        {" "}
-        <div className="content-wrapper">
-          {" "}
-          <div className="column-container">
-            {" "}
-            <ThankYouMessage name="Mr Rami Hedfi" />{" "}
-          </div>{" "}
-          <div className="column-container">
-            {" "}
-            <OrderSummary {...orderSummaryData} />{" "}
-          </div>{" "}
-        </div>{" "}
-      </main>{" "}
-    </>
-        
+    <div className="container4">
+      <main className="main-container4">
+        <div className="content-wrapper4">
+          <div className="column-container4">
+            <ThankYouMessage name={name} message={thankYouMessage} />
+          </div>
+          <div className="column-container4">
+            <OrderSummary {...orderSummaryData} />
+          </div>
+        </div>
+      </main>
     </div>
   );
 }
 
-
-export default S_four;

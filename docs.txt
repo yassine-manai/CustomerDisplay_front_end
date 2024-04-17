@@ -1,5 +1,23 @@
 
 normal data : {"message": 11,}
+
+--------------------------------------------------------------
+
+
+--------------------------------------------------------------
+S4 - params data
+
+{
+  "message": 4,
+  "name": "Mr. Yassine Manai",
+  "thankYouMessage": "Thank you for your visit",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lengthOfStay": "2 hours 31 minutes",
+  "carImage":"path"
+}
+
 --------------------------------------------------------------
 S5 - params data
 
@@ -25,8 +43,7 @@ S6 - params data
   "entryTime": "21-02-2024 14:36",
   "exitTime": "21-02-2024 17:07",
   "lengthOfStay": "2 hours 31 minutes",
-    "currency":"TND",
-
+  "currency":"TND",
   "amountDeducted": "10.00",
   "carImage":"path"
 }
@@ -42,8 +59,7 @@ S7 - params data
   "entryTime": "21-02-2024 14:36",
   "exitTime": "21-02-2024 17:07",
   "lengthOfStay": "2 hours 31 minutes",
-    "currency":"TND",
-
+  "currency":"TND",
   "amountDeducted": "10.00",
   "carImage":"path"
 }
@@ -98,3 +114,7 @@ S11 - params data
 
 
 
+
+--------------------------------------------------------------------------------------------
+
+main page timing
