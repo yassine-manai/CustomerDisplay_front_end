@@ -1,22 +1,23 @@
 import { useState } from "react";
 import { ClockIcon, CarIcon, ExitIcon } from "../components/icons";
-import entry from "../assets/icons/ENTRY.svg";
-import exit from "../assets/icons/EXIT.svg";
-import clock from "../assets/icons/clock.svg";
+import barrierclose from "../assets/barrierclose.svg";
 import '../styles/s_five.css';
 
-function S_five() {
-  const [orderSummaryData, setOrderSummaryData] = useState({
-    licencePlate: "E224",
-    entryTime: "21-02-2024 14:36",
-    exitTime: "21-02-2024 14:36",
-    lengthOfStay: "2 hours 31 minutes",
-    amountDeducted: "1.400",
-  });
+export default function S_five ({
 
-  // Function to update order summary data
-  const updateOrderSummary = (newSummaryData) => {
-    setOrderSummaryData(newSummaryData);
+  name,
+  thankYouMessage,
+  licencePlate,
+  entryTime,
+  exitTime,
+  lengthOfStay,
+  carImage
+}) {
+  const orderSummaryData = {
+    licencePlate,
+    entryTime,
+    exitTime,
+    lengthOfStay,
   };
 
   function OrderSummary({
@@ -24,54 +25,51 @@ function S_five() {
     entryTime,
     exitTime,
     lengthOfStay,
-    amountDeducted,
-  }) {
+
+  })
+
+
+  {
     return (
-      <div className="order-summary">
-        <div className="order-summary-title">Order Summary</div>
-        <div className="order-summary-divider" />
-        <div className="order-summary-content">
-          <div className="order-summary-row">
-            <div className="order-summary-image-column">
+      <div className="order-summary5">
+        <div className="order-summary-title5">Order Summary</div>
+        <div className="order-summary-divider5" />
+        <div className="order-summary-content5">
+          <div className="order-summary-row5">
+            <div className="order-summary-image-column5">
               <img
                 loading="lazy"
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/274d95565356b4f68717c93fe1f6a8558b08d62b56b5c5922090c936304b6b6c?apiKey=3a9f9b98de3f493789d8094471d44942&"
-                className="order-summary-image"
-                alt="Order summary"
+                src={carImage}
+                className="order-summary-image5"
+                alt=" "
               />
             </div>
-            <div className="order-summary-details-column">
-              <div className="order-summary-details">
-                <div className="order-summary-detail">
+            <div className="order-summary-details-column5">
+              <div className="order-summary-details5">
+                <div className="order-summary-detail5">
                   <CarIcon />
-                  <div className="order-summary-detail-label">
-                    Licence Plate
-                  </div>
-                  <div className="order-summary-detail-value">{licencePlate}</div>
+                  <div className="order-summary-detail-label5">Licence Plate</div>
+                  <div className="order-summary-detail-value5">{licencePlate}</div>
                 </div>
-                <div className="order-summary-detail">
+                <div className="order-summary-detail5">
                   <ClockIcon />
-                  <div className="order-summary-detail-label">Entry Time</div>
-                  <div className="order-summary-detail-value">{entryTime}</div>
+                  <div className="order-summary-detail-label5">Entry Time</div>
+                  <div className="order-summary-detail-value5">{entryTime}</div>
                 </div>
-                <div className="order-summary-detail">
+                <div className="order-summary-detail5">
                   <ExitIcon />
-                  <div className="order-summary-detail-label">Exit time</div>
-                  <div className="order-summary-detail-value">{exitTime}</div>
+                  <div className="order-summary-detail-label5">Exit time</div>
+                  <div className="order-summary-detail-value5">{exitTime}</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="order-summary-footer">
-          <div className="order-summary-footer-row">
-            <div className="order-summary-length-of-stay">
-              <div className="order-summary-length-of-stay-label">
-                Length of stay
-              </div>
-              <div className="order-summary-length-of-stay-value">
-                {lengthOfStay}
-              </div>
+        <div className="order-summary-footer5">
+          <div className="order-summary-footer-row5">
+            <div className="order-summary-length-of-stay5">
+              <div className="order-summary-length-of-stay-label5">Length of stay</div>
+              <div className="order-summary-length-of-stay-value5">{lengthOfStay}</div>
             </div>
           </div>
         </div>
@@ -79,34 +77,33 @@ function S_five() {
     );
   }
 
-  function ThankYouMessage({ name }) {
+  function ThankYouMessage({ name, message }) {
     return (
-      <div className="thank-you-message-container">
-        <div className="thank-you-avatar-container">
+      <div className="thank-you-message-container5">
+        <div className="thank-you-avatar-container5">
           <div
             loading="lazy"
-            height={200}
-            width={200}
-            className="thank-you-avatar"
-            alt="Thank you avatar"
+            height={500}
+            width={500}
+            src={barrierclose}
+            className="thank-you-avatar5"
+            alt=" "
           />
         </div>
-        <div className="thank-you-message">
-          Thank you for your visit, <br /> {name} <br />
-        </div>
-        <div className="drive-safe-message">Drive Safe!</div>
+        <div className="thank-you-message5"> {message}, {name} </div>
+        <div className="drive-safe-message5">Drive Safe !</div>
       </div>
     );
   }
 
   return (
-    <div className="container">
-      <main className="main-container">
-        <div className="content-wrapper">
-          <div className="column-container">
-            <ThankYouMessage name="Mr Rami Hedfi" />
+    <div className="container5">
+      <main className="main-container5">
+        <div className="content-wrapper5">
+          <div className="column-container5">
+          <ThankYouMessage name={name} message={thankYouMessage} />
           </div>
-          <div className="column-container">
+          <div className="column-container5">
             <OrderSummary {...orderSummaryData} />
           </div>
         </div>
@@ -115,4 +112,3 @@ function S_five() {
   );
 }
 
-export default S_five;

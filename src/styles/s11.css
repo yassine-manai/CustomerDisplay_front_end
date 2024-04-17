@@ -1,4 +1,4 @@
-.container {
+.container11 {
     background-color: #f8f7fa;
     display: flex;
     width: 100%;
@@ -7,39 +7,39 @@
     padding: 16px 0;
   }
   
-  .content {
+  .content11 {
     width: 100%;
     max-width: 98%;
     margin-top: 23px;
     
   }
   @media (max-width: 1920px) {
-    .content {
+    .content11{
       max-width: 100%;
       min-height: 100%;
     }
   }
-  .columns {
+  .columns11 {
     display: flex;
     width: 100%;
     height: 120%;
     gap: 30px;
   }
   @media (max-width: 991px) {
-    .columns {
+    .columns11 {
       flex-direction: column;
       gap: 0;
     }
   }
-  .column {
+  .column11 {
     width: 100%;
   }
   @media (max-width: 991px) {
-    .column {
+    .column11 {
       width: 100%;
     }
   }
-  .apology-container {
+  .apology-container11 {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,12 +49,12 @@
     box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
   }
   @media (max-width: 1920px) {
-    .apology-container {
+    .apology-container11 {
       max-width: 100%;
       margin-top: 40px;
     }
   }
-  .apology-image-container {
+  .apology-image-container11 {
     position: relative;
     width: 88.4%;
     padding: 73px 60px;
@@ -63,22 +63,21 @@
     align-items: center;
   }
   @media (max-width: 991px) {
-    .apology-image-container {
+    .apology-image-container11 {
       padding: 0 20px;
     }
   }
-  .apology-background {
+  .apology-background11 {
     position: absolute;
     inset: 0;
+    
     width: 100%;
-    border-radius: 6px;
-
+    border-radius: 15px;
     object-fit: cover;
-    display: flex;
     justify-content: center;
   }
   
-  .apology-heading {
+  .apology-heading11 {
     margin-top: 160px;
     color: var(--main-blue, #2f5eab);
     font: 700 43px/100% Public Sans, -apple-system, Roboto, Helvetica,
@@ -87,11 +86,11 @@
     margin-bottom: 30px;
   }
   @media (max-width: 991px) {
-    .apology-heading {
+    .apology-heading11 {
       margin-top: 1px;
     }
   }
-  .apology-description {
+  .apology-description11 {
     color: var(--main-blue, #2f5eab);
     font: 700 30px/40px Public Sans, -apple-system, Roboto, Helvetica,
       sans-serif;
@@ -99,11 +98,11 @@
     margin-bottom: 110px;
   }
   @media (max-width: 991px) {
-    .apology-description {
+    .apology-description11 {
       max-width: 100%;
     }
   }
-  .help-container {
+  .help-container11 {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -111,12 +110,12 @@
     box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
   }
   @media (max-width: 1920px) {
-    .help-container {
+    .help-container11 {
       max-width: 100%;
       margin-top: 40px;
     }
   }
-  .help-background {
+  .help-background11 {
     padding: 55px 90px 0;
     background: linear-gradient(
       180deg,
@@ -128,11 +127,11 @@
     justify-content: center;  
   }
   @media (max-width: 991px) {
-    .help-background {
+    .help-background11 {
       padding: 0 20px;
     }
   }
-  .help-icon-container {
+  .help-icon-container11 {
     width: 197px;
     height: 217px;
     background-image: url(../assets/cashier.svg);
@@ -146,7 +145,7 @@
     filter: drop-shadow(0px 2.649px 2.649px rgba(0, 0, 0, 0.25));
   }
   @media (max-width: 991px) {
-    .help-icon-container {
+    .help-icon-container11 {
       margin-bottom: 30px;
       padding: 0 20px;
     }
@@ -156,9 +155,10 @@
     aspect-ratio: 1.01;
     object-fit: contain;
   }
-  .help-description {
+  .help-description11 {
     margin-top: 150px;
     margin-bottom: 125px;
+    width: 80%;
     align-self: center;
     justify-content: flex-start;
     align-items: center;
@@ -168,7 +168,7 @@
     text-align: center;
   }
   @media (max-width: 991px) {
-    .help-description {
+    .help-description11 {
       max-width: 100%;
       margin-top: 40px;
     }

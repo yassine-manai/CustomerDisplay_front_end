@@ -1,10 +1,52 @@
 
 normal data : {"message": 11,}
 --------------------------------------------------------------
+S5 - params data
 
+{
+  "message": 5,
+  "name": "Mr. Yassine Manai",
+  "thankYouMessage": "Thank you for your visit",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lengthOfStay": "2 hours 31 minutes",
+  "carImage":"path"
+}
+--------------------------------------------------------------
+
+S6 - params data
+
+{
+  "message": 6,
+  "name": "Mr. Yassine Manai",
+  "thankYouMessage": "You don’t have enough credit in your wallet",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lengthOfStay": "2 hours 31 minutes",
+    "currency":"TND",
+
+  "amountDeducted": "10.00",
+  "carImage":"path"
+}
+
+--------------------------------------------------------------
 S7 - params data
 
+{
+  "message": 7,
+  "name": "Mr. Yassine Manai",
+  "thankYouMessage": "You exceed your booking period",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lengthOfStay": "2 hours 31 minutes",
+    "currency":"TND",
 
+  "amountDeducted": "10.00",
+  "carImage":"path"
+}
 --------------------------------------------------------------
 S8 - params data 
 

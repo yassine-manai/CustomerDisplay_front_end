@@ -71,13 +71,45 @@ function App() {
         setData(<S_Four />);
         break;
       case 5:
-        setData(<S_Five />);
+        setData
+        (
+          <S_Five
+          name={extraData.name}
+          thankYouMessage={extraData.thankYouMessage}
+          licencePlate={extraData.licencePlate}
+          entryTime={extraData.entryTime}
+          exitTime={extraData.exitTime}
+          lengthOfStay={extraData.lengthOfStay}
+          carImage={extraData.carImage}
+        />);
         break;
       case 6:
-        setData(<S_Six />);
+        setData(
+          <S_Six
+            name={extraData.name}
+            thankYouMessage={extraData.thankYouMessage}
+            licencePlate={extraData.licencePlate}
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            lengthOfStay={extraData.lengthOfStay}
+            amountDeducted={extraData.amountDeducted}
+            carImage={extraData.carImage}
+            currency={extraData.currency}
+          />);
         break;
       case 7:
-        setData(<S_Seven />);
+        setData(
+          <S_Seven 
+            name={extraData.name}
+            thankYouMessage={extraData.thankYouMessage}
+            licencePlate={extraData.licencePlate}
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            lengthOfStay={extraData.lengthOfStay}
+            amountDeducted={extraData.amountDeducted}
+            carImage={extraData.carImage}
+            currency={extraData.currency}
+          />);
         break;
         case 8:
           setData(
