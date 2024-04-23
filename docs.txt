@@ -7,6 +7,7 @@ s1- params data
 
 {
   "message": 1,
+  "DispTime":60000,
   "img":"path"
 }
 
@@ -14,7 +15,8 @@ s1- params data
 S2 - params data
 
 {
-  "message": 2,
+  "message": 2,  
+  "DispTime":60000,
   "entryTime":"21-02-2024 14:36",
   "exitTime":"21-02-2024 14:36",
   "length":"2 hours",
@@ -28,7 +30,8 @@ S2 - params data
 S3 - params data
 
 {
-  "message": 3,  
+  "message": 3,
+  "DispTime":60000,  
   "paymentSuccess":"Payment Done Successfully",
   "visitMessage":"Thank you for your visit, Drive Safe !"
 }
@@ -38,12 +41,15 @@ S4 - params data
 
 {
   "message": 4,
+  "DispTime":60000,
   "name": "Mr. Yassine Manai",
   "thankYouMessage": "Thank you for your visit",
   "licencePlate": "ABC123",
   "entryTime": "21-02-2024 14:36",
   "exitTime": "21-02-2024 17:07",
   "lengthOfStay": "2 hours 31 minutes",
+  "amountDeducted": "150",
+  "currency":"TND",
   "carImage":"path"
 }
 
@@ -52,6 +58,7 @@ S5 - params data
 
 {
   "message": 5,
+  "DispTime":60000,
   "name": "Mr. Yassine Manai",
   "thankYouMessage": "Thank you for your visit",
   "licencePlate": "ABC123",
@@ -66,6 +73,7 @@ S6 - params data
 
 {
   "message": 6,
+  "DispTime":60000,
   "name": "Mr. Yassine Manai",
   "thankYouMessage": "You don’t have enough credit in your wallet",
   "licencePlate": "ABC123",
@@ -82,6 +90,7 @@ S7 - params data
 
 {
   "message": 7,
+  "DispTime":60000,
   "name": "Mr. Yassine Manai",
   "thankYouMessage": "You exceed your booking period",
   "licencePlate": "ABC123",
@@ -98,6 +107,7 @@ S8 - params data
 
 {
   "message": 8,
+  "DispTime":60000,
   "name": "Mr. Sofiene",
   "thankYouMessage": "Your subscription is expired",
   "licencePlate": "ABC123",
@@ -114,6 +124,7 @@ S9 - params data
 
 {
   "message": 9,
+  "DispTime":60000,
   "apologyMessage": " We apologize, the license plate is not recognized or not found in our system !",
   "carModelImage": "path_to_carModel_image.svg"
 }
@@ -124,6 +135,7 @@ S10 - - params data
 
 {
   "message": 10,
+  "DispTime":60000,
   "apologyTitle": "We apologize !",
   "apologyDescription": "The license plate is not recognized or not found in our system!Our help desk cashier will help you to pay your fees.",
   "carModelImage": "path_to_carModel_image.svg"
@@ -135,6 +147,7 @@ S11 - params data
 
 {
   "message": 11,
+  "DispTime":60000,
   "apologyHeading": "We apologize !",
   "apologyDescription": "The license plate is not recognized or not found in our system!",
   "helpDescription": "Our help desk cashier will help you to pay your fees.",
@@ -143,4 +156,4 @@ S11 - params data
 
 --------------------------------------------------------------------------------------------
 
-main page timing
+main page timing -- ok 

@@ -13,7 +13,7 @@ export default function S_TWO(
     exitTime,
     length,
     amount,
-    curreny,
+    currency,
     pathImage,
     licencePlate
   }
@@ -62,7 +62,7 @@ export default function S_TWO(
           <div className="amount-label2">Amount to pay</div>
           <div className="amount-value2">
             <span className="amount2">{amount}</span>{" "}
-            <span className="currency2">{curreny}</span>
+            <span className="currency2">{currency}</span>
           </div>
         </div>
       </div>

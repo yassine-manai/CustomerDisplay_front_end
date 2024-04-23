@@ -4,6 +4,11 @@
     flex-direction: column;
     color: #6d6e71;
     font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
   }
   .info-container1 {
     border-radius: 6px;
@@ -20,6 +25,9 @@
       padding: 0 20px;
     }
   }
+
+
+  
   .location-info1 {
     display: flex;
     gap: 10px;

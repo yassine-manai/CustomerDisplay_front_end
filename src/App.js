@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
 import InfoContainer from './components/InfoComp';
-import pumc from './assets/pumc.svg';
-import kfc from './assets/kfc.png';
 import Footer from './components/footer';
 import S_ONE from './pages/s_one';
 import S_TWO from './pages/s_two';
@@ -15,10 +12,11 @@ import S_eight from './pages/s_eight';
 import S_nine from './pages/s_nine';
 import S_ten from './pages/s_ten';
 import S11 from './pages/s11';
+import pumc from './assets/pumc.svg';
+import kfc from './assets/kfc.png';
 
-function App() 
-{
-  const [data, setData] = useState(<S_ONE img={kfc}/>); // Start with S_ONE component shown
+function App() {
+  const [data, setData] = useState(<S_ONE img={kfc} />);
   const [ws, setWs] = useState(null);
 
   const locationData = {
@@ -37,8 +35,8 @@ function App()
 
     socket.onmessage = (event) => {
       try {
-        const { message, ...extraData } = JSON.parse(event.data);
-        handleWebSocketMessage(message, extraData);
+        const { message, DispTime, ...extraData } = JSON.parse(event.data);
+        handleWebSocketMessage(message, DispTime, extraData);
       } catch (error) {
         console.error('Error parsing WebSocket message:', error);
       }
@@ -56,64 +54,62 @@ function App()
     };
   }, []);
 
-  const handleWebSocketMessage = (message, extraData) => 
-  {
+  const handleWebSocketMessage = (message, DispTime, extraData) => {
     console.log('Received message from WebSocket:', extraData);
 
-    switch (message) 
-    {
+    switch (message) {
       case 1:
-        setData(<S_ONE
-            img={extraData.img}
-           />);
+        setData(<S_ONE img={extraData.img} />);
         break;
       case 2:
         setData(
-        <S_TWO
-          entryTime={extraData.entryTime}
-          exitTime={extraData.exitTime}
-          length={extraData.length}
-          amount={extraData.amount}
-          curreny={extraData.currency}
-          licencePlate ={extraData.licencePlate}
-          pathImage={extraData.pathImage}
-        />);
+          <S_TWO
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            length={extraData.length}
+            amount={extraData.amount}
+            currency={extraData.currency}
+            licencePlate={extraData.licencePlate}
+            pathImage={extraData.pathImage}
+          />
+        );
         break;
       case 3:
         setData(
-        <S_Three
-          paymentSuccess={extraData.paymentSuccess}
-          visitMessage={extraData.visitMessage}
-        />);
+          <S_Three
+            paymentSuccess={extraData.paymentSuccess}
+            visitMessage={extraData.visitMessage}
+          />
+        );
         break;
       case 4:
         setData(
-        <S_Four
-          name={extraData.name}
-          thankYouMessage={extraData.thankYouMessage}
-          licencePlate={extraData.licencePlate}
-          entryTime={extraData.entryTime}
-          exitTime={extraData.exitTime}
-          lengthOfStay={extraData.lengthOfStay}
-          currency={extraData.currency}
-          amountDeducted={extraData.amountDeducted}
-          carImage={extraData.carImage}
-        />);
+          <S_Four
+            name={extraData.name}
+            thankYouMessage={extraData.thankYouMessage}
+            licencePlate={extraData.licencePlate}
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            lengthOfStay={extraData.lengthOfStay}
+            currency={extraData.currency}
+            amountDeducted={extraData.amountDeducted}
+            carImage={extraData.carImage}
+          />
+        );
         break;
       case 5:
-        setData
-        (
+        setData(
           <S_Five
-          name={extraData.name}
-          thankYouMessage={extraData.thankYouMessage}
-          licencePlate={extraData.licencePlate}
-          entryTime={extraData.entryTime}
-          exitTime={extraData.exitTime}
-          lengthOfStay={extraData.lengthOfStay}
-          carImage={extraData.carImage}
-        />);
+            name={extraData.name}
+            thankYouMessage={extraData.thankYouMessage}
+            licencePlate={extraData.licencePlate}
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            lengthOfStay={extraData.lengthOfStay}
+            carImage={extraData.carImage}
+          />
+        );
         break;
-
       case 6:
         setData(
           <S_Six
@@ -126,12 +122,12 @@ function App()
             amountDeducted={extraData.amountDeducted}
             carImage={extraData.carImage}
             currency={extraData.currency}
-          />);
+          />
+        );
         break;
-
       case 7:
         setData(
-          <S_Seven 
+          <S_Seven
             name={extraData.name}
             thankYouMessage={extraData.thankYouMessage}
             licencePlate={extraData.licencePlate}
@@ -141,33 +137,32 @@ function App()
             amountDeducted={extraData.amountDeducted}
             carImage={extraData.carImage}
             currency={extraData.currency}
-          />);
+          />
+        );
         break;
-
-        case 8:
-          setData(
-            <S_eight
-              name={extraData.name}
-              thankYouMessage={extraData.thankYouMessage}
-              licencePlate={extraData.licencePlate}
-              entryTime={extraData.entryTime}
-              exitTime={extraData.exitTime}
-              lengthOfStay={extraData.lengthOfStay}
-              amountDeducted={extraData.amountDeducted}
-              carImage={extraData.carImage}
-              currency={extraData.currency}
-            />
-          );
+      case 8:
+        setData(
+          <S_eight
+            name={extraData.name}
+            thankYouMessage={extraData.thankYouMessage}
+            licencePlate={extraData.licencePlate}
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            lengthOfStay={extraData.lengthOfStay}
+            amountDeducted={extraData.amountDeducted}
+            carImage={extraData.carImage}
+            currency={extraData.currency}
+          />
+        );
         break;
-
       case 9:
         setData(
           <S_nine
-          apologyMessage={extraData.apologyMessage}
-          carModelImage ={extraData.carModelImage}
-        />);
+            apologyMessage={extraData.apologyMessage}
+            carModelImage={extraData.carModelImage}
+          />
+        );
         break;
-
       case 10:
         setData(
           <S_ten
@@ -177,7 +172,6 @@ function App()
           />
         );
         break;
-
       case 11:
         setData(
           <S11
@@ -188,43 +182,32 @@ function App()
           />
         );
         break;
-
       default:
-        setData(<S_ONE img={kfc}/>);
-      break;
+        setData(<S_ONE img={kfc} />);
+        break;
     }
 
-    if (message !== 1) 
-    {
+    if (message !== 1) {
       setTimeout(() => {
-        setData(<S_ONE img={kfc}/>);
-      }, 5000);
+        setData(<S_ONE img={kfc} />);
+      }, DispTime);
     }
   };
 
-  // Function to send WebSocket message with additional data
-  const sendMessage = (message, extraData = {}) => 
-  {
-    if (ws && ws.readyState === WebSocket.OPEN) 
-    {
+  const sendMessage = (message, extraData = {}) => {
+    if (ws && ws.readyState === WebSocket.OPEN) {
       const messageObj = { message, ...extraData };
       ws.send(JSON.stringify(messageObj));
-    } 
-    else 
-    {
+    } else {
       console.error('WebSocket connection is not open.');
     }
   };
 
-
-
   return (
     <div className="App">
       <InfoContainer location={locationData} timezone="Africa/Tunis" />
-
       {data}
-
-      <Footer 
+      <Footer
         backgroundSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&"
       />
     </div>
