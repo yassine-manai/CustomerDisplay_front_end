@@ -12,21 +12,23 @@ import S_eight from './pages/s_eight';
 import S_nine from './pages/s_nine';
 import S_ten from './pages/s_ten';
 import S11 from './pages/s11';
-import pumc from './assets/pumc.svg';
+//import pumc from './assets/pumc.svg';
 import kfc from './assets/kfc.png';
+import readConfig from './Config/location_config.js'
+
 
 function App() {
   const [data, setData] = useState(<S_ONE img={kfc} />);
   const [ws, setWs] = useState(null);
+  const [timeoutId, setTimeoutId] = useState(null); 
 
-  const locationData = {
-    iconSrc: pumc,
-    name: 'PUMC Carpark',
-    exit: 'Exit 704'
-  };
+  /* const locationData = { readConfig };
+  print(readConfig); */
+
 
   useEffect(() => {
-    const socket = new WebSocket('ws://127.0.0.1:8000/ws');
+    const socket = new WebSocket('ws://127.0.0.1:8200/ws');
+    console.log(socket);
 
     socket.onopen = () => {
       console.log('WebSocket connected');
@@ -57,16 +59,20 @@ function App() {
   const handleWebSocketMessage = (message, DispTime, extraData) => {
     console.log('Received message from WebSocket:', extraData);
 
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+
     switch (message) {
       case 1:
-        setData(<S_ONE img={extraData.img} />);
+        setData(<S_ONE img={extraData.pathImage} />);
         break;
       case 2:
         setData(
           <S_TWO
             entryTime={extraData.entryTime}
             exitTime={extraData.exitTime}
-            length={extraData.length}
+            length={extraData.lenghtOfStay}
             amount={extraData.amount}
             currency={extraData.currency}
             licencePlate={extraData.licencePlate}
@@ -90,9 +96,9 @@ function App() {
             licencePlate={extraData.licencePlate}
             entryTime={extraData.entryTime}
             exitTime={extraData.exitTime}
-            lengthOfStay={extraData.lengthOfStay}
+            lengthOfStay={extraData.lenghtOfStay}
             currency={extraData.currency}
-            amountDeducted={extraData.amountDeducted}
+            amountDeducted={extraData.amount}
             carImage={extraData.carImage}
           />
         );
@@ -105,7 +111,7 @@ function App() {
             licencePlate={extraData.licencePlate}
             entryTime={extraData.entryTime}
             exitTime={extraData.exitTime}
-            lengthOfStay={extraData.lengthOfStay}
+            lengthOfStay={extraData.lenghtOfStay}
             carImage={extraData.carImage}
           />
         );
@@ -118,8 +124,8 @@ function App() {
             licencePlate={extraData.licencePlate}
             entryTime={extraData.entryTime}
             exitTime={extraData.exitTime}
-            lengthOfStay={extraData.lengthOfStay}
-            amountDeducted={extraData.amountDeducted}
+            lengthOfStay={extraData.lenghtOfStay}
+            amountDeducted={extraData.amount}
             carImage={extraData.carImage}
             currency={extraData.currency}
           />
@@ -133,8 +139,8 @@ function App() {
             licencePlate={extraData.licencePlate}
             entryTime={extraData.entryTime}
             exitTime={extraData.exitTime}
-            lengthOfStay={extraData.lengthOfStay}
-            amountDeducted={extraData.amountDeducted}
+            lengthOfStay={extraData.lenghtOfStay}
+            amountDeducted={extraData.amount}
             carImage={extraData.carImage}
             currency={extraData.currency}
           />
@@ -148,8 +154,8 @@ function App() {
             licencePlate={extraData.licencePlate}
             entryTime={extraData.entryTime}
             exitTime={extraData.exitTime}
-            lengthOfStay={extraData.lengthOfStay}
-            amountDeducted={extraData.amountDeducted}
+            lengthOfStay={extraData.lenghtOfStay}
+            amountDeducted={extraData.amount}
             carImage={extraData.carImage}
             currency={extraData.currency}
           />
@@ -159,7 +165,7 @@ function App() {
         setData(
           <S_nine
             apologyMessage={extraData.apologyMessage}
-            carModelImage={extraData.carModelImage}
+            carImage={extraData.carImage}
           />
         );
         break;
@@ -168,17 +174,17 @@ function App() {
           <S_ten
             apologyTitle={extraData.apologyTitle}
             apologyDescription={extraData.apologyDescription}
-            carModelImage={extraData.carModelImage}
+            carImage={extraData.carImage}
           />
         );
         break;
       case 11:
         setData(
           <S11
-            apologyHeading={extraData.apologyHeading}
+            apologyTitle={extraData.apologyTitle}
             apologyDescription={extraData.apologyDescription}
             helpDescription={extraData.helpDescription}
-            carModelImage={extraData.carModelImage}
+            carImage={extraData.carImage}
           />
         );
         break;
@@ -188,14 +194,17 @@ function App() {
     }
 
     if (message !== 1) {
-      setTimeout(() => {
+      const newTimeoutId = setTimeout(() => {
         setData(<S_ONE img={kfc} />);
       }, DispTime);
+      setTimeoutId(newTimeoutId);
     }
   };
 
-  const sendMessage = (message, extraData = {}) => {
-    if (ws && ws.readyState === WebSocket.OPEN) {
+  const sendMessage = (message, extraData = {}) => 
+  {
+    if (ws && ws.readyState === WebSocket.OPEN) 
+    {
       const messageObj = { message, ...extraData };
       ws.send(JSON.stringify(messageObj));
     } else {
@@ -203,9 +212,15 @@ function App() {
     }
   };
 
+/*   async function main()
+{
+  await updateConfig();
+  setInterval(updateConfig, 60000); // Update every minute, adjust as needed
+} */
+
   return (
     <div className="App">
-      <InfoContainer location={locationData} timezone="Africa/Tunis" />
+      <InfoContainer location={readConfig} timezone="Africa/Tunis" />
       {data}
       <Footer
         backgroundSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&"

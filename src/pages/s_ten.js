@@ -41,7 +41,7 @@ function ImageSection({ imageUrl }) {
   );
 }
 
-function S_ten({ apologyTitle, apologyDescription, carModelImage }) {
+function S_ten({ apologyTitle, apologyDescription, carImage}) {
   return (
     <div className="container10">
       <main className="main-content10">
@@ -53,7 +53,7 @@ function S_ten({ apologyTitle, apologyDescription, carModelImage }) {
           <br />
           {/* Render ImageSection with imageUrl prop */}
           <section className="image-wrapper10">
-            <ImageSection imageUrl={carModelImage} />
+            <ImageSection imageUrl={carImage} />
           </section>
         </div>
       </main>

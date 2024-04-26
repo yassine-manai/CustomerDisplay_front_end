@@ -9,7 +9,7 @@ export default function S_ONE({ img }) {
         loading="lazy"
         src={img}
         alt="Map"
-        
+
         className="map-image1"
       />
     </div>

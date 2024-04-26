@@ -1,25 +1,24 @@
 
-normal data : {"message": 11}
 
 
 --------------------------------------------------------------
-s1- params data 
+S1- IDLE Model
 
 {
   "message": 1,
   "DispTime":60000,
-  "img":"path"
+  "pathImage":"path"
 }
 
 --------------------------------------------------------------
-S2 - params data
+S2 - Short term parker-Price display
 
 {
   "message": 2,  
   "DispTime":60000,
   "entryTime":"21-02-2024 14:36",
   "exitTime":"21-02-2024 14:36",
-  "length":"2 hours",
+  "lenghtOfStay":"2 hours",
   "amount":"150",
   "currency":"KWD",
   "licencePlate":"ABC123",
@@ -27,7 +26,7 @@ S2 - params data
 }
 
 --------------------------------------------------------------
-S3 - params data
+S3 - Exit short term parker - Goodbye message
 
 {
   "message": 3,
@@ -37,7 +36,7 @@ S3 - params data
 }
 
 --------------------------------------------------------------
-S4 - params data
+S4 -  Pay as you go-GOODBYE Message
 
 {
   "message": 4,
@@ -47,14 +46,14 @@ S4 - params data
   "licencePlate": "ABC123",
   "entryTime": "21-02-2024 14:36",
   "exitTime": "21-02-2024 17:07",
-  "lengthOfStay": "2 hours 31 minutes",
-  "amountDeducted": "150",
+  "lenghtOfStay": "2 hours 31 minutes",
+  "amount": "150",
   "currency":"TND",
   "carImage":"path"
 }
 
 --------------------------------------------------------------
-S5 - params data
+S5 - Prebooking + Subscriber - GOODBYE Message
 
 {
   "message": 5,
@@ -64,12 +63,12 @@ S5 - params data
   "licencePlate": "ABC123",
   "entryTime": "21-02-2024 14:36",
   "exitTime": "21-02-2024 17:07",
-  "lengthOfStay": "2 hours 31 minutes",
+  "lenghtOfStay": "2 hours 31 minutes",
   "carImage":"path"
 }
 --------------------------------------------------------------
 
-S6 - params data
+S6 -  Pay as you go-GOODBYE Message
 
 {
   "message": 6,
@@ -79,14 +78,14 @@ S6 - params data
   "licencePlate": "ABC123",
   "entryTime": "21-02-2024 14:36",
   "exitTime": "21-02-2024 17:07",
-  "lengthOfStay": "2 hours 31 minutes",
+  "lenghtOfStay": "2 hours 31 minutes",
   "currency":"TND",
-  "amountDeducted": "10.00",
+  "amount": "10.00",
   "carImage":"path"
 }
 
 --------------------------------------------------------------
-S7 - params data
+S7 -  Pay as you go-GOODBYE Message
 
 {
   "message": 7,
@@ -96,15 +95,14 @@ S7 - params data
   "licencePlate": "ABC123",
   "entryTime": "21-02-2024 14:36",
   "exitTime": "21-02-2024 17:07",
-  "lengthOfStay": "2 hours 31 minutes",
+  "lenghtOfStay": "2 hours 31 minutes",
   "currency":"TND",
-  "amountDeducted": "10.00",
+  "amount": "10.00",
   "carImage":"path"
 }
 
 --------------------------------------------------------------
-S8 - params data 
-
+S8 -  Pay as you go-GOODBYE Message
 {
   "message": 8,
   "DispTime":60000,
@@ -113,37 +111,38 @@ S8 - params data
   "licencePlate": "ABC123",
   "entryTime": "21-02-2024 14:36",
   "exitTime": "21-02-2024 17:07",
-  "lengthOfStay": "2 hours 31 minutes",
-  "amountDeducted": "10.00",
+  "lenghtOfStay": "2 hours 31 minutes",
+  "amount": "10.00",
+  "currency":"TND",
   "carImage": "path"
 }
 
 --------------------------------------------------------------
 
-S9 - params data 
+S9 -  Pay as you go-apology message - 404 V1
 
 {
   "message": 9,
   "DispTime":60000,
   "apologyMessage": " We apologize, the license plate is not recognized or not found in our system !",
-  "carModelImage": "path_to_carModel_image.svg"
+  "carImage": "path"
 }
 
 --------------------------------------------------------------
 
-S10 - - params data 
+S10 - Pay as you go-apology message - 404 V2
 
 {
   "message": 10,
   "DispTime":60000,
   "apologyTitle": "We apologize !",
   "apologyDescription": "The license plate is not recognized or not found in our system!Our help desk cashier will help you to pay your fees.",
-  "carModelImage": "path_to_carModel_image.svg"
+  "carImage": "path"
 }
 
 -----------------------------------------------------------------
 
-S11 - params data 
+S11 - Pay as you go-apology message - 404 V3
 
 {
   "message": 11,
@@ -151,9 +150,8 @@ S11 - params data
   "apologyHeading": "We apologize !",
   "apologyDescription": "The license plate is not recognized or not found in our system!",
   "helpDescription": "Our help desk cashier will help you to pay your fees.",
-  "carModelImage": "path_to_carModel_image.svg"
+  "carImage": "path"
 }
 
 --------------------------------------------------------------------------------------------
 
-main page timing -- ok 

@@ -39,7 +39,7 @@ function ImageSection({ imageUrl }) {
   );
 }
 
-export default function S_nine({ apologyMessage, carModelImage }) {
+export default function S_nine({ apologyMessage,  carImage}) {
   return (
     <div className="container9">
       <main className="main-content9">
@@ -50,7 +50,7 @@ export default function S_nine({ apologyMessage, carModelImage }) {
           <br />
           <section className="image-wrapper9">
             {/* Pass the carModelImage (base64 string) as the imageUrl prop */}
-            <ImageSection imageUrl={carModelImage} />
+            <ImageSection imageUrl={carImage} />
           </section>
         </div>
       </main>

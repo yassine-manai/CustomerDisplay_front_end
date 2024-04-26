@@ -38,7 +38,7 @@ function HelpDeskMessage({ description }) {
 }
 
 // S_11 component now accepts props and passes them to child components
-export default function S_11({ apologyHeading, apologyDescription, helpDescription, carModelImage }) {
+export default function S_11({ apologyTitle, apologyDescription, helpDescription, carImage }) {
   return (
     <div className="container11">
       <main className="content11">
@@ -46,9 +46,9 @@ export default function S_11({ apologyHeading, apologyDescription, helpDescripti
           <div className="column11">
             {/* Pass props to ApologyMessage component */}
             <ApologyMessage
-              heading={apologyHeading}
+              heading={apologyTitle}
               description={apologyDescription}
-              carImage={carModelImage}
+              carImage={carImage}
             />
           </div>
           <div className="column11">
