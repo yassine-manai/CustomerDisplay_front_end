@@ -1,5 +1,6 @@
 import React from "react";
 import '../styles/s_three.css';
+//import {BARRIER} from "../assets/BARRIER.gif";
 
 // PaymentSuccessMessage component to display payment success and visit message
 function PaymentSuccessMessage({ paymentSuccess, visitMessage }) {
@@ -21,11 +22,8 @@ function QRCodeImage() {
     <div className="qr-code3">
       {/* Placeholder for the QR code image */}
       <div
-        loading="lazy"
-        
-        src="path_to_qr_code_image.png"
+        loading="fast"
         alt=" "
-        
       />
     </div>
   );

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ClockIcon, CarIcon, ExitIcon } from "../components/icons";
 import barrierclose from "../assets/barrierclose.svg";
 import '../styles/s_five.css';
+import React from 'react'
 
 export default function S_five ({
 

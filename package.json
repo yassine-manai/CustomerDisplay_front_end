@@ -12,15 +12,16 @@
     "react-alice-carousel": "^2.9.1",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^3.0.1",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
     "web-vitals": "^2.1.4",
+    "webpack": "^4.42.0",
     "websocket": "^1.0.34"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -28,6 +29,8 @@
     "extends": [
       "react-app",
       "react-app/jest"
+      
+      
     ]
   },
   "browserslist": {
@@ -46,10 +49,14 @@
     "@types/websocket": "^1.0.10",
     "react-router-dom": "^6.22.3"
   },
-
   "browser": {
     "fs": false,
     "os": false,
     "path": false
-  }
+  },
+
+  "rules": {
+   "react/react-in-jsx-scope": "off",
+   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+}
 }

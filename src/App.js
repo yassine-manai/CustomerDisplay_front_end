@@ -12,10 +12,10 @@ import S_eight from './pages/s_eight';
 import S_nine from './pages/s_nine';
 import S_ten from './pages/s_ten';
 import S11 from './pages/s11';
-//import pumc from './assets/pumc.svg';
+import pumc from './assets/pumc.svg';
 import kfc from './assets/kfc.png';
-import readConfig from './Config/location_config.js'
-
+//import readConfig, { readData } from './Config/location_config.js'
+//import { updateConfig , readData} from './Config/location_config'; 
 
 function App() {
   const [data, setData] = useState(<S_ONE img={kfc} />);
@@ -25,8 +25,18 @@ function App() {
   /* const locationData = { readConfig };
   print(readConfig); */
 
+    const locationData = {
+    iconSrc: pumc,
+    name: 'PUMC Carpark',
+    exit: 'Exit 704'
+  }; 
 
+ 
   useEffect(() => {
+
+    //updateConfig();
+
+    
     const socket = new WebSocket('ws://127.0.0.1:8200/ws');
     console.log(socket);
 
@@ -59,9 +69,8 @@ function App() {
   const handleWebSocketMessage = (message, DispTime, extraData) => {
     console.log('Received message from WebSocket:', extraData);
 
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
+      clearTimeout(DispTime);
+    
 
     switch (message) {
       case 1:
@@ -194,10 +203,9 @@ function App() {
     }
 
     if (message !== 1) {
-      const newTimeoutId = setTimeout(() => {
-        setData(<S_ONE img={kfc} />);
-      }, DispTime);
-      setTimeoutId(newTimeoutId);
+      setTimeout(() => {
+        setData(<S_ONE img={kfc}/>);
+      }, DispTime * 1000);
     }
   };
 
@@ -220,7 +228,8 @@ function App() {
 
   return (
     <div className="App">
-      <InfoContainer location={readConfig} timezone="Africa/Tunis" />
+      {/*  <InfoContainer location={readData()} timezone="Africa/Tunis" /> */}      
+      <InfoContainer location={locationData} timezone="Africa/Tunis" /> 
       {data}
       <Footer
         backgroundSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&"

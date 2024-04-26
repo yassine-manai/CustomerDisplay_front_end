@@ -1,6 +1,7 @@
 import entryIcon from "../assets/icons/ENTRY.svg";
 import exitIcon from "../assets/icons/EXIT.svg";
 import carIcon from "../assets/icons/carIcon.svg";
+import React from 'react'
 
 export function CarIcon() {
     return (

@@ -113,18 +113,35 @@
   }
 
   .qr-code3 {
-    background-image: url(../assets/barrierclose2.svg);
+    background-image: url(../assets/BARRIER.gif);
+    background-size: 15;
+    background-clip: border-box;
+    background-color: #fff;
     background-repeat: no-repeat;
     background-position: center;
-    aspect-ratio: 1;
-    object-fit: auto;
+    aspect-ratio: 1.02;
+    object-fit: contain;
     object-position: center;
+    border-radius: 50%;
     margin-top: 29px;
   }
 
-  @media (max-width: 991px) {
+  @media (max-width: 1024px) {
     .qr-code3 {
       margin-top: 40px;
-    }
+      background-image: url(../assets/BARRIER.gif);
+      
+      
+
+      background-clip: border-box;
+      background-color: #fff;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      aspect-ratio: 1.02;
+
+      object-position: center;
+      border-radius: 50%;
+     }
   }
 
