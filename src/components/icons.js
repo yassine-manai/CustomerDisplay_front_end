@@ -1,6 +1,6 @@
 import entryIcon from "../assets/icons/ENTRY.svg";
 import exitIcon from "../assets/icons/EXIT.svg";
-import carIcon from "../assets/icons/carIcon.svg";
+import CarIconwbg from "../assets/icons/CarIconwbg.svg";
 import React from 'react'
 
 export function CarIcon() {
@@ -9,7 +9,7 @@ export function CarIcon() {
         {" "}
         <img
           loading="lazy"
-          src={carIcon}
+          src={CarIconwbg}
           className="car-icon"
           alt="Car icon"
         />{" "}

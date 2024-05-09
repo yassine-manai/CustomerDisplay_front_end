@@ -20,7 +20,7 @@ const timezones = [
     "Africa/Dakar",
     "Africa/Dar_es_Salaam",
     "Africa/Djibouti",
-    "Africa/Douala",
+    "Africa/El_Aaiun",
     "Africa/El_Aaiun",
     "Africa/Freetown",
     "Africa/Gaborone",

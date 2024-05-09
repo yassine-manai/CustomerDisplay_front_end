@@ -2,24 +2,24 @@ import React, { useState, useEffect } from "react";
 import '../styles/infocop.css';
 import calenderIcon from "../assets/icons/calendar-time.svg";
 
-function LocationInfo({ location }) {
+function LocationInfo({ iconSrc , name, exit }) {
   return (
     <div className="location-info">
       <img
         loading="lazy"
-        src={location.iconSrc}
-        alt="Location icon"
+        src={iconSrc}
+        alt="icon"
         className="location-icon"
       />
       <div className="location-details">
-        <span className="location-name">{location.name}</span>
+        <span className="location-name">{name}</span>
         &nbsp;        
         
         <span className="location-name">-</span>
 
         &nbsp;        
 
-        <span className="location-exit">{location.exit}</span>
+        <span className="location-exit">{exit}</span>
       </div>
     </div>
   );
@@ -49,7 +49,7 @@ function DateTimeInfo({ dateTime, timezone }) {
   );
 }
 
-export default function InfoContainer({ location, timezone }) {
+export default function InfoContainer({ iconSrc,name,exit , timezone }) {
   const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function InfoContainer({ location, timezone }) {
 
   return (
     <div className="info-container">
-      <LocationInfo location={location} />
+      <LocationInfo iconSrc={iconSrc} name={name} exit={exit} />
       <DateTimeInfo dateTime={dateTime} timezone={timezone} />
     </div>
   );

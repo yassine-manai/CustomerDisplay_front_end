@@ -18,19 +18,14 @@ import kfc from './assets/kfc.png';
 //import { updateConfig , readData} from './Config/location_config'; 
 
 function App() {
-  const [data, setData] = useState(<S_ONE img={kfc} />);
+  const [infoData, setInfoData] = useState({ iconSrc: pumc, name: "Name", exit_point: "Exit Point", timezone:"Asia/Kuwait"  });
+  const [footerData, setFooterData] = useState({ backgroundSrc: "https://cdn.builder.io/dapi/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&" });
+  const [pageData, setPageData] = useState(<S_ONE img={kfc} />);
   const [ws, setWs] = useState(null);
-  const [timeoutId, setTimeoutId] = useState(null); 
+  const [timeoutId, setTimeoutId] = useState(null);
 
   /* const locationData = { readConfig };
   print(readConfig); */
-
-    const locationData = {
-    iconSrc: pumc,
-    name: 'PUMC Carpark',
-    exit: 'Exit 704'
-  }; 
-
  
   useEffect(() => {
 
@@ -73,11 +68,21 @@ function App() {
     
 
     switch (message) {
-      case 1:
-        setData(<S_ONE img={extraData.pathImage} />);
+      case 100:
+        setInfoData({ iconSrc: extraData.icon, name: extraData.name, exit: extraData.exit_point , timezone: extraData.timezone });
+        console.log(extraData.name);
         break;
+
+      case 110:
+        setFooterData({ backgroundSrc: extraData.backgroundSrc});
+        break;
+
+      case 1:
+        setPageData(<S_ONE img={extraData.pathImage} />);
+        break;
+
       case 2:
-        setData(
+        setPageData(
           <S_TWO
             entryTime={extraData.entryTime}
             exitTime={extraData.exitTime}
@@ -89,8 +94,9 @@ function App() {
           />
         );
         break;
+
       case 3:
-        setData(
+        setPageData(
           <S_Three
             paymentSuccess={extraData.paymentSuccess}
             visitMessage={extraData.visitMessage}
@@ -98,7 +104,7 @@ function App() {
         );
         break;
       case 4:
-        setData(
+        setPageData(
           <S_Four
             name={extraData.name}
             thankYouMessage={extraData.thankYouMessage}
@@ -113,7 +119,7 @@ function App() {
         );
         break;
       case 5:
-        setData(
+        setPageData(
           <S_Five
             name={extraData.name}
             thankYouMessage={extraData.thankYouMessage}
@@ -126,7 +132,7 @@ function App() {
         );
         break;
       case 6:
-        setData(
+        setPageData(
           <S_Six
             name={extraData.name}
             thankYouMessage={extraData.thankYouMessage}
@@ -141,7 +147,7 @@ function App() {
         );
         break;
       case 7:
-        setData(
+        setPageData(
           <S_Seven
             name={extraData.name}
             thankYouMessage={extraData.thankYouMessage}
@@ -156,7 +162,7 @@ function App() {
         );
         break;
       case 8:
-        setData(
+        setPageData(
           <S_eight
             name={extraData.name}
             thankYouMessage={extraData.thankYouMessage}
@@ -171,7 +177,7 @@ function App() {
         );
         break;
       case 9:
-        setData(
+        setPageData(
           <S_nine
             apologyMessage={extraData.apologyMessage}
             carImage={extraData.carImage}
@@ -179,7 +185,7 @@ function App() {
         );
         break;
       case 10:
-        setData(
+        setPageData(
           <S_ten
             apologyTitle={extraData.apologyTitle}
             apologyDescription={extraData.apologyDescription}
@@ -188,7 +194,7 @@ function App() {
         );
         break;
       case 11:
-        setData(
+        setPageData(
           <S11
             apologyTitle={extraData.apologyTitle}
             apologyDescription={extraData.apologyDescription}
@@ -198,13 +204,13 @@ function App() {
         );
         break;
       default:
-        setData(<S_ONE img={kfc} />);
+        setPageData(<S_ONE img={kfc} />);
         break;
     }
 
     if (message !== 1) {
       setTimeout(() => {
-        setData(<S_ONE img={kfc}/>);
+        setPageData(<S_ONE img={kfc}/>);
       }, DispTime * 1000);
     }
   };
@@ -228,14 +234,15 @@ function App() {
 
   return (
     <div className="App">
-      {/*  <InfoContainer location={readData()} timezone="Africa/Tunis" /> */}      
-      <InfoContainer location={locationData} timezone="Africa/Tunis" /> 
-      {data}
-      <Footer
-        backgroundSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&"
-      />
+      <InfoContainer iconSrc={infoData.iconSrc} name={infoData.name} exit={infoData.exit} timezone={infoData.timezone}/>
+      {pageData}
+      <Footer backgroundSrc={footerData.backgroundSrc}/>
     </div>
   );
 }
 
 export default App;
+
+
+
+//backgroundSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&"

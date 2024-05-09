@@ -45,8 +45,8 @@ export default function s_four({
                 src={carImage}
                 className="order-summary-image4"
                 alt="Order summary"
-                height={200}
-                width={200}
+                height={300}
+                width={300}
               />
             </div>
             <div className="order-summary-details-column4">

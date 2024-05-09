@@ -97,15 +97,18 @@
 }
 .thank-you-avatar4 {
   filter: drop-shadow(0 2.649px 2.649px rgba(0, 0, 0, 0.25));
-  background-image: url(../assets/barrierclose.svg);
+  background-image: url(../assets/BARRIER.gif);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 50%;
   border-radius: 50%;
-  z-index: 10;
+  zoom: 45%;
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
   display: flex;
-  height: 100px;
-  margin-bottom: -58px;
+  margin-bottom: -158px;
+  object-fit: contain;
+  object-position: center;
   align-items: center;
   padding: 28px 25px 46px;
 }
@@ -113,6 +116,7 @@
   .thank-you-avatar4 {
     margin-bottom: 10px;
     padding: 0 20px;
+    background-image: url(../assets/BARRIER.gif);
   }
 }
 .thank-you-message4 {
@@ -129,6 +133,8 @@
   text-align: center;
   margin-top: 100px;
   margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
   font: 700 30px/134% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
 }
