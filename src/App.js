@@ -20,7 +20,7 @@ import kfc from './assets/kfc.png';
 function App() {
   const [infoData, setInfoData] = useState({ iconSrc: pumc, name: "Name", exit_point: "Exit Point", timezone:"Asia/Kuwait"  });
   const [footerData, setFooterData] = useState({ backgroundSrc: "https://cdn.builder.io/dapi/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&" });
-  const [pageData, setPageData] = useState(<S_ONE img={kfc} />);
+  const [pageData, setPageData] = useState(<S_ONE timerInterval={6} />);
   const [ws, setWs] = useState(null);
   const [timeoutId, setTimeoutId] = useState(null);
 
@@ -78,7 +78,7 @@ function App() {
         break;
 
       case 1:
-        setPageData(<S_ONE img={extraData.pathImage} />);
+        setPageData(<S_ONE timerInterval={extraData.timerImage} />);
         break;
 
       case 2:
@@ -204,13 +204,14 @@ function App() {
         );
         break;
       default:
-        setPageData(<S_ONE img={kfc} />);
+        setPageData(<S_ONE timerInterval={6} />
+      );
         break;
     }
 
     if (message !== 1) {
       setTimeout(() => {
-        setPageData(<S_ONE img={kfc}/>);
+        setPageData(<S_ONE timerInterval={6}/>);
       }, DispTime * 1000);
     }
   };

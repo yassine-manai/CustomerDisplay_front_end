@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "extra-fs": "^3.2.17",
     "fs": "^0.0.1-security",
+    "lucide-react": "^0.378.0",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.9.1",
     "react-dom": "^18.2.0",
