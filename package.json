@@ -6,9 +6,11 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.4.5",
     "extra-fs": "^3.2.17",
     "fs": "^0.0.1-security",
     "lucide-react": "^0.378.0",
+    "path": "^0.12.7",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.9.1",
     "react-dom": "^18.2.0",
@@ -22,7 +24,7 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts build",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/footer.css';
 
-export default function Footer({timerFooter}) {
+export default function Footer({ timerInterval }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [backgroundImages, setBackgroundImages] = useState([]);
 
@@ -14,10 +14,10 @@ export default function Footer({timerFooter}) {
       setCurrentImageIndex(prevIndex =>
         prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, timerFooter * 1000);
+    }, timerInterval * 1000);
 
     return () => clearInterval(intervalId);
-  }, [backgroundImages, timerFooter]);
+  }, [backgroundImages, timerInterval]);
 
   const fetchBackgroundImages = () => {
     try {

@@ -62,11 +62,19 @@
   .map-image1 {
     margin-top: 10px;
     border-radius: 1%;
+    height: 0%;
+    width: 100%;
+    aspect-ratio: 2;
 
   }
-  @media (max-width: 991px) {
+  @media (max-width: 1024px) {
     .map-image1 {
+
       margin-top: 10px;
-      border-radius: 15%;
+      border-radius: 1%;
+      height: 0%;
+      width: 90%;
+      aspect-ratio: 1.5;
+
     }
   }

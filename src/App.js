@@ -13,26 +13,25 @@ import S_nine from './pages/s_nine';
 import S_ten from './pages/s_ten';
 import S11 from './pages/s11';
 import pumc from './assets/pumc.svg';
-import kfc from './assets/kfc.png';
-//import readConfig, { readData } from './Config/location_config.js'
-//import { updateConfig , readData} from './Config/location_config'; 
+import { REACT_APP_WS_IP,REACT_APP_WS_PORT } from './assets/stat/dataS';
 
 function App() {
-  const [infoData, setInfoData] = useState({ iconSrc: pumc, name: "Name", exit_point: "Exit Point", timezone:"Asia/Kuwait"  });
-  const [footerData, setFooterData] = useState({ backgroundSrc: "https://cdn.builder.io/dapi/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&" });
+  const [infoData, setInfoData] = useState({ iconSrc: pumc, name: "Name", exit_point: "Exit Point", timezone: "Africa/Tunis" });
+  const [footerData, setFooterData] = useState(null);
   const [pageData, setPageData] = useState(<S_ONE timerInterval={6} />);
+  const [showFooter, setShowFooter] = useState(false);
   const [ws, setWs] = useState(null);
-  const [timeoutId, setTimeoutId] = useState(null);
 
-  /* const locationData = { readConfig };
-  print(readConfig); */
- 
+  const pathIP = `${REACT_APP_WS_IP}`;
+  const pathPort = `${REACT_APP_WS_PORT}`;
+
+  console.log(pathIP);
+  console.log(pathPort);
+  
+
   useEffect(() => {
 
-    //updateConfig();
-
-    
-    const socket = new WebSocket('ws://127.0.0.1:8200/ws');
+    const socket = new WebSocket(`ws://${pathIP}:${pathPort}/ws`);
     console.log(socket);
 
     socket.onopen = () => {
@@ -64,21 +63,22 @@ function App() {
   const handleWebSocketMessage = (message, DispTime, extraData) => {
     console.log('Received message from WebSocket:', extraData);
 
-      clearTimeout(DispTime);
-    
+    clearTimeout(DispTime);
 
     switch (message) {
       case 100:
-        setInfoData({ iconSrc: extraData.icon, name: extraData.name, exit: extraData.exit_point , timezone: extraData.timezone });
+        setInfoData({ iconSrc: extraData.icon, name: extraData.name, exit: extraData.exit_point, timezone: extraData.timezone });
         console.log(extraData.name);
         break;
 
       case 110:
-        setFooterData({ backgroundSrc: extraData.backgroundSrc});
+        setFooterData(<Footer timerInterval={extraData.timerFooter} />);
         break;
 
       case 1:
-        setPageData(<S_ONE timerInterval={extraData.timerImage} />);
+        setPageData(<S_ONE timerInterval={extraData.timerInterval} />);
+        setShowFooter(false);
+
         break;
 
       case 2:
@@ -93,6 +93,8 @@ function App() {
             pathImage={extraData.pathImage}
           />
         );
+        setShowFooter(true);
+
         break;
 
       case 3:
@@ -102,6 +104,8 @@ function App() {
             visitMessage={extraData.visitMessage}
           />
         );
+        setShowFooter(true);
+
         break;
       case 4:
         setPageData(
@@ -117,6 +121,8 @@ function App() {
             carImage={extraData.carImage}
           />
         );
+        setShowFooter(true);
+
         break;
       case 5:
         setPageData(
@@ -130,7 +136,11 @@ function App() {
             carImage={extraData.carImage}
           />
         );
+        setShowFooter(true);
+
         break;
+
+
       case 6:
         setPageData(
           <S_Six
@@ -145,6 +155,8 @@ function App() {
             currency={extraData.currency}
           />
         );
+        setShowFooter(true);
+
         break;
       case 7:
         setPageData(
@@ -160,6 +172,8 @@ function App() {
             currency={extraData.currency}
           />
         );
+        setShowFooter(true);
+
         break;
       case 8:
         setPageData(
@@ -175,6 +189,8 @@ function App() {
             currency={extraData.currency}
           />
         );
+        setShowFooter(true);
+
         break;
       case 9:
         setPageData(
@@ -183,6 +199,8 @@ function App() {
             carImage={extraData.carImage}
           />
         );
+        setShowFooter(true);
+
         break;
       case 10:
         setPageData(
@@ -192,6 +210,8 @@ function App() {
             carImage={extraData.carImage}
           />
         );
+        setShowFooter(true);
+
         break;
       case 11:
         setPageData(
@@ -202,24 +222,28 @@ function App() {
             carImage={extraData.carImage}
           />
         );
+        setShowFooter(true);
+
         break;
+
       default:
-        setPageData(<S_ONE timerInterval={6} />
-      );
+        setPageData(<S_ONE timerInterval={6} />);
+        setShowFooter(false);
+
         break;
     }
 
     if (message !== 1) {
       setTimeout(() => {
-        setPageData(<S_ONE timerInterval={6}/>);
+        setPageData(<S_ONE timerInterval={6} />);
+        setShowFooter(false);
+
       }, DispTime * 1000);
     }
   };
 
-  const sendMessage = (message, extraData = {}) => 
-  {
-    if (ws && ws.readyState === WebSocket.OPEN) 
-    {
+  const sendMessage = (message, extraData = {}) => {
+    if (ws && ws.readyState === WebSocket.OPEN) {
       const messageObj = { message, ...extraData };
       ws.send(JSON.stringify(messageObj));
     } else {
@@ -227,17 +251,12 @@ function App() {
     }
   };
 
-/*   async function main()
-{
-  await updateConfig();
-  setInterval(updateConfig, 60000); // Update every minute, adjust as needed
-} */
 
   return (
     <div className="App">
-      <InfoContainer iconSrc={infoData.iconSrc} name={infoData.name} exit={infoData.exit} timezone={infoData.timezone}/>
+      <InfoContainer iconSrc={infoData.iconSrc} name={infoData.name} exit={infoData.exit} timezone={infoData.timezone} />
       {pageData}
-      <Footer backgroundSrc={footerData.backgroundSrc}/>
+      {showFooter && <Footer timerFooter={6} />}
     </div>
   );
 }
@@ -246,4 +265,3 @@ export default App;
 
 
 
-//backgroundSrc="https://cdn.builder.io/api/v1/image/assets/TEMP/df00f599d33fb991024f9a70e98e9f46d74e8e7d7a0a9d14f4a90d4241468e93?apiKey=b0b1b89b83d343bbad71dadbf0c5ddb6&"

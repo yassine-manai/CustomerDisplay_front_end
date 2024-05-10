@@ -1,0 +1,8 @@
+# Ignore generated files
+node_modules
+.dockerignore
+Dockerfile
+Dockerfile.prod
+
+build
+npm-debug.log
