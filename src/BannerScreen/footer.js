@@ -21,7 +21,7 @@ export default function Footer({ timerInterval }) {
 
   const fetchBackgroundImages = () => {
     try {
-      const context = require.context("../FooterScreen", false, /\.(jpg|jpeg|png)$/);
+      const context = require.context("../BannerScreen", false, /\.(jpg|jpeg|png)$/);
       const imagesArray = context.keys().map(context);
       setBackgroundImages(imagesArray);
     } catch (error) {

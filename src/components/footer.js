@@ -21,9 +21,12 @@ export default function Footer({timerFooter}) {
 
   const fetchBackgroundImages = () => {
     try {
-      const context = require.context("../FooterScreen", false, /\.(jpg|jpeg|png)$/);
-      const imagesArray = context.keys().map(context);
-      setBackgroundImages(imagesArray);
+      const context = require.context("../assets", false, /\.(jpg|jpeg|png|svg)$/);
+      const imagesArray = context.keys()
+      .filter((filename) => filename.startsWith('./banner'))
+      .map(context);
+            setBackgroundImages(imagesArray);
+
     } catch (error) {
       console.error("Error fetching background images:", error);
     }

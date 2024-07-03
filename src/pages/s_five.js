@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ClockIcon, CarIcon, ExitIcon } from "../components/icons";
-import barrierclose from "../assets/barrierclose.svg";
+import img_barrierClose from "../assets/img_barrierClose.svg";
 import '../styles/s_five.css';
 import React from 'react'
 
@@ -86,7 +86,7 @@ export default function S_five ({
             loading="lazy"
             height={500}
             width={500}
-            src={barrierclose}
+            src={img_barrierClose}
             className="thank-you-avatar5"
             alt=" "
           />

@@ -1,6 +1,6 @@
 import React from "react";
 import '../styles/s_ten.css';
-import cashier from '../assets/cashier.svg'
+import icon_cashier from '../assets/icon_cashier.svg'
 
 // ApologyMessage component renders an apology with a title and description
 function ApologyMessage({ title, description }) {
@@ -9,7 +9,7 @@ function ApologyMessage({ title, description }) {
       <div className="icon-container10">
       <img
         loading="lazy"
-        src={cashier}  
+        src={icon_cashier}  
         alt="Parking lot"
         className="apology-icon10"
         height={505}

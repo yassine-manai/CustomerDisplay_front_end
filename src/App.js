@@ -12,27 +12,65 @@ import S_eight from './pages/s_eight';
 import S_nine from './pages/s_nine';
 import S_ten from './pages/s_ten';
 import S11 from './pages/s11';
-import pumc from './assets/pumc.svg';
-import { REACT_APP_WS_IP,REACT_APP_WS_PORT } from './assets/stat/dataS';
+import icon_PUMC from './assets/icon_PUMC.svg';
+import img_noCar from "./assets/img_noCar.png"
+import fs from 'fs';
+
+
+const {REACT_APP_SUPABASE_URL_WS: wsip, REACT_APP_SUPABASE_URL_PORT: wsport } = process.env;
+// const { REACT_APP_SUPABASE_URL_IP: ip, REACT_APP_SUPABASE_URL_WS: wsip, REACT_APP_SUPABASE_URL_PORT: wsport } = process.env;
+
+
+/* const ip = process.env.REACT_APP_SUPABASE_URL_IP;
+const wsip = process.env.REACT_APP_SUPABASE_URL_WS;
+const wsport = process.env.REACT_APP_SUPABASE_URL_PORT; */
+
 
 function App() {
-  const [infoData, setInfoData] = useState({ iconSrc: pumc, name: "Name", exit_point: "Exit Point", timezone: "Africa/Tunis" });
+
+  const initialInfoData = {
+    iconSrc: icon_PUMC,
+    name: "CarPark Site",
+    exit_point: "Point Name",
+    timezone: "Asia/Kuwait"
+  };
+
+
+  const [infoData, setInfoData] = useState(() => {
+    try {
+      const savedLocationData = localStorage.getItem('locationData');
+      return savedLocationData ? JSON.parse(savedLocationData) : initialInfoData;
+    } catch (error) {
+      console.error('Error reading location data:', error);
+      return initialInfoData;
+    }
+  });
+  
   const [footerData, setFooterData] = useState(null);
   const [pageData, setPageData] = useState(<S_ONE timerInterval={6} />);
   const [showFooter, setShowFooter] = useState(false);
   const [ws, setWs] = useState(null);
 
-  const pathIP = `${REACT_APP_WS_IP}`;
-  const pathPort = `${REACT_APP_WS_PORT}`;
-
-  console.log(pathIP);
-  console.log(pathPort);
-  
 
   useEffect(() => {
+    try {
+      const savedLocationData = localStorage.getItem('locationData');
+      if (savedLocationData) {
+        const parsedData = JSON.parse(savedLocationData);
+        setInfoData(parsedData);
+      }
+    } catch (error) {
+      console.error('Error reading location data:', error);
+    }
+  }, []);
+  
 
-    const socket = new WebSocket(`ws://${pathIP}:${pathPort}/ws`);
+// this fucntion is used to create Websocket objects
+  useEffect(() => {
+
+    const socket = new WebSocket(`ws://${wsip}:${wsport}/ws`);
     console.log(socket);
+    console.log("it works correctly");
 
     socket.onopen = () => {
       console.log('WebSocket connected');
@@ -58,19 +96,30 @@ function App() {
         socket.close();
       }
     };
-  }, []);
+  },    []);
 
   const handleWebSocketMessage = (message, DispTime, extraData) => {
     console.log('Received message from WebSocket:', extraData);
+
+
+    localStorage.setItem('locationData', JSON.stringify(extraData));
+
 
     clearTimeout(DispTime);
 
     switch (message) {
       case 100:
-        setInfoData({ iconSrc: extraData.icon, name: extraData.name, exit: extraData.exit_point, timezone: extraData.timezone });
-        console.log(extraData.name);
+        const newInfoData = {
+          iconSrc: extraData.icon,
+          name: extraData.name,
+          exit_point: extraData.exit_point,
+          timezone: extraData.timezone
+        };
+        localStorage.setItem('locationData', JSON.stringify(newInfoData));
+        setInfoData(newInfoData);
+        console.log('Location data saved successfully');
         break;
-
+      
       case 110:
         setFooterData(<Footer timerInterval={extraData.timerFooter} />);
         break;
@@ -78,7 +127,6 @@ function App() {
       case 1:
         setPageData(<S_ONE timerInterval={extraData.timerInterval} />);
         setShowFooter(false);
-
         break;
 
       case 2:
@@ -90,11 +138,10 @@ function App() {
             amount={extraData.amount}
             currency={extraData.currency}
             licencePlate={extraData.licencePlate}
-            pathImage={extraData.pathImage}
-          />
+            pathImage={(extraData.pathImage === "string" || extraData.pathImage === "") ? img_noCar : extraData.pathImage}
+            />
         );
         setShowFooter(true);
-
         break;
 
       case 3:
@@ -105,8 +152,8 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
+
       case 4:
         setPageData(
           <S_Four
@@ -122,8 +169,8 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
+        
       case 5:
         setPageData(
           <S_Five
@@ -137,7 +184,6 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
 
 
@@ -156,8 +202,8 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
+
       case 7:
         setPageData(
           <S_Seven
@@ -173,8 +219,8 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
+
       case 8:
         setPageData(
           <S_eight
@@ -190,8 +236,9 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
+
+
       case 9:
         setPageData(
           <S_nine
@@ -200,8 +247,9 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
+
+
       case 10:
         setPageData(
           <S_ten
@@ -211,8 +259,9 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
+
+
       case 11:
         setPageData(
           <S11
@@ -223,13 +272,22 @@ function App() {
           />
         );
         setShowFooter(true);
-
         break;
 
+        
       default:
-        setPageData(<S_ONE timerInterval={6} />);
-        setShowFooter(false);
-
+        setPageData(
+          <S_TWO
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            length={extraData.lenghtOfStay}
+            amount={extraData.amount}
+            currency={extraData.currency}
+            licencePlate={extraData.licencePlate}
+            pathImage={extraData.pathImage}
+          />
+        );
+        setShowFooter(true);
         break;
     }
 
@@ -254,7 +312,7 @@ function App() {
 
   return (
     <div className="App">
-      <InfoContainer iconSrc={infoData.iconSrc} name={infoData.name} exit={infoData.exit} timezone={infoData.timezone} />
+      <InfoContainer iconSrc={infoData.iconSrc} name={infoData.name} exit={infoData.exit_point} timezone={infoData.timezone} />
       {pageData}
       {showFooter && <Footer timerFooter={6} />}
     </div>

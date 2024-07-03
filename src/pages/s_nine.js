@@ -1,6 +1,6 @@
 import React from "react";
 import '../styles/s_nine.css';
-import cashier from '../assets/cashier.svg'
+import icon_cashier from '../assets/icon_cashier.svg'
 
 function ApologyMessage({ message }) {
   return (
@@ -9,7 +9,7 @@ function ApologyMessage({ message }) {
         {/* Placeholder for the apology icon */}
         <img
         loading="lazy"
-        src={cashier}  
+        src={icon_cashier}  
         alt="Parking lot"
         className="apology-icon9"
         height={505}

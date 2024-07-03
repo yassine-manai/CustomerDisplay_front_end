@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import '../styles/infocop.css';
-import calenderIcon from "../assets/icons/calendar-time.svg";
+import icon_calendar from "../assets/icon_calendar.svg";
 
-function LocationInfo({ iconSrc , name, exit }) {
+function LocationInfo({ iconSrc , name, exit_pt }) {
   return (
     <div className="location-info">
       <img
         loading="lazy"
         src={iconSrc}
-        alt="icon"
+        alt=" "
         className="location-icon"
       />
       <div className="location-details">
@@ -19,14 +19,14 @@ function LocationInfo({ iconSrc , name, exit }) {
 
         &nbsp;        
 
-        <span className="location-exit">{exit}</span>
+        <span className="location-exit">{exit_pt}</span>
       </div>
     </div>
   );
 }
 
 function DateTimeInfo({ dateTime, timezone }) {
-  const formattedDateTime = new Date(dateTime).toLocaleString(undefined, {
+  const formattedDateTime = new Date(dateTime).toLocaleString('en-GB', {
     timeZone: timezone,
     day: '2-digit',
     month: '2-digit',
@@ -40,8 +40,8 @@ function DateTimeInfo({ dateTime, timezone }) {
     <div className="date-time-info">
       <img
         loading="lazy"
-        src={calenderIcon}
-        alt="Calendar icon"
+        src={icon_calendar}
+        alt=""
         className="calendar-icon"
       />
       <div className="date-time">{formattedDateTime}</div>
@@ -49,7 +49,7 @@ function DateTimeInfo({ dateTime, timezone }) {
   );
 }
 
-export default function InfoContainer({ iconSrc,name,exit , timezone }) {
+export default function InfoContainer({ iconSrc, name, exit , timezone }) {
   const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function InfoContainer({ iconSrc,name,exit , timezone }) {
 
   return (
     <div className="info-container">
-      <LocationInfo iconSrc={iconSrc} name={name} exit={exit} />
+      <LocationInfo iconSrc={iconSrc} name={name} exit_pt={exit} />
       <DateTimeInfo dateTime={dateTime} timezone={timezone} />
     </div>
   );

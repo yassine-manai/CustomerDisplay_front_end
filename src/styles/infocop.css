@@ -1,15 +1,15 @@
-
-
-
+ 
   .info-container {
     border-radius: 6px;
-    box-shadow: 0px 2px 4px 0px rgba(165, 163, 174, 0.3);
-    background-color: #fff;
     display: flex;
-    width: 96.5%;
+    width: 97.5%;
     gap: 20px;
     justify-content: space-between;
-    padding: 10px 24px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
   }
   @media (max-width: 991px) {
     .info-container {
@@ -20,11 +20,12 @@
   .location-info {
     display: flex;
     gap: 10px;
-    font-size: 22px;
+    font-size: 30px;
+    font-style: bold;
     margin: auto 0;
   }
   .location-icon {
-    width: 18px;
+    width: 30px;
   }
   .location-details {
     font-family: Inter, sans-serif;
@@ -35,13 +36,14 @@
     font-weight: 700;
   }
   .date-time-info {
-    border-radius: 30.1px;
+    border-radius: 30px;
     background-color: #f1f0f2;
     display: flex;
     gap: 7px;
-    font-size: 23px;
+    font-style: bold;
+    font-size: 30px;
     text-align: right;
-    padding: 5px 11px;
+    padding: 11px;
   }
   .calendar-icon {
     width: 33px;
@@ -52,7 +54,7 @@
   }
   .map-image {
     width: 100%;
-    margin-top: 16px;
+    margin-top: 10px;
   }
   @media (max-width: 991px) {
     .map-image {

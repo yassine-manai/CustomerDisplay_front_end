@@ -1,0 +1,5 @@
+{"level":"error","message":"Exception occurred: TypeError [ERR_INVALID_URL]: Invalid URL"}
+{"level":"info","message":"Banner Change Time: 26"}
+{"level":"info","message":"Main Screen Change Time: 30"}
+{"level":"info","message":"Processing banner images"}
+{"level":"info","message":"Images processed successfully"}

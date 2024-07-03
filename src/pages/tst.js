@@ -1,4 +1,4 @@
-import entry from "../assets/icons/ENTRY.svg"
+/* import entry from "../assets/icons/ENTRY.svg"
 import exit from "../assets/icons/EXIT.svg"
 import clock from "../assets/icons/clock.svg"
 
@@ -22,6 +22,6 @@ const [orderDetails, setOrderDetails] = useState([
     value: "2 hours 31 minutes",
   },
 ]);
-
+ */
 
 

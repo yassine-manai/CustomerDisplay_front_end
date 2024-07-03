@@ -15,7 +15,7 @@
     height: 50%;
     max-width: 100%;
     padding: 78px 80px 78px 23px;
-    background-image: url(../assets/sucess.svg);
+    background-image: url(../assets/img_success.svg);
     background-repeat: no-repeat;
     background-position-x: top;
     background-size: 100%;
@@ -113,7 +113,7 @@
   }
 
   .qr-code3 {
-    background-image: url(../assets/BARRIER.gif);
+    background-image: url(../assets/img_barrier.gif);
     background-size: 15;
     background-clip: border-box;
     width: 100%;
@@ -132,7 +132,7 @@
   @media (max-width: 1024px) {
     .qr-code3 {
       margin-top: 40px;
-      background-image: url(../assets/BARRIER.gif);
+      background-image: url(../assets/img_barrier.gif);
       
       
 
