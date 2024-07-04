@@ -45,8 +45,8 @@ export default function s_six({
                 src={carImage}
                 className="order-summary-image6"
                 alt=" "
-                height={200}
-                width={200}
+                height={450}
+                width={500}
               />
             </div>
             <div className="order-summary-details-column6">
@@ -99,9 +99,8 @@ export default function s_six({
         <div className="thank-you-avatar-container6">
           <img
             loading="lazy"
-            alt=" "
-            height={300}
-            width={300}
+            height={500}
+            width={500}
             className="thank-you-avatar6"
           />
         </div>

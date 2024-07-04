@@ -2,15 +2,12 @@ import React from "react";
 import '../styles/s_three.css';
 //import {BARRIER} from "../assets/BARRIER.gif";
 
-// PaymentSuccessMessage component to display payment success and visit message
 function PaymentSuccessMessage({ paymentSuccess, visitMessage }) {
   return (
     <div className="payment-success-message3">
       <div className="success-text3">{paymentSuccess}</div>
-      {/* Payment Done Successfully ! */}
       <div className="visit-message3">
         {visitMessage}
-        {/* Thank you for your visit, Drive Safe ! */}
       </div>
     </div>
   );

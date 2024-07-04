@@ -13,6 +13,7 @@ import S_nine from './pages/s_nine';
 import S_ten from './pages/s_ten';
 import S11 from './pages/s11';
 import icon_PUMC from './assets/icon_PUMC.svg';
+import './'
 import img_noCar from "./assets/img_noCar.png"
 import fs from 'fs';
 
@@ -36,15 +37,7 @@ function App() {
   };
 
 
-  const [infoData, setInfoData] = useState(() => {
-    try {
-      const savedLocationData = localStorage.getItem('locationData');
-      return savedLocationData ? JSON.parse(savedLocationData) : initialInfoData;
-    } catch (error) {
-      console.error('Error reading location data:', error);
-      return initialInfoData;
-    }
-  });
+  const [infoData, setInfoData] = useState({ iconSrc: icon_PUMC, name_point: "CarPark Site", exit_point: "Point Name", timezone: "Africa/Tunis" });
   
   const [footerData, setFooterData] = useState(null);
   const [pageData, setPageData] = useState(<S_ONE timerInterval={6} />);
@@ -111,7 +104,7 @@ function App() {
       case 100:
         const newInfoData = {
           iconSrc: extraData.icon,
-          name: extraData.name,
+          name_point: extraData.name_point,
           exit_point: extraData.exit_point,
           timezone: extraData.timezone
         };
@@ -138,8 +131,8 @@ function App() {
             amount={extraData.amount}
             currency={extraData.currency}
             licencePlate={extraData.licencePlate}
-            pathImage={(extraData.pathImage === "string" || extraData.pathImage === "") ? img_noCar : extraData.pathImage}
-            />
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+          />
         );
         setShowFooter(true);
         break;
@@ -165,7 +158,8 @@ function App() {
             lengthOfStay={extraData.lenghtOfStay}
             currency={extraData.currency}
             amountDeducted={extraData.amount}
-            carImage={extraData.carImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+
           />
         );
         setShowFooter(true);
@@ -180,7 +174,7 @@ function App() {
             entryTime={extraData.entryTime}
             exitTime={extraData.exitTime}
             lengthOfStay={extraData.lenghtOfStay}
-            carImage={extraData.carImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
           />
         );
         setShowFooter(true);
@@ -197,7 +191,7 @@ function App() {
             exitTime={extraData.exitTime}
             lengthOfStay={extraData.lenghtOfStay}
             amountDeducted={extraData.amount}
-            carImage={extraData.carImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
             currency={extraData.currency}
           />
         );
@@ -214,7 +208,7 @@ function App() {
             exitTime={extraData.exitTime}
             lengthOfStay={extraData.lenghtOfStay}
             amountDeducted={extraData.amount}
-            carImage={extraData.carImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
             currency={extraData.currency}
           />
         );
@@ -231,7 +225,7 @@ function App() {
             exitTime={extraData.exitTime}
             lengthOfStay={extraData.lenghtOfStay}
             amountDeducted={extraData.amount}
-            carImage={extraData.carImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
             currency={extraData.currency}
           />
         );
@@ -243,7 +237,7 @@ function App() {
         setPageData(
           <S_nine
             apologyMessage={extraData.apologyMessage}
-            carImage={extraData.carImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
           />
         );
         setShowFooter(true);
@@ -255,7 +249,7 @@ function App() {
           <S_ten
             apologyTitle={extraData.apologyTitle}
             apologyDescription={extraData.apologyDescription}
-            carImage={extraData.carImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
           />
         );
         setShowFooter(true);
@@ -268,7 +262,7 @@ function App() {
             apologyTitle={extraData.apologyTitle}
             apologyDescription={extraData.apologyDescription}
             helpDescription={extraData.helpDescription}
-            carImage={extraData.carImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
           />
         );
         setShowFooter(true);
@@ -284,7 +278,7 @@ function App() {
             amount={extraData.amount}
             currency={extraData.currency}
             licencePlate={extraData.licencePlate}
-            pathImage={extraData.pathImage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
           />
         );
         setShowFooter(true);
@@ -312,7 +306,7 @@ function App() {
 
   return (
     <div className="App">
-      <InfoContainer iconSrc={infoData.iconSrc} name={infoData.name} exit={infoData.exit_point} timezone={infoData.timezone} />
+      <InfoContainer iconSrc={infoData.iconSrc} name_point={infoData.name_point} exit={infoData.exit_point} timezone={infoData.timezone} />
       {pageData}
       {showFooter && <Footer timerFooter={6} />}
     </div>

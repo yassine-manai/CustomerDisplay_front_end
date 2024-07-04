@@ -39,8 +39,8 @@ export default function Footer({timerFooter}) {
           loading="lazy"
           src={backgroundImages[currentImageIndex]}
           className="footer-background"
-          alt="None"
-          height={300}
+          alt=" "
+          height={400}
         />
       )}
     </footer>

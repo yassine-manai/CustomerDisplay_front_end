@@ -14,7 +14,7 @@ export default function S_TWO(
     length,
     amount,
     currency,
-    pathImage,
+    carImage,
     licencePlate
   }
 ) {
@@ -75,7 +75,7 @@ export default function S_TWO(
           </div>
           <br></br>
           <img
-            src={pathImage ? pathImage : img_noCar}
+            src={carImage ? carImage : img_noCar}
             alt=" "
             height={460}
             width={300}

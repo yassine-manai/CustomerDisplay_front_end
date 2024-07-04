@@ -43,6 +43,8 @@ export default function S_five ({
                 src={carImage}
                 className="order-summary-image5"
                 alt=" "
+                height={450}
+                width={500}
               />
             </div>
             <div className="order-summary-details-column5">
@@ -91,7 +93,8 @@ export default function S_five ({
             alt=" "
           />
         </div>
-        <div className="thank-you-message5"> {message}, {name} </div>
+        <div className="thank-you-message5">{message}</div>
+        <div className="drive-safe-message52">{name}</div>
         <div className="drive-safe-message5">Drive Safe !</div>
       </div>
     );

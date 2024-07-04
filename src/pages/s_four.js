@@ -44,9 +44,9 @@ export default function s_four({
                 loading="lazy"
                 src={carImage}
                 className="order-summary-image4"
-                alt="Order summary"
-                height={300}
-                width={300}
+                alt=""
+                height={450}
+                width={500}
               />
             </div>
             <div className="order-summary-details-column4">
@@ -100,13 +100,15 @@ export default function s_four({
           <img
             loading="lazy"
             alt=" "
-            height={300}
-            width={300}
+            height={500}
+            width={500}
             className="thank-you-avatar4"
           />
         </div>
-        <div className="drive-safe-message4">Hello {name}</div>
         <div className="thank-you-message4">{message}</div>
+        <div className="drive-safe-message42">{name}</div>
+        <div className="drive-safe-message4">Drive Safe !</div>
+
       </div>
     );
   }

@@ -1,10 +1,8 @@
 .container4 {
-  background-color: #f8f7fa;
   display: flex;
   flex-direction: column;
-  color: #6d6e71;
   font-weight: 500;
-  padding: 16px 18px;
+  height: 830px;
 }
 
  .main-container4 {
@@ -35,6 +33,7 @@
   width: 25%;
   margin-left: 0;
 }
+
 @media (max-width: 991px) {
   .column-container4:first-child {
     width: 25%;
@@ -59,6 +58,7 @@
   padding-bottom: 76px;
   flex-direction: column;
   align-items: center;
+  height: 710px;
   width: 100%;
 }
 @media (max-width: 991px) {
@@ -87,7 +87,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 55px 60px 0;
+  padding: 55px 30px 0;
 }
 @media (max-width: 991px) {
   .thank-you-avatar-container4 {
@@ -101,12 +101,13 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
-  zoom: 45%;
-  height: 100%;
-  width: 100%;
+  zoom: 55%;
+  height: 80%;
+  width: 70%;
   background-color: #fff;
   display: flex;
-  margin-bottom: -158px;
+  margin-bottom: -250px;
+  margin-top: 30%;
   object-fit: contain;
   object-position: center;
   align-items: center;
@@ -120,23 +121,33 @@
   }
 }
 .thank-you-message4 {
-  color: var(--main-green, #00ab53);
+  color: var(--main-green, #00AB53);
   text-align: center;
-  font: 700 30px/40px Public Sans, -apple-system, Roboto, Helvetica,
+  font: 700 40px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
-    width: 70%;
+    width: 100%;
+    margin-top: 150px;
 
 }
 
-.drive-safe-message4{
+.drive-safe-message42{
   color: var(--main-gray, #6d6e71);
   text-align: center;
-  margin-top: 100px;
   margin-bottom: 20px;
   margin-left: 10px;
   margin-right: 10px;
-  font: 700 30px/134% Public Sans, -apple-system, Roboto, Helvetica,
+  margin-top: 10px;
+  font: 700 35px/134% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
+}
+.drive-safe-message4{
+  color: var(--main-gray, #6d6e71);
+  text-align: center;
+    margin-top: 23px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font: 700 30px/134% Public Sans, -apple-system, Roboto, Helvetica,
+  sans-serif;
 }
 .order-summary4 {
   border-radius: 6px;
@@ -146,12 +157,15 @@
   flex-grow: 1;
   flex-direction: column;
   width: 100%;
+  height: 96%;
   padding: 13px 0 25px;
 }
 @media (max-width: 991px) {
   .order-summary4 {
     max-width: 100%;
     margin-top: 16px;
+    height: 96%;
+
   }
 }
 .order-summary-title4 {
@@ -160,7 +174,7 @@
   margin-left: 22px;
   color: var(--main-blue, #2F5EAB);
   justify-content: center;
-  font: 500 24px Public Sans, -apple-system, Roboto, Helvetica,
+  font: 600 30px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
 }
 @media (max-width: 991px) {
@@ -182,7 +196,7 @@
   }
 }
 .order-summary-content4 {
-  margin: 19px 0;
+  margin: 25px 19px 0;
 }
 @media (max-width: 991px) {
   .order-summary-content4 {
@@ -205,7 +219,7 @@
   display: flex;
   flex-direction: column;
   line-height: normal;
-  width: 37%;
+  width: 50%;
   margin-left: 0;
 }
 @media (max-width: 991px) {
@@ -215,7 +229,7 @@
 }
 .order-summary-image4{
   aspect-ratio: 1.32;
-  object-fit: auto;
+  object-fit:initial;
   object-position: center;
   width: 97%;
   border-radius: 15px;
@@ -240,7 +254,7 @@
   display: flex;
   flex-direction: column;
   line-height: normal;
-  width: 60%;
+  width: 80%;
   margin-left: 20px;
   margin-right: 20px;
 
@@ -254,7 +268,9 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  margin-top: 10px;
+  margin-top: 40px;
+  margin-right: 10px;
+
 }
 @media (max-width: 991px) {
   .order-summary-details4 {
@@ -279,10 +295,11 @@
   justify-content: center;
   align-items: center;
   border-radius: 7.328px;
-  background-color: #f1f0f2;
+  background-color: #d0ced1;
   width: 60px;
   height: 60px;
   padding: 6px;
+
 }
 .car-icon,
 .clock-icon,
@@ -292,16 +309,19 @@
 }
 .order-summary-detail-label4 {
   color: var(--main-gray, #6d6e71);
-  font: 600 24px/81% Public Sans, -apple-system, Roboto, Helvetica,
+  font: 600 35px/81% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
+    margin-top: 40px;
 }
 .order-summary-detail-value4 {
   color: var(--main-gray, #6d6e71);
   margin-left: auto;
-  font: 600 24px/100% Public Sans, -apple-system, Roboto, Helvetica,
+  font: 600 35px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
+    margin-top: 40px;
+
 }
-.order-summary-footer4 {
+.order-summary-footer4 { 
   margin: 25px 19px 0;
 }
 @media (max-width: 991px) {
@@ -327,7 +347,7 @@
   line-height: normal;
 }
 .order-summary-footer-column4:first-child {
-  width: 38%;
+  width: 51%;
   margin-left: 0;
 }
 @media (max-width: 991px) {
@@ -337,6 +357,7 @@
 }
 .order-summary-footer-column4:last-child {
   width: 62%;
+
   margin-left: 20px;
 }
 @media (max-width: 991px) {
@@ -355,21 +376,23 @@
   text-align: center;
   width: 100%;
   padding: 24px 0;
+  height: 150px;
+  
 }
 @media (max-width: 991px) {
   .order-summary-length-of-stay4 {
-    margin-top: 17px;
+    margin-top: 20px;
   }
 }
 .order-summary-length-of-stay-label4 {
   font-feature-settings: "clig" off, "liga" off;
-  font: 400 24px/92% Public Sans, -apple-system, Roboto, Helvetica,
+  font: 400 32px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
 }
 .order-summary-length-of-stay-value4 {
   font-feature-settings: "clig" off, "liga" off;
-  margin-top: 18px;
-  font: 700 28px/56px Public Sans, -apple-system, Roboto, Helvetica,
+  margin-top: 20px;
+  font: 800 30px/56px Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
 }
 .order-summary-amount-deducted4 {
@@ -382,6 +405,7 @@
   text-align: center;
   width: 94%;
   padding: 24px;
+  height: 150px;
 }
 @media (max-width: 991px) {
   .order-summary-amount-deducted4 {
@@ -392,8 +416,10 @@
 }
 .order-summary-amount-deducted-label4 {
   font-feature-settings: "clig" off, "liga" off;
-  font: 400 24px/92% Public Sans, -apple-system, Roboto, Helvetica,
+  font: 400 32px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
+    margin-top: 20px;
+
 }
 .order-summary-amount-deducted-value4 {
   font-feature-settings: "clig" off, "liga" off;

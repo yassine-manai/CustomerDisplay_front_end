@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../styles/infocop.css';
 import icon_calendar from "../assets/icon_calendar.svg";
 
-function LocationInfo({ iconSrc , name, exit_pt }) {
+function LocationInfo({ iconSrc , name_point, exit_pt }) {
   return (
     <div className="location-info">
       <img
@@ -12,7 +12,7 @@ function LocationInfo({ iconSrc , name, exit_pt }) {
         className="location-icon"
       />
       <div className="location-details">
-        <span className="location-name">{name}</span>
+        <span className="location-name">{name_point}</span>
         &nbsp;        
         
         <span className="location-name">-</span>
@@ -49,7 +49,7 @@ function DateTimeInfo({ dateTime, timezone }) {
   );
 }
 
-export default function InfoContainer({ iconSrc, name, exit , timezone }) {
+export default function InfoContainer({ iconSrc, name_point, exit , timezone }) {
   const [dateTime, setDateTime] = useState(new Date());
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export default function InfoContainer({ iconSrc, name, exit , timezone }) {
 
   return (
     <div className="info-container">
-      <LocationInfo iconSrc={iconSrc} name={name} exit_pt={exit} />
+      <LocationInfo iconSrc={iconSrc} name_point={name_point} exit_pt={exit} />
       <DateTimeInfo dateTime={dateTime} timezone={timezone} />
     </div>
   );
