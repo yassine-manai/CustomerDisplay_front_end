@@ -6,9 +6,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 15px;
-    margin-left: 10px;
     overflow: hidden;
-    width: 98.7%;
+    width: 100%;
   }
   .info-container1 {
     border-radius: 10px;

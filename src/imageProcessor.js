@@ -2,20 +2,11 @@ const fs = require('fs-extra');
 const path = require('path');
 const axios = require('axios');
 const dotenv = require('dotenv');
-const winston = require('winston');
+
 
 dotenv.config();
 
 const { OPERATOR_ID, SAVE_PATH, SERVER_IP, SERVER_PORT, ZR_ID } = process.env;
-
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.json(),
-    transports: [
-        new winston.transports.Console(),
-        new winston.transports.File({ filename: 'logfile.log' })
-    ]
-});
 
 const getImageExtension = (imageData) => {
     if (imageData.startsWith("data:image/jpeg")) {

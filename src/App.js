@@ -13,57 +13,86 @@ import S_nine from './pages/s_nine';
 import S_ten from './pages/s_ten';
 import S11 from './pages/s11';
 import icon_PUMC from './assets/icon_PUMC.svg';
-import './'
-import img_noCar from "./assets/img_noCar.png"
-import fs from 'fs';
+import img_noCar from './assets/img_noCar.png';
 
+const {
+  REACT_APP_SUPABASE_URL_WS: wsip,
+  REACT_APP_SUPABASE_URL_PORT: wsport,
+} = process.env;
 
-const {REACT_APP_SUPABASE_URL_WS: wsip, REACT_APP_SUPABASE_URL_PORT: wsport } = process.env;
-// const { REACT_APP_SUPABASE_URL_IP: ip, REACT_APP_SUPABASE_URL_WS: wsip, REACT_APP_SUPABASE_URL_PORT: wsport } = process.env;
+  var MainScreenTimer = 10;
+  var BannerScreenTimer = 10;
 
+const fetchTimerIntervals = async () => {
+  try {
+    const response = await fetch(`http://${wsip}:${wsport}/main-timer`);
+    const data = await response.json();
 
-/* const ip = process.env.REACT_APP_SUPABASE_URL_IP;
-const wsip = process.env.REACT_APP_SUPABASE_URL_WS;
-const wsport = process.env.REACT_APP_SUPABASE_URL_PORT; */
+    MainScreenTimer = data.main_time;
+    BannerScreenTimer = data.banner_time;
 
+    console.info(MainScreenTimer);
+    console.info(BannerScreenTimer);
+    
+  } catch (error) {
+    console.error('Error fetching timer intervals:', error);
+  }
+};
 
 function App() {
-
-  const initialInfoData = {
+  const [infoData, setInfoData] = useState({
     iconSrc: icon_PUMC,
-    name: "CarPark Site",
+    name_point: "CarPark Site",
     exit_point: "Point Name",
-    timezone: "Asia/Kuwait"
-  };
+    timezone: "Africa/Tunis"
+  });
 
-
-  const [infoData, setInfoData] = useState({ iconSrc: icon_PUMC, name_point: "CarPark Site", exit_point: "Point Name", timezone: "Africa/Tunis" });
-  
   const [footerData, setFooterData] = useState(null);
-  const [pageData, setPageData] = useState(<S_ONE timerInterval={6} />);
+  const [pageData, setPageData] = useState(<S_ONE timerInterval={MainScreenTimer} />);
   const [showFooter, setShowFooter] = useState(false);
   const [ws, setWs] = useState(null);
 
-
   useEffect(() => {
-    try {
-      const savedLocationData = localStorage.getItem('locationData');
-      if (savedLocationData) {
-        const parsedData = JSON.parse(savedLocationData);
-        setInfoData(parsedData);
-      }
-    } catch (error) {
-      console.error('Error reading location data:', error);
+    const savedInfoData = localStorage.getItem('infoData');
+    if (savedInfoData) {
+      setInfoData(JSON.parse(savedInfoData));
     }
   }, []);
-  
 
-// this fucntion is used to create Websocket objects
   useEffect(() => {
+    const fetchLocationData = async () => {
+      try {
+        const response = await fetch(`http://${wsip}:${wsport}/locationData`);
 
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        const locationData = await response.json();
+        console.log(locationData);
+        setInfoData({
+          iconSrc: icon_PUMC,
+          name_point: locationData.name_point,
+          exit_point: locationData.exit_point,
+          timezone: locationData.timezone
+        });
+        localStorage.setItem('locationData', JSON.stringify(locationData));
+      } catch (error) {
+        console.error('Error fetching location data:', error);
+      }
+    };
+
+    fetchLocationData();
+
+    const intervalId = setInterval(fetchLocationData, 3600000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  useEffect(() => {
     const socket = new WebSocket(`ws://${wsip}:${wsport}/ws`);
     console.log(socket);
-    console.log("it works correctly");
+    console.log("WebSocket connection established");
 
     socket.onopen = () => {
       console.log('WebSocket connected');
@@ -89,36 +118,34 @@ function App() {
         socket.close();
       }
     };
-  },    []);
+  }, []);
 
   const handleWebSocketMessage = (message, DispTime, extraData) => {
     console.log('Received message from WebSocket:', extraData);
 
-
     localStorage.setItem('locationData', JSON.stringify(extraData));
-
 
     clearTimeout(DispTime);
 
     switch (message) {
       case 100:
         const newInfoData = {
-          iconSrc: extraData.icon,
+          iconSrc: icon_PUMC,
           name_point: extraData.name_point,
           exit_point: extraData.exit_point,
           timezone: extraData.timezone
         };
-        localStorage.setItem('locationData', JSON.stringify(newInfoData));
+        localStorage.setItem('infoData', JSON.stringify(newInfoData));
         setInfoData(newInfoData);
         console.log('Location data saved successfully');
         break;
-      
+
       case 110:
         setFooterData(<Footer timerInterval={extraData.timerFooter} />);
         break;
 
       case 1:
-        setPageData(<S_ONE timerInterval={extraData.timerInterval} />);
+        setPageData(<S_ONE timerInterval={MainScreenTimer} />);
         setShowFooter(false);
         break;
 
@@ -159,12 +186,11 @@ function App() {
             currency={extraData.currency}
             amountDeducted={extraData.amount}
             carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-
           />
         );
         setShowFooter(true);
         break;
-        
+
       case 5:
         setPageData(
           <S_Five
@@ -179,7 +205,6 @@ function App() {
         );
         setShowFooter(true);
         break;
-
 
       case 6:
         setPageData(
@@ -232,7 +257,6 @@ function App() {
         setShowFooter(true);
         break;
 
-
       case 9:
         setPageData(
           <S_nine
@@ -242,7 +266,6 @@ function App() {
         );
         setShowFooter(true);
         break;
-
 
       case 10:
         setPageData(
@@ -254,7 +277,6 @@ function App() {
         );
         setShowFooter(true);
         break;
-
 
       case 11:
         setPageData(
@@ -268,7 +290,6 @@ function App() {
         setShowFooter(true);
         break;
 
-        
       default:
         setPageData(
           <S_TWO
@@ -287,10 +308,9 @@ function App() {
 
     if (message !== 1) {
       setTimeout(() => {
-        setPageData(<S_ONE timerInterval={6} />);
+        setPageData(<S_ONE timerInterval={MainScreenTimer} />);
         setShowFooter(false);
-
-      }, DispTime * 1000);
+      }, (DispTime || MainScreenTimer) * 1000); 
     }
   };
 
@@ -303,17 +323,17 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    fetchTimerIntervals();
+  }, []);
 
   return (
     <div className="App">
       <InfoContainer iconSrc={infoData.iconSrc} name_point={infoData.name_point} exit={infoData.exit_point} timezone={infoData.timezone} />
       {pageData}
-      {showFooter && <Footer timerFooter={6} />}
+      {showFooter && <Footer timerFooter={BannerScreenTimer} />}
     </div>
   );
 }
 
 export default App;
-
-
-
