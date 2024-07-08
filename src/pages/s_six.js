@@ -101,6 +101,7 @@ export default function s_six({
             loading="lazy"
             height={500}
             width={500}
+            alt=" "
             className="thank-you-avatar6"
           />
         </div>

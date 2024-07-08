@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ClockIcon, CarIcon, ExitIcon } from "../components/icons";
 import img_barrierClose from "../assets/img_barrierClose.svg";
 import '../styles/s_five.css';

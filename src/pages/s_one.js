@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import '../styles/s_one.css';
 
+const {
+  REACT_APP_SUPABASE_URL_WS: wsip,
+  REACT_APP_SUPABASE_URL_PORT: wsport,
+} = process.env;
+
 export default function S_ONE({ timerInterval }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    fetchImagesFromFolder();
+    fetchImagesFromApiMain();
+    const fetchInterval = setInterval(fetchImagesFromApiMain, 3600000);
+    return () => clearInterval(fetchInterval);
   }, []);
 
   useEffect(() => {
@@ -15,23 +22,20 @@ export default function S_ONE({ timerInterval }) {
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, timerInterval * 1000);
-    
+
     return () => clearInterval(intervalId);
   }, [currentIndex, images, timerInterval]);
 
-  const fetchImagesFromFolder = () => {
+  const fetchImagesFromApiMain = async () => {
     try {
-      const context = require.context("../assets", false, /\.(jpg|jpeg|png|svg)$/);
-      const imagesArray = context.keys()
-        .filter((filename) => filename.startsWith('./main'))
-        .map(context);
+      const response = await fetch(`http://${wsip}:${wsport}/get_mainScreen`);
+      const data = await response.json();
+      const imagesArray = data.map(img => img.base64);
       setImages(imagesArray);
-    } 
-    catch (error) {
+    } catch (error) {
       console.error("Error fetching images:", error);
     }
   };
-  
 
   const handleIndicatorClick = (index) => {
     setCurrentIndex(index);
@@ -44,7 +48,6 @@ export default function S_ONE({ timerInterval }) {
         src={images.length > 0 ? images[currentIndex] : ""}
         alt=""
         className="map-image1"
-
       />
 
       <div className="carousel-indicator">
@@ -70,50 +73,3 @@ export default function S_ONE({ timerInterval }) {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* import React from "react";
-import '../styles/s_one.css';
-
-export default function S_ONE({ img }) {
-  return (
-    <div className="container1">
-      <img
-        loading="lazy"
-        src={img}
-        alt="Map"
-
-        className="map-image1"
-      />
-    </div>
-  );
-}
- */

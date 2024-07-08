@@ -15,13 +15,18 @@ import S11 from './pages/s11';
 import icon_PUMC from './assets/icon_PUMC.svg';
 import img_noCar from './assets/img_noCar.png';
 
+
 const {
   REACT_APP_SUPABASE_URL_WS: wsip,
   REACT_APP_SUPABASE_URL_PORT: wsport,
 } = process.env;
 
-  var MainScreenTimer = 10;
-  var BannerScreenTimer = 10;
+let MainScreenTimer = 10;
+let BannerScreenTimer = 10;
+
+const savedMainScreenTimer = localStorage.getItem('MainScreenTimer');
+const savedBannerScreenTimer = localStorage.getItem('BannerScreenTimer');
+
 
 const fetchTimerIntervals = async () => {
   try {
@@ -31,33 +36,39 @@ const fetchTimerIntervals = async () => {
     MainScreenTimer = data.main_time;
     BannerScreenTimer = data.banner_time;
 
-    console.info(MainScreenTimer);
-    console.info(BannerScreenTimer);
+    localStorage.setItem('MainScreenTimer', MainScreenTimer);
+    localStorage.setItem('BannerScreenTimer', BannerScreenTimer);
+
+    console.info("Main Screen Timer:", MainScreenTimer);
+    console.info("Banner Screen Timer:", BannerScreenTimer);
     
   } catch (error) {
     console.error('Error fetching timer intervals:', error);
   }
 };
 
-function App() {
+const App = () => {
   const [infoData, setInfoData] = useState({
     iconSrc: icon_PUMC,
     name_point: "CarPark Site",
     exit_point: "Point Name",
     timezone: "Africa/Tunis"
   });
-
-  const [footerData, setFooterData] = useState(null);
   const [pageData, setPageData] = useState(<S_ONE timerInterval={MainScreenTimer} />);
   const [showFooter, setShowFooter] = useState(false);
-  const [ws, setWs] = useState(null);
 
   useEffect(() => {
-    const savedInfoData = localStorage.getItem('infoData');
-    if (savedInfoData) {
-      setInfoData(JSON.parse(savedInfoData));
+    if (savedMainScreenTimer && savedBannerScreenTimer) {
+      MainScreenTimer = parseInt(savedMainScreenTimer, 10);
+      BannerScreenTimer = parseInt(savedBannerScreenTimer, 10);
+    } else {
+      fetchTimerIntervals();
     }
+
+    const intervalId = setInterval(fetchTimerIntervals, 3600000);
+    return () => clearInterval(intervalId);
   }, []);
+
 
   useEffect(() => {
     const fetchLocationData = async () => {
@@ -85,38 +96,43 @@ function App() {
     fetchLocationData();
 
     const intervalId = setInterval(fetchLocationData, 3600000);
-
     return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
-    const socket = new WebSocket(`ws://${wsip}:${wsport}/ws`);
-    console.log(socket);
-    console.log("WebSocket connection established");
+    const connectWebSocket = () => {
+      const socket = new WebSocket(`ws://${wsip}:${wsport}/ws`);
+      console.log("WebSocket connection established");
 
-    socket.onopen = () => {
-      console.log('WebSocket connected');
-      setWs(socket);
+      socket.onopen = () => {
+        console.log('WebSocket connected');
+      };
+
+      socket.onmessage = (event) => {
+        try {
+          const { message, DispTime, ...extraData } = JSON.parse(event.data);
+          handleWebSocketMessage(message, DispTime, extraData);
+        } catch (error) {
+          console.error('Error parsing WebSocket message:', error);
+        }
+      };
+
+      socket.onerror = (error) => {
+        console.error('WebSocket error:', error);
+      };
+
+      socket.onclose = (event) => {
+        console.log('WebSocket disconnected', event);
+        if (!event.wasClean) {
+          setTimeout(connectWebSocket, 5000);  // Retry after 5 seconds
+        }
+      };
     };
 
-    socket.onmessage = (event) => {
-      try {
-        const { message, DispTime, ...extraData } = JSON.parse(event.data);
-        handleWebSocketMessage(message, DispTime, extraData);
-      } catch (error) {
-        console.error('Error parsing WebSocket message:', error);
-      }
-    };
-
-    socket.onclose = () => {
-      console.log('WebSocket disconnected');
-      setWs(null);
-    };
+    connectWebSocket();
 
     return () => {
-      if (socket) {
-        socket.close();
-      }
+      // Cleanup WebSocket connection
     };
   }, []);
 
@@ -141,7 +157,7 @@ function App() {
         break;
 
       case 110:
-        setFooterData(<Footer timerInterval={extraData.timerFooter} />);
+        setShowFooter(true);
         break;
 
       case 1:
@@ -205,104 +221,93 @@ function App() {
         );
         setShowFooter(true);
         break;
-
-      case 6:
-        setPageData(
-          <S_Six
-            name={extraData.name}
-            thankYouMessage={extraData.thankYouMessage}
-            licencePlate={extraData.licencePlate}
-            entryTime={extraData.entryTime}
-            exitTime={extraData.exitTime}
-            lengthOfStay={extraData.lenghtOfStay}
-            amountDeducted={extraData.amount}
-            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-            currency={extraData.currency}
-          />
-        );
-        setShowFooter(true);
-        break;
-
-      case 7:
-        setPageData(
-          <S_Seven
-            name={extraData.name}
-            thankYouMessage={extraData.thankYouMessage}
-            licencePlate={extraData.licencePlate}
-            entryTime={extraData.entryTime}
-            exitTime={extraData.exitTime}
-            lengthOfStay={extraData.lenghtOfStay}
-            amountDeducted={extraData.amount}
-            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-            currency={extraData.currency}
-          />
-        );
-        setShowFooter(true);
-        break;
-
-      case 8:
-        setPageData(
-          <S_eight
-            name={extraData.name}
-            thankYouMessage={extraData.thankYouMessage}
-            licencePlate={extraData.licencePlate}
-            entryTime={extraData.entryTime}
-            exitTime={extraData.exitTime}
-            lengthOfStay={extraData.lenghtOfStay}
-            amountDeducted={extraData.amount}
-            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-            currency={extraData.currency}
-          />
-        );
-        setShowFooter(true);
-        break;
-
-      case 9:
-        setPageData(
-          <S_nine
-            apologyMessage={extraData.apologyMessage}
-            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-          />
-        );
-        setShowFooter(true);
-        break;
-
-      case 10:
-        setPageData(
-          <S_ten
-            apologyTitle={extraData.apologyTitle}
-            apologyDescription={extraData.apologyDescription}
-            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-          />
-        );
-        setShowFooter(true);
-        break;
-
-      case 11:
-        setPageData(
-          <S11
-            apologyTitle={extraData.apologyTitle}
-            apologyDescription={extraData.apologyDescription}
-            helpDescription={extraData.helpDescription}
-            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-          />
-        );
-        setShowFooter(true);
-        break;
+        case 6:
+          setPageData(
+            <S_Six
+              name={extraData.name}
+              thankYouMessage={extraData.thankYouMessage}
+              licencePlate={extraData.licencePlate}
+              entryTime={extraData.entryTime}
+              exitTime={extraData.exitTime}
+              lengthOfStay={extraData.lenghtOfStay}
+              amountDeducted={extraData.amount}
+              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+              currency={extraData.currency}
+            />
+          );
+          setShowFooter(true);
+          break;
+  
+        case 7:
+          setPageData(
+            <S_Seven
+              name={extraData.name}
+              thankYouMessage={extraData.thankYouMessage}
+              licencePlate={extraData.licencePlate}
+              entryTime={extraData.entryTime}
+              exitTime={extraData.exitTime}
+              lengthOfStay={extraData.lenghtOfStay}
+              amountDeducted={extraData.amount}
+              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+              currency={extraData.currency}
+            />
+          );
+          setShowFooter(true);
+          break;
+  
+        case 8:
+          setPageData(
+            <S_eight
+              name={extraData.name}
+              thankYouMessage={extraData.thankYouMessage}
+              licencePlate={extraData.licencePlate}
+              entryTime={extraData.entryTime}
+              exitTime={extraData.exitTime}
+              lengthOfStay={extraData.lenghtOfStay}
+              amountDeducted={extraData.amount}
+              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+              currency={extraData.currency}
+            />
+          );
+          setShowFooter(true);
+          break;
+  
+        case 9:
+          setPageData(
+            <S_nine
+              apologyMessage={extraData.apologyMessage}
+              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+            />
+          );
+          setShowFooter(true);
+          break;
+  
+        case 10:
+          setPageData(
+            <S_ten
+              apologyTitle={extraData.apologyTitle}
+              apologyDescription={extraData.apologyDescription}
+              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+            />
+          );
+          setShowFooter(true);
+          break;
+  
+        case 11:
+          setPageData(
+            <S11
+              apologyTitle={extraData.apologyTitle}
+              apologyDescription={extraData.apologyDescription}
+              helpDescription={extraData.helpDescription}
+              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+            />
+          );
+          setShowFooter(true);
+          break;
 
       default:
-        setPageData(
-          <S_TWO
-            entryTime={extraData.entryTime}
-            exitTime={extraData.exitTime}
-            length={extraData.lenghtOfStay}
-            amount={extraData.amount}
-            currency={extraData.currency}
-            licencePlate={extraData.licencePlate}
-            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-          />
-        );
-        setShowFooter(true);
+        setPageData(<S_ONE timerInterval={MainScreenTimer} />);
+        setShowFooter(false);
         break;
     }
 
@@ -312,20 +317,8 @@ function App() {
         setShowFooter(false);
       }, (DispTime || MainScreenTimer) * 1000); 
     }
+    
   };
-
-  const sendMessage = (message, extraData = {}) => {
-    if (ws && ws.readyState === WebSocket.OPEN) {
-      const messageObj = { message, ...extraData };
-      ws.send(JSON.stringify(messageObj));
-    } else {
-      console.error('WebSocket connection is not open.');
-    }
-  };
-
-  useEffect(() => {
-    fetchTimerIntervals();
-  }, []);
 
   return (
     <div className="App">

@@ -1,12 +1,18 @@
 const fs = require('fs-extra');
 const path = require('path');
-const axios = require('axios');
-const dotenv = require('dotenv');
+const http = require('http');
+const https = require('https');
+
+const {
+    REACT_APP_SUPABASE_URL_WS: wsip,
+    REACT_APP_SUPABASE_URL_PORT: wsport,
+  } = process.env;
+
+  
+const BANNER_API_URL = `http://${wsip}:${wsport}/get_banner`;
+const MAIN_SCREEN_API_URL = `http://${wsip}:${wsport}/get_mainScreen`;
 
 
-dotenv.config();
-
-const { OPERATOR_ID, SAVE_PATH, SERVER_IP, SERVER_PORT, ZR_ID } = process.env;
 
 const getImageExtension = (imageData) => {
     if (imageData.startsWith("data:image/jpeg")) {
@@ -27,11 +33,11 @@ const saveImages = async (imageData, prefix) => {
     let counter = 1;
 
     for (const image of imageData) {
-        const extension = getImageExtension(image);
+        const extension = getImageExtension(image.base64);
         const imagePath = path.join(imagesPath, `${prefix}_${counter}.${extension}`);
         newFiles.add(`${prefix}_${counter}.${extension}`);
 
-        const base64Data = image.split(",")[1];
+        const base64Data = image.base64.split(",")[1];
         await fs.writeFile(imagePath, base64Data, 'base64');
 
         counter += 1;
@@ -46,57 +52,52 @@ const saveImages = async (imageData, prefix) => {
     }
 };
 
-const processImages = (apiResponse) => {
-    if (apiResponse.success) {
-        const data = apiResponse.data || {};
+const fetchData = (url) => {
+    return new Promise((resolve, reject) => {
+        const protocol = url.startsWith('https') ? https : http;
+        protocol.get(url, (res) => {
+            let data = '';
 
-        // Process bannerImages
-        const bannerImages = data.bannerImages || [];
-        if (bannerImages.length > 0) {
-            logger.info("Processing banner images");
-            saveImages(bannerImages, 'banner');
-        }
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
 
-        // Process mainScreenImages
-        const mainScreenImages = data.mainScreenimages || [];
-        if (mainScreenImages.length > 0) {
-            logger.info("Processing main screen images");
-            saveImages(mainScreenImages, 'main');
-        }
+            res.on('end', () => {
+                if (res.statusCode === 200) {
+                    resolve(JSON.parse(data));
+                } else {
+                    reject(new Error(`Request failed with status code: ${res.statusCode}`));
+                }
+            });
+
+        }).on('error', (err) => {
+            reject(err);
+        });
+    });
+};
+
+const processImages = async (apiResponse, prefix) => {
+    if (Array.isArray(apiResponse)) {
+        await saveImages(apiResponse, prefix);
+        console.log(`${prefix} images processed successfully`);
     } else {
-        logger.error("API call was not successful");
+        console.log(`API call was not successful for ${prefix}`);
     }
 };
 
-const fetchAndSaveImages = async () => 
-    {
-    const url = `http://demo.asteroidea.co:8092/internal/api/getAds?operator_id=99700&zr_id=7077`;
-
+const fetchAndSaveImages = async function () {
     try {
-        const response = await axios.get(url);
+        const [bannerResponse, mainScreenResponse] = await Promise.all([
+            fetchData(BANNER_API_URL),
+            fetchData(MAIN_SCREEN_API_URL)
+        ]);
 
-        if (response.status === 200) {
-            const data = response.data;
-
-            if (data.success) {
-                const bannerChangeTime = data.data.bannerChangeTime || "N/A";
-                const mainScreenChangeTime = data.data.mainScreenChangeTime || "N/A";
-
-                logger.info(`Banner Change Time: ${bannerChangeTime}`);
-                logger.info(`Main Screen Change Time: ${mainScreenChangeTime}`);
-
-                processImages(data);
-
-                logger.info("Images processed successfully");
-            } else {
-                logger.error(`API error: ${data.error}`);
-            }
-        } else {
-            logger.error(`Request failed with status code: ${response.status}`);
-        }
+        await processImages(bannerResponse, 'banner');
+        await processImages(mainScreenResponse, 'main_screen');
     } catch (error) {
-        logger.error(`Exception occurred: ${error}`);
+        console.log(`Exception occurred: ${error.message}`);
     }
 };
+
 
 fetchAndSaveImages();

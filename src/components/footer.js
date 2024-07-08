@@ -1,69 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/footer.css';
 
-export default function Footer({timerFooter}) {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [backgroundImages, setBackgroundImages] = useState([]);
+const {
+  REACT_APP_SUPABASE_URL_WS: wsip,
+  REACT_APP_SUPABASE_URL_PORT: wsport,
+} = process.env;
 
-  useEffect(() => {
-    fetchBackgroundImages();
-  }, []);
+export default function Footer({ timerFooter }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentImageIndex(prevIndex =>
-        prevIndex === backgroundImages.length - 1 ? 0 : prevIndex + 1
+      setCurrentIndex(prevIndex =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, timerFooter * 1000);
+    }, timerFooter * 1000); 
 
     return () => clearInterval(intervalId);
-  }, [backgroundImages, timerFooter]);
+  }, [images, timerFooter]);
 
-  const fetchBackgroundImages = () => {
+  const fetchImagesFromApiBanner = async () => {
     try {
-      const context = require.context("../assets", false, /\.(jpg|jpeg|png|svg)$/);
-      const imagesArray = context.keys()
-      .filter((filename) => filename.startsWith('./banner'))
-      .map(context);
-            setBackgroundImages(imagesArray);
+      const response = await fetch(`http://${wsip}:${wsport}/get_banner`);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log('Fetched images:', data);
 
+      const imagesArray = data.map(img => img.base64);
+      setImages(imagesArray);
     } catch (error) {
-      console.error("Error fetching background images:", error);
+      console.error('Error fetching images:', error);
     }
   };
 
+  useEffect(() => {
+    fetchImagesFromApiBanner(); 
+
+    const fetchInterval = setInterval(fetchImagesFromApiBanner, 3600000);
+    return () => clearInterval(fetchInterval);
+  }, []);
+
   return (
     <footer className="footer">
-      {backgroundImages.length > 0 && (
+      {images.length > 0 && (
         <img
           loading="lazy"
-          src={backgroundImages[currentImageIndex]}
+          src={images[currentIndex]}
           className="footer-background"
-          alt=" "
+          alt=""
           height={400}
         />
       )}
     </footer>
   );
 }
-
-
-
-
-
-
-/* import React from 'react';
-import '../styles/footer.css';
-
-export default function Footer({ backgroundSrc}) {
-  return (
-    <footer className="footer">
-      <img
-        loading="lazy"
-        src={backgroundSrc}
-        className="footer-background"
-        alt=""
-      />
-    </footer>
-  );
-} */
