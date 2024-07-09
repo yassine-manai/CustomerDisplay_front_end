@@ -47,8 +47,8 @@ function PaymentSuccessSection({ paymentSuccess, visitMessage }) {
   );
 }
 
-// S_three component (main component) to render PaymentSuccessSection
-function S_three({ paymentSuccess, visitMessage }) {
+// s_three component (main component) to render PaymentSuccessSection
+export default function S_Three({ paymentSuccess, visitMessage }) {
   return (
     <div className="container3">
       {/* Render PaymentSuccessSection with paymentSuccess and visitMessage props */}
@@ -60,4 +60,3 @@ function S_three({ paymentSuccess, visitMessage }) {
   );
 }
 
-export default S_three;

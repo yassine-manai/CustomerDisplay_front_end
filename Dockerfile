@@ -11,6 +11,9 @@ COPY package-lock.json ./
 # Install dependencies
 RUN npm install
 
+ENV REACT_APP_SUPABASE_URL_WS 127.0.0.1
+ENV REACT_APP_SUPABASE_URL_PORT 8200
+
 # Copy the rest of the application code
 COPY . .
 
