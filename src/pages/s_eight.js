@@ -41,12 +41,11 @@ export default function S_eight({
           <div className="order-summary-row8">
             <div className="order-summary-image-column8">
               <img
-                loading="lazy"
                 src={carImage}
                 className="order-summary-image8"
                 alt="Order summary"
-                height={200}
-                width={200}
+                height={450}
+                width={500}
               />
             </div>
             <div className="order-summary-details-column8">
@@ -54,7 +53,7 @@ export default function S_eight({
                 <div className="order-summary-detail8">
                   <CarIcon />
                   <div className="order-summary-detail-label8">Licence Plate</div>
-                  <div className="order-summary-detail-value8">{licencePlate}</div>
+                  <div className="order-summary-detail-value88">{licencePlate}</div>
                 </div>
                 <div className="order-summary-detail8">
                   <ClockIcon />

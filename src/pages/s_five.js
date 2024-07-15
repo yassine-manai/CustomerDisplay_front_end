@@ -51,7 +51,7 @@ export default function S_five ({
                 <div className="order-summary-detail5">
                   <CarIcon />
                   <div className="order-summary-detail-label5">Licence Plate</div>
-                  <div className="order-summary-detail-value5">{licencePlate}</div>
+                  <div className="order-summary-detail-value55">{licencePlate}</div>
                 </div>
                 <div className="order-summary-detail5">
                   <ClockIcon />
@@ -94,7 +94,7 @@ export default function S_five ({
         </div>
         <div className="thank-you-message5">{message}</div>
         <div className="drive-safe-message52">{name}</div>
-        <div className="drive-safe-message5">Drive Safe !</div>
+       <div className="drive-safe-message5">Drive Safe !</div>
       </div>
     );
   }

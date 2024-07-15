@@ -106,6 +106,7 @@
     object-fit: contain;
     object-position: center;
     align-items: center;
+    margin-top: 5%;
   }
 
   @media (max-width: 991px) {
@@ -121,17 +122,21 @@
     font: 700 40px/100% Public Sans, -apple-system, Roboto, Helvetica,
       sans-serif;
       width: 100%;
-      margin-top: 170px;
+      margin-top: 140px;
+      margin-bottom: 20px;
+
   
   }
   
   .drive-safe-message52{
     color: var(--main-green, #00AB53);
+    display: inline;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     margin-left: 10px;
     margin-right: 10px;
-    margin-top: 10px;
+    width: 90%;
+    margin-top: 0px;
     font: 700 35px/134% Public Sans, -apple-system, Roboto, Helvetica,
       sans-serif;
   }
@@ -141,7 +146,7 @@
       margin-top: 23px;
     margin-left: 10px;
     margin-right: 10px;
-    font: 700 30px/134% Public Sans, -apple-system, Roboto, Helvetica,
+    font: 700 35px/134% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
   }
   .order-summary5 {
@@ -261,8 +266,7 @@
     display: flex;
     flex-grow: 1;
     flex-direction: column;
-    margin-top: 40px;
-
+gap: 5%;
   }
   @media (max-width: 991px) {
     .order-summary-details5 {
@@ -304,11 +308,18 @@
     font: 600 35px/81% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
   }
+
   .order-summary-detail-value5 {
     color: var(--main-gray, #6d6e71);
     margin-left: auto;
-
     font: 600 35px/100% Public Sans, -apple-system, Roboto, Helvetica,
+    sans-serif;
+  }
+
+  .order-summary-detail-value55 {
+    color: var(--main-gray, #6d6e71);
+    margin-left: auto;
+    font: 600 50px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
   }
   .order-summary-footer5 {

@@ -3,7 +3,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 16px;
+  padding-top: 20px;
+  height: 820px;  
+  color: #6d6e71;
 }
 
 .header10 {
@@ -119,6 +121,8 @@
   flex-grow: 1;
   padding: 0 20px;
   width: 100%;
+  margin-bottom: 0px;
+  height: 800px;
 }
 
 @media (max-width: 991px) {
@@ -130,19 +134,16 @@
 
 .icon-container10 {
   align-items: center;
-  align-self: stretch;
-  background: linear-gradient(180deg, rgba(47, 94, 171, 0.16) 0%, rgba(47, 94, 171, 0.52) 100%);
+  align-self: center;
+  background: linear-gradient(180deg, rgba(47, 94, 171, 0.16) 0%, rgba(9, 70, 170, 0.52) 90%);
   border-radius: 6px;
   display: flex;
+  position: relative;
   flex-direction: column;
-  margin-bottom: -18px;
-  width: 89.6%;
-  margin-left: -19.9px;
-  margin-right: -17.9px;
-  margin-top: 1px;
-  padding: 55px 60px;
-  height: 180px;
-  z-index: 10;
+  margin-bottom: -58px;
+  width: 91.5%;
+  height: 30%;
+  padding:  60px;
 }
 
 @media (max-width: 991px) {
@@ -177,15 +178,15 @@
   display: flex;
   filter: drop-shadow(0px 2.649px 2.649px rgba(0, 0, 0, 0.25));
   justify-content: center;
-  margin-bottom: -150px;
+  margin-bottom: -510px;
   object-position: center;
-  padding: 0 0 38px;
+  padding: 0 0 30px;
 }
 
 .apology-title10 {
   color: var(--main-blue, #2f5eab);
-  font: 700 38px/134% Public Sans, -apple-system, Roboto, Helvetica, sans-serif;
-  margin-top: 150px;
+  font: 700 45px/100% Public Sans, -apple-system, Roboto, Helvetica, sans-serif;
+  margin-top: 22%;
   text-align: center;
 }
 
@@ -197,7 +198,7 @@
 
 .apology-description10 {
   color: var(--main-gray, #6d6e71);
-  font: 700 30px/40px Public Sans, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 700 40px/100% Public Sans, -apple-system, Roboto, Helvetica, sans-serif;
   margin-top: 1px;
   text-align: center;
 }
@@ -212,7 +213,7 @@
   line-height: normal;
   margin-left: 20px;
   margin-right: 20px;
-  width: 41%;
+  width: 60%;
 }
 
 @media (max-width: 991px) {
@@ -230,7 +231,7 @@
   flex-grow: 1;
   justify-content: center;
   padding: 24px;
-  height:605px;
+  height: 83%;
   width: 100%;
 }
 
@@ -247,7 +248,8 @@
   object-fit:fill;
   object-position: center;
   width: 100%;
-  border-radius: 15px;
+  height: 90%;
+    border-radius: 15px;
 
   background-position: center;
   background-repeat: no-repeat;
@@ -259,41 +261,4 @@
     max-width: 100%;
     
   }
-}
-
-.footer {
-  align-items: flex-start;
-  align-self: stretch;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 21px;
-  min-height: 116px;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-
-@media (max-width: 991px) {
-  .footer {
-    max-width: 100%;
-    padding-right: 20px;
-  }
-}
-
-.footer-background {
-  height: 100%;
-  inset: 0;
-  object-fit: cover;
-  object-position: center;
-  position: absolute;
-  width: 100%;
-}
-
-.footer-logo {
-  aspect-ratio: 4.76;
-  max-width: 100%;
-  object-fit: auto;
-  object-position: center;
-  width: 551px;
 }

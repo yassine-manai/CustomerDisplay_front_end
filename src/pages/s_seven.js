@@ -44,9 +44,9 @@ export default function s_seven({
                 loading="lazy"
                 src={carImage}
                 className="order-summary-image7"
-                alt="Order summary"
-                height={200}
-                width={200}
+                alt=" "
+                height={450}
+                width={500}
               />
             </div>
             <div className="order-summary-details-column7">
@@ -54,7 +54,7 @@ export default function s_seven({
                 <div className="order-summary-detail7">
                   <CarIcon />
                   <div className="order-summary-detail-label7">Licence Plate</div>
-                  <div className="order-summary-detail-value7">{licencePlate}</div>
+                  <div className="order-summary-detail-value77">{licencePlate}</div>
                 </div>
                 <div className="order-summary-detail7">
                   <ClockIcon />
@@ -100,8 +100,8 @@ export default function s_seven({
           <img
             loading="lazy"
             alt=" "
-            height={300}
-            width={300}
+            height={600}
+            width={600}
             className="thank-you-avatar7"
           />
         </div>

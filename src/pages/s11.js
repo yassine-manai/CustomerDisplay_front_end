@@ -7,7 +7,6 @@ function ApologyMessage({ heading, description, carImage }) {
     <div className="apology-container11">
       <div className="apology-image-container11">
         <img
-          loading="lazy"
           height={220}
           width={300}
           src={carImage}

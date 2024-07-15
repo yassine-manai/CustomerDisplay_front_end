@@ -3,6 +3,8 @@
   flex-direction: column;
   font-weight: 500;
   height: 830px;
+  filter: drop-shadow(0 2.649px 2.649px rgba(0, 0, 0, 0.25));
+
 }
 
  .main-container4 {
@@ -49,8 +51,7 @@
   }
 }
 .thank-you-message-container4 {
-  border-radius: 6px;
-  box-shadow: 0 2px 4px 0 rgba(165, 163, 174, 0.3);
+  border-radius: 6px; 
   background-color: #fff;
   display: flex;
   margin-left: 20px;
@@ -269,8 +270,8 @@
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  margin-top: 40px;
   margin-right: 10px;
+  gap: 10%;
 
 }
 @media (max-width: 991px) {
@@ -284,7 +285,8 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 16px;
-  margin-top: 10px;
+  margin-top: 30px;
+
 }
 .order-summary-detail4:last-child {
   margin-bottom: 0;
@@ -312,16 +314,21 @@
   color: var(--main-gray, #6d6e71);
   font: 600 35px/81% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
-    margin-top: 40px;
 }
 .order-summary-detail-value4 {
   color: var(--main-gray, #6d6e71);
   margin-left: auto;
-  font: 600 35px/100% Public Sans, -apple-system, Roboto, Helvetica,
+  font: 600 38px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
-    margin-top: 40px;
-
 }
+
+.order-summary-detail-value44 {
+  color: var(--main-gray, #6d6e71);
+  margin-left: auto;
+  font: 600 50px/100% Public Sans, -apple-system, Roboto, Helvetica,
+    sans-serif;
+}
+
 .order-summary-footer4 { 
   margin: 25px 19px 0;
 }
@@ -387,13 +394,13 @@
 }
 .order-summary-length-of-stay-label4 {
   font-feature-settings: "clig" off, "liga" off;
-  font: 400 32px/100% Public Sans, -apple-system, Roboto, Helvetica,
+  font: 400 35px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
 }
 .order-summary-length-of-stay-value4 {
   font-feature-settings: "clig" off, "liga" off;
   margin-top: 20px;
-  font: 800 30px/56px Public Sans, -apple-system, Roboto, Helvetica,
+  font: 800 50px/56px Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
 }
 .order-summary-amount-deducted4 {
@@ -417,7 +424,7 @@
 }
 .order-summary-amount-deducted-label4 {
   font-feature-settings: "clig" off, "liga" off;
-  font: 400 32px/100% Public Sans, -apple-system, Roboto, Helvetica,
+  font: 400 35px/100% Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
     margin-top: 20px;
 
@@ -425,7 +432,7 @@
 .order-summary-amount-deducted-value4 {
   font-feature-settings: "clig" off, "liga" off;
   margin-top: 16px;
-  font: 500 48px/56px Public Sans, -apple-system, Roboto, Helvetica,
+  font: 800 50px/56px Public Sans, -apple-system, Roboto, Helvetica,
     sans-serif;
 }
 @media (max-width: 991px) {
@@ -435,10 +442,10 @@
   }
 }
 .amount-deducted-value4 {
-  font-weight: 700;
+  font-weight: 800;
 }
 .amount-deducted-currency4 {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 

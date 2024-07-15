@@ -8,7 +8,6 @@ function ApologyMessage({ message }) {
       <div className="icon-container9">
         {/* Placeholder for the apology icon */}
         <img
-        loading="lazy"
         src={icon_cashier}  
         alt="Parking lot"
         className="apology-icon9"
@@ -30,7 +29,6 @@ function ImageSection({ imageUrl }) {
     <div className="image-section9">
       {/* Render the image with the provided base64-encoded URL */}
       <img
-        loading="lazy"
         src={imageUrl}  
         alt="Parking lot"
         className="parking-lot-image9"
@@ -49,7 +47,6 @@ export default function S_nine({ apologyMessage,  carImage}) {
           </section>
           <br />
           <section className="image-wrapper9">
-            {/* Pass the carModelImage (base64 string) as the imageUrl prop */}
             <ImageSection imageUrl={carImage} />
           </section>
         </div>

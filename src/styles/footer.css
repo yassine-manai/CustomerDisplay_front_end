@@ -1,15 +1,19 @@
 
-  .footer {
-    flex-direction: column;
-    margin-top: 10px;
-    align-items: start;
-    justify-content: center;
-  }
   
-  .footer-background {
-    align-self: start;
+.footer {
+  align-items: flex-start;
 
-    background-size: cover; 
-    background-position: center;
-  }
-  
+  flex-direction: column;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+.footer-background {
+  position: absolute;
+  object-fit: fill;
+  height: 135px;
+  width: 99%;
+}

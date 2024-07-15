@@ -8,6 +8,8 @@
     margin-top: 15px;
     overflow: hidden;
     width: 100%;
+    filter: drop-shadow(0 2.649px 2.649px rgba(0, 0, 0, 0.55));
+
   }
   .info-container1 {
     border-radius: 10px;

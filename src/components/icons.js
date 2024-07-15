@@ -2,6 +2,7 @@ import icon_EntryNF from "../assets/icon_EntryNF.svg";
 import icon_ExitNF from "../assets/icon_ExitNF.svg";
 import icon_cardSearch_NF from "../assets/icon_cardSearch_NF.svg";
 import React from 'react'
+import '../styles/icons.css';
 
 export function CarIcon() {
     return (

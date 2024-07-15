@@ -15,7 +15,6 @@ import S11 from './pages/s11';
 import icon_PUMC from './assets/icon_PUMC.svg';
 import img_noCar from './assets/img_noCar.png';
 
-
 const {
   REACT_APP_SUPABASE_URL_WS: wsip,
   REACT_APP_SUPABASE_URL_PORT: wsport,
@@ -25,13 +24,7 @@ let MainScreenTimer = 10;
 let BannerScreenTimer = 10;
 let CronTimer = 1;
 
-// Check if timer intervals are saved in local storage
-const savedMainScreenTimer = parseInt(localStorage.getItem('MainScreenTimer'),10);
-const savedBannerScreenTimer = parseInt(localStorage.getItem('BannerScreenTimer'),10);
-const savedCronTimer = localStorage.getItem('CronTimer');
-
-console.log(typeof savedMainScreenTimer);
-
+// Fetch and set timer intervals
 const fetchTimerIntervals = async () => {
   try {
     const response = await fetch(`http://${wsip}:${wsport}/ads_timer`);
@@ -54,6 +47,29 @@ const fetchTimerIntervals = async () => {
   }
 };
 
+// Fetch and set location data
+const fetchLocationData = async () => {
+  try {
+    const response = await fetch(`http://${wsip}:${wsport}/infos/get_location_data`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const locationData = await response.json();
+    console.log(locationData);
+    localStorage.setItem('locationData', JSON.stringify(locationData));
+    return {
+      iconSrc: icon_PUMC,
+      name_point: locationData.name_point,
+      exit_point: locationData.exit_point,
+      timezone: locationData.timezone,
+      cron: locationData.cron
+    };
+  } catch (error) {
+    console.error('Error fetching location data:', error);
+    return null;
+  }
+};
+
 const App = () => {
   const [infoData, setInfoData] = useState({
     iconSrc: icon_PUMC,
@@ -63,61 +79,39 @@ const App = () => {
     cron: 1
   });
 
-  const [pageData, setPageData] = useState(<S_ONE timerInterval={savedMainScreenTimer} />);
+  const [pageData, setPageData] = useState(<S_ONE timerInterval={MainScreenTimer} />);
   const [showFooter, setShowFooter] = useState(false);
 
   useEffect(() => {
-    if (savedMainScreenTimer && savedBannerScreenTimer) {
-      MainScreenTimer = parseInt(savedMainScreenTimer, 10);
-      BannerScreenTimer = parseInt(savedBannerScreenTimer, 10);
-      CronTimer = parseInt(savedCronTimer,10);
+    const initializeApp = async () => {
+      await fetchTimerIntervals();
 
-    } 
-    else {
-      fetchTimerIntervals();
-    }
+      const savedMainScreenTimer = parseInt(localStorage.getItem('MainScreenTimer'), 10);
+      const savedBannerScreenTimer = parseInt(localStorage.getItem('BannerScreenTimer'), 10);
+      const savedCronTimer = parseInt(localStorage.getItem('CronTimer'), 10);
 
-    const intervalId = setInterval(fetchTimerIntervals, savedCronTimer*3600000);
-    return () => clearInterval(intervalId);
-  }, []);
-
-
-  useEffect(() => {
-    const fetchLocationData = async () => {
-      try {
-        const response = await fetch(`http://${wsip}:${wsport}/infos/get_location_data`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const locationData = await response.json();
-        console.log(locationData);
-        setInfoData({
-          iconSrc: icon_PUMC,
-          name_point: locationData.name_point,
-          exit_point: locationData.exit_point,
-          timezone: locationData.timezone,
-          cron: locationData.cron
-        });
-        localStorage.setItem('locationData', JSON.stringify(locationData));
-      } catch (error) {
-        console.error('Error fetching location data:', error);
+      if (savedMainScreenTimer && savedBannerScreenTimer) {
+        MainScreenTimer = savedMainScreenTimer;
+        BannerScreenTimer = savedBannerScreenTimer;
+        CronTimer = savedCronTimer;
       }
+
+      const locationData = await fetchLocationData();
+      if (locationData) {
+        setInfoData(locationData);
+      }
+
+      const intervalId = setInterval(fetchTimerIntervals, CronTimer * 3600000);
+      return () => clearInterval(intervalId);
     };
 
-    fetchLocationData();
-
-    const intervalId = setInterval(fetchLocationData, savedCronTimer*3600000);
-    return () => clearInterval(intervalId);
+    initializeApp();
   }, []);
 
   useEffect(() => {
     const connectWebSocket = () => {
       const socket = new WebSocket(`ws://${wsip}:${wsport}/ws`);
       console.log("WebSocket connection established");
-
-      console.log(wsip);
 
       socket.onopen = () => {
         console.log('WebSocket connected');
@@ -176,7 +170,7 @@ const App = () => {
         break;
 
       case 1:
-        setPageData(<S_ONE timerInterval={savedMainScreenTimer} />);
+        setPageData(<S_ONE timerInterval={MainScreenTimer} />);
         setShowFooter(false);
         break;
 
@@ -236,112 +230,113 @@ const App = () => {
         );
         setShowFooter(true);
         break;
-        case 6:
-          setPageData(
-            <S_Six
-              name={extraData.name}
-              thankYouMessage={extraData.thankYouMessage}
-              licencePlate={extraData.licencePlate}
-              entryTime={extraData.entryTime}
-              exitTime={extraData.exitTime}
-              lengthOfStay={extraData.lenghtOfStay}
-              amountDeducted={extraData.amount}
-              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-              currency={extraData.currency}
-            />
-          );
-          setShowFooter(true);
-          break;
-  
-        case 7:
-          setPageData(
-            <S_Seven
-              name={extraData.name}
-              thankYouMessage={extraData.thankYouMessage}
-              licencePlate={extraData.licencePlate}
-              entryTime={extraData.entryTime}
-              exitTime={extraData.exitTime}
-              lengthOfStay={extraData.lenghtOfStay}
-              amountDeducted={extraData.amount}
-              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-              currency={extraData.currency}
-            />
-          );
-          setShowFooter(true);
-          break;
-  
-        case 8:
-          setPageData(
-            <S_eight
-              name={extraData.name}
-              thankYouMessage={extraData.thankYouMessage}
-              licencePlate={extraData.licencePlate}
-              entryTime={extraData.entryTime}
-              exitTime={extraData.exitTime}
-              lengthOfStay={extraData.lenghtOfStay}
-              amountDeducted={extraData.amount}
-              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-              currency={extraData.currency}
-            />
-          );
-          setShowFooter(true);
-          break;
-  
-        case 9:
-          setPageData(
-            <S_nine
-              apologyMessage={extraData.apologyMessage}
-              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-            />
-          );
-          setShowFooter(true);
-          break;
-  
-        case 10:
-          setPageData(
-            <S_ten
-              apologyTitle={extraData.apologyTitle}
-              apologyDescription={extraData.apologyDescription}
-              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-            />
-          );
-          setShowFooter(true);
-          break;
-  
-        case 11:
-          setPageData(
-            <S11
-              apologyTitle={extraData.apologyTitle}
-              apologyDescription={extraData.apologyDescription}
-              helpDescription={extraData.helpDescription}
-              carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
-            />
-          );
-          setShowFooter(true);
-          break;
+
+      case 6:
+        setPageData(
+          <S_Six
+            name={extraData.name}
+            thankYouMessage={extraData.thankYouMessage}
+            licencePlate={extraData.licencePlate}
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            lengthOfStay={extraData.lenghtOfStay}
+            amountDeducted={extraData.amount}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+            currency={extraData.currency}
+          />
+        );
+        setShowFooter(true);
+        break;
+
+      case 7:
+        setPageData(
+          <S_Seven
+            name={extraData.name}
+            thankYouMessage={extraData.thankYouMessage}
+            licencePlate={extraData.licencePlate}
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            lengthOfStay={extraData.lenghtOfStay}
+            amountDeducted={extraData.amount}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+            currency={extraData.currency}
+          />
+        );
+        setShowFooter(true);
+        break;
+
+      case 8:
+        setPageData(
+          <S_eight
+            name={extraData.name}
+            thankYouMessage={extraData.thankYouMessage}
+            licencePlate={extraData.licencePlate}
+            entryTime={extraData.entryTime}
+            exitTime={extraData.exitTime}
+            lengthOfStay={extraData.lenghtOfStay}
+            amountDeducted={extraData.amount}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+            currency={extraData.currency}
+          />
+        );
+        setShowFooter(true);
+        break;
+
+      case 9:
+        setPageData(
+          <S_nine
+            apologyMessage={extraData.apologyMessage}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+          />
+        );
+        setShowFooter(true);
+        break;
+
+      case 10:
+        setPageData(
+          <S_ten
+            apologyTitle={extraData.apologyTitle}
+            apologyDescription={extraData.apologyDescription}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+          />
+        );
+        setShowFooter(true);
+        break;
+
+      case 11:
+        setPageData(
+          <S11
+            apologyTitle={extraData.apologyTitle}
+            apologyDescription={extraData.apologyDescription}
+            helpDescription={extraData.helpDescription}
+            carImage={(extraData.carImage === "string" || extraData.carImage === "") ? img_noCar : extraData.carImage}
+          />
+        );
+        setShowFooter(true);
+        break;
 
       default:
-        setPageData(<S_ONE timerInterval={savedMainScreenTimer} />);
+        setPageData(<S_ONE timerInterval={MainScreenTimer} />);
         setShowFooter(false);
         break;
     }
 
     if (message !== 1) {
       setTimeout(() => {
-        setPageData(<S_ONE timerInterval={savedMainScreenTimer} />);
+        setPageData(<S_ONE timerInterval={MainScreenTimer} />);
         setShowFooter(false);
       }, (DispTime || MainScreenTimer) * 1000); 
     }
-    
   };
 
   return (
+    
     <div className="App">
       <InfoContainer iconSrc={infoData.iconSrc} name_point={infoData.name_point} exit={infoData.exit_point} timezone={infoData.timezone} />
       {pageData}
-      {showFooter && <Footer timerFooter={savedBannerScreenTimer} />}
+      {showFooter && <Footer timerFooter={BannerScreenTimer} />}
     </div>
   );
-}
+};
 
 export default App;

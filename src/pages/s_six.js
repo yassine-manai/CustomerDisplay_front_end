@@ -54,7 +54,7 @@ export default function s_six({
                 <div className="order-summary-detail6">
                   <CarIcon />
                   <div className="order-summary-detail-label6">Licence Plate</div>
-                  <div className="order-summary-detail-value6">{licencePlate}</div>
+                  <div className="order-summary-detail-value66">{licencePlate}</div>
                 </div>
                 <div className="order-summary-detail6">
                   <ClockIcon />

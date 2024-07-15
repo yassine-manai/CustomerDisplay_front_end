@@ -54,7 +54,7 @@ export default function s_four({
                 <div className="order-summary-detail4">
                   <CarIcon />
                   <div className="order-summary-detail-label4">Licence Plate</div>
-                  <div className="order-summary-detail-value4">{licencePlate}</div>
+                  <div className="order-summary-detail-value44">{licencePlate}</div>
                 </div>
                 <div className="order-summary-detail4">
                   <ClockIcon />

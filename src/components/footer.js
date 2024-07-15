@@ -7,14 +7,15 @@ const {
 } = process.env;
 
 const savedCronTimer = parseInt(localStorage.getItem('CronTimer'), 10);
-console.info(savedCronTimer)
+console.info(savedCronTimer);
 
 export default function Footer({ timerFooter }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [images, setImages] = useState([]);
 
   const fetchImagesFromApiBanner = async () => {
-    try {
+    try 
+    {
       const response = await fetch(`http://${wsip}:${wsport}/get_banner`);
       const data = await response.json();
       console.log('Fetched images banner:', data);
@@ -22,7 +23,10 @@ export default function Footer({ timerFooter }) {
       // Extract base64 images from API response
       const imagesBanner = data.map(img => img.base64);
 
-      // Save images to localStorage
+      // Clear main screen images from localStorage
+      localStorage.removeItem('mainScreenImages');
+
+      // Save banner images to localStorage
       localStorage.setItem('bannerImages', JSON.stringify(imagesBanner));
 
       // Set images state
@@ -57,7 +61,6 @@ export default function Footer({ timerFooter }) {
   }, []);
 
   useEffect(() => {
-
     if (images.length > 0) {
       const intervalId = setInterval(() => {
         setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
@@ -68,18 +71,18 @@ export default function Footer({ timerFooter }) {
   }, [images, timerFooter]);
 
   console.log('Current Index:', currentIndex);
+  console.log('Images:', images);
 
   if (images.length === 0) {
-    return null; // or a loading indicator
+    return null;
   }
 
   return (
     <div className="footer">
       <img
-        src={images[currentIndex]}
+        src={`${images[currentIndex]}`}
         className="footer-background"
         alt=" "
-        height={400}
       />
     </div>
   );

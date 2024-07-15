@@ -13,30 +13,27 @@ export default function S_ONE({ timerInterval }) {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-    // Function to fetch images from API and save locally
+
     const fetchImagesFromApiMain = async () => {
       try {
         const response = await fetch(`http://${wsip}:${wsport}/get_mainScreen`);
         const data = await response.json();
         console.log('Fetched images main:', data);
 
-        // Extract base64 images from API response
         const imagesArray = data.map(img => img.base64);
 
-        // Save images to localStorage
+        localStorage.removeItem('bannerImages');
+
         localStorage.setItem('mainScreenImages', JSON.stringify(imagesArray));
 
-        // Set images state
         setImages(imagesArray);
       } catch (error) {
         console.error("Error fetching images:", error);
       }
     };
 
-    // Fetch images from API on initial load
     fetchImagesFromApiMain();
 
-    // Load locally saved images on component mount
     const loadLocalImages = () => {
       const localImages = JSON.parse(localStorage.getItem('mainScreenImages'));
       if (localImages && localImages.length > 0) {
@@ -45,17 +42,14 @@ export default function S_ONE({ timerInterval }) {
     };
     loadLocalImages();
 
-    // Set interval to fetch images from API every savedCronTimer hours
     const fetchInterval = setInterval(() => {
       fetchImagesFromApiMain();
     }, savedCronTimer* 3600000);
 
-    // Clear interval on component unmount or dependency change
     return () => clearInterval(fetchInterval);
   }, []);
 
   useEffect(() => {
-    // Set interval to cycle through images
     if (images.length > 0) {
       const intervalId = setInterval(() => {
         setCurrentIndex(prevIndex =>
@@ -80,7 +74,6 @@ export default function S_ONE({ timerInterval }) {
         className="map-image1"
       />
 
-      {/* Dots indicator */}
       <div className="carousel-indicator">
         {images.map((_, index) => (
           <span
@@ -91,7 +84,6 @@ export default function S_ONE({ timerInterval }) {
         ))}
       </div>
 
-      {/* Circular bottom indicator */}
       <div className="circular-indicator">
         {images.map((_, index) => (
           <div
