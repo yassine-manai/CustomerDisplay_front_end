@@ -1,0 +1,157 @@
+
+
+
+--------------------------------------------------------------
+S1- IDLE Model
+
+{
+  "message": 1,
+  "DispTime":60000,
+  "pathImage":"path"
+}
+
+--------------------------------------------------------------
+S2 - Short term parker-Price display
+
+{
+  "message": 2,  
+  "DispTime":60000,
+  "entryTime":"21-02-2024 14:36",
+  "exitTime":"21-02-2024 14:36",
+  "lenghtOfStay":"2 hours",
+  "amount":"150",
+  "currency":"KWD",
+  "licencePlate":"ABC123",
+  "pathImage":""
+}
+
+--------------------------------------------------------------
+S3 - Exit short term parker - Goodbye message
+
+{
+  "message": 3,
+  "DispTime":60000,  
+  "paymentSuccess":"Payment Done Successfully",
+  "visitMessage":"Thank you for your visit, Drive Safe !"
+}
+
+--------------------------------------------------------------
+S4 -  Pay as you go-GOODBYE Message
+
+{
+  "message": 4,
+  "DispTime":60000,
+  "name": "Mr. Yassine Manai",
+  "thankYouMessage": "Thank you for your visit",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lenghtOfStay": "2 hours 31 minutes",
+  "amount": "150",
+  "currency":"TND",
+  "carImage":"path"
+}
+
+--------------------------------------------------------------
+S5 - Prebooking + Subscriber - GOODBYE Message
+
+{
+  "message": 5,
+  "DispTime":60000,
+  "name": "Mr. Yassine Manai",
+  "thankYouMessage": "Thank you for your visit",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lenghtOfStay": "2 hours 31 minutes",
+  "carImage":"path"
+}
+--------------------------------------------------------------
+
+S6 -  Pay as you go-GOODBYE Message
+
+{
+  "message": 6,
+  "DispTime":60000,
+  "name": "Mr. Yassine Manai",
+  "thankYouMessage": "You don’t have enough credit in your wallet",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lenghtOfStay": "2 hours 31 minutes",
+  "currency":"TND",
+  "amount": "10.00",
+  "carImage":"path"
+}
+
+--------------------------------------------------------------
+S7 -  Pay as you go-GOODBYE Message
+
+{
+  "message": 7,
+  "DispTime":60000,
+  "name": "Mr. Yassine Manai",
+  "thankYouMessage": "You exceed your booking period",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lenghtOfStay": "2 hours 31 minutes",
+  "currency":"TND",
+  "amount": "10.00",
+  "carImage":"path"
+}
+
+--------------------------------------------------------------
+S8 -  Pay as you go-GOODBYE Message
+{
+  "message": 8,
+  "DispTime":60000,
+  "name": "Mr. Sofiene",
+  "thankYouMessage": "Your subscription is expired",
+  "licencePlate": "ABC123",
+  "entryTime": "21-02-2024 14:36",
+  "exitTime": "21-02-2024 17:07",
+  "lenghtOfStay": "2 hours 31 minutes",
+  "amount": "10.00",
+  "currency":"TND",
+  "carImage": "path"
+}
+
+--------------------------------------------------------------
+
+S9 -  Pay as you go-apology message - 404 V1
+
+{
+  "message": 9,
+  "DispTime":60000,
+  "apologyMessage": " We apologize, the license plate is not recognized or not found in our system !",
+  "carImage": "path"
+}
+
+--------------------------------------------------------------
+
+S10 - Pay as you go-apology message - 404 V2
+
+{
+  "message": 10,
+  "DispTime":60000,
+  "apologyTitle": "We apologize !",
+  "apologyDescription": "The license plate is not recognized or not found in our system!Our help desk cashier will help you to pay your fees.",
+  "carImage": "path"
+}
+
+-----------------------------------------------------------------
+
+S11 - Pay as you go-apology message - 404 V3
+
+{
+  "message": 11,
+  "DispTime":60000,
+  "apologyHeading": "We apologize !",
+  "apologyDescription": "The license plate is not recognized or not found in our system!",
+  "helpDescription": "Our help desk cashier will help you to pay your fees.",
+  "carImage": "path"
+}
+
+--------------------------------------------------------------------------------------------
+

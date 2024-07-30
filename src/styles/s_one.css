@@ -1,0 +1,80 @@
+.container1 {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    overflow: hidden;
+    width: 100%;
+    filter: drop-shadow(0 2.649px 2.649px rgba(0, 0, 0, 0.55));
+
+  }
+  .info-container1 {
+    border-radius: 10px;
+    background-color: #fff;
+    display: flex;
+    width: 95.5%;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  @media (max-width: 991px) {
+    .info-container1 {
+      flex-wrap: wrap;
+      padding: 0 20px;
+    }
+  }
+
+  .location-info1 {
+    display: flex;
+    gap: 10px;
+    font-size: 22px;
+    margin: auto 0;
+  }
+  .location-icon1 {
+    width: 18px;
+  }
+  .location-details1 {
+    font-family: Inter, sans-serif;
+    margin: auto 0;
+  }
+  .location-name1 {
+    font-family: Public Sans, sans-serif;
+    font-weight: 700;
+  }
+  .date-time-info1 {
+    border-radius: 30.1px;
+    background-color: #f1f0f2;
+    display: flex;
+    gap: 7px;
+    font-size: 23px;
+    text-align: right;
+    padding: 5px 11px;
+  }
+  .calendar-icon1 {
+    width: 33px;
+  }
+  .date-time1 {
+    font-family: Public Sans, sans-serif;
+    margin: auto 0;
+  }
+  .map-image1 {
+    margin-top: 10px;
+    border-radius: 15px;
+    height: 0%;
+    width: 100%;
+    aspect-ratio: 2;
+
+  }
+  @media (max-width: 1024px) {
+    .map-image1 {
+
+      margin-top: 10px;
+      border-radius: 1%;
+      height: 0%;
+      width: 90%;
+      aspect-ratio: 1.5;
+
+    }
+  }
