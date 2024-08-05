@@ -11,10 +11,7 @@ export default function s_four({
   entryTime,
   exitTime,
   lengthOfStay,
-<<<<<<< HEAD
-=======
   amountLabel,
->>>>>>> 14d01f0 (Timer solved)
   amountDeducted,
   currency,
   carImage
@@ -24,11 +21,8 @@ export default function s_four({
     entryTime,
     exitTime,
     lengthOfStay,
-<<<<<<< HEAD
-=======
     amountLabel,
->>>>>>> 14d01f0 (Timer solved)
-    amountDeducted,
+  amountDeducted,
     currency,
   };
 
@@ -37,10 +31,7 @@ export default function s_four({
     entryTime,
     exitTime,
     lengthOfStay,
-<<<<<<< HEAD
-=======
     amountLabel,
->>>>>>> 14d01f0 (Timer solved)
     amountDeducted,
     currency,
 
@@ -92,11 +83,7 @@ export default function s_four({
             </div>
             <div className="order-summary-footer-column4">
               <div className="order-summary-amount-deducted4">
-<<<<<<< HEAD
-                <div className="order-summary-amount-deducted-label4">Amount Deduced From Wallet</div>
-=======
                 <div className="order-summary-amount-deducted-label4">{amountLabel}</div>
->>>>>>> 14d01f0 (Timer solved)
                 <div className="order-summary-amount-deducted-value4">
                   <span className="amount-deducted-value4">{amountDeducted}</span>
                   <span className="amount-deducted-currency4"> {currency} </span>

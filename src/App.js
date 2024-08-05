@@ -62,76 +62,93 @@ const App = () =>
 
 
 
-const fetchTimerIntervals = async () => 
-{
-  console.log("Fetching timer intervals...");
-  try 
+  const fetchImagesFromApiMain = async () => {
+    try {
+      const response = await fetch(`http://${wsip}:${wsport}/get_mainScreen`);
+      const data = await response.json();
+      console.log('Fetched images main:', data);
+  
+      const imagesArray = data.map(img => img.base64);
+      localStorage.removeItem('mainScreenImages');
+      localStorage.setItem('mainScreenImages', JSON.stringify(imagesArray));
+  
+  
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    }
+  };
+  
+  
+  const fetchTimerIntervals = async () => 
   {
-    const response = await fetch(`http://${wsip}:${wsport}/ads_timer`);
-    const data = await response.json();
-
-    MainScreenTimer = data.main_time;
-    BannerScreenTimer = data.banner_time;
-    defaultCronTimer = data.cron;
-
-    localStorage.setItem('MainScreenTimer', MainScreenTimer);
-    localStorage.setItem('BannerScreenTimer', BannerScreenTimer);
-    localStorage.setItem('CronTimer', defaultCronTimer);
-
-    console.info("Main Screen Timer:", MainScreenTimer);
-    console.info("Banner Screen Timer:", BannerScreenTimer);
-    console.info("Cron Timer:", defaultCronTimer);
-  }
-  catch (error) 
-  {
-    console.error('Error fetching timer intervals:', error);
-  }
-};
-
-// fetch location Data function
-const fetchLocationData = async () => 
-{
-  console.log("Fetching location data...");
-  try
-  {
-    const response = await fetch(`http://${wsip}:${wsport}/infos/get_location_data`);
-    if (!response.ok) 
+    console.log("Fetching timer intervals...");
+    try 
     {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      const response = await fetch(`http://${wsip}:${wsport}/ads_timer`);
+      const data = await response.json();
+
+      MainScreenTimer = data.main_time;
+      BannerScreenTimer = data.banner_time;
+      defaultCronTimer = data.cron;
+
+      localStorage.setItem('MainScreenTimer', MainScreenTimer);
+      localStorage.setItem('BannerScreenTimer', BannerScreenTimer);
+      localStorage.setItem('CronTimer', defaultCronTimer);
+
+      console.info("Main Screen Timer:", MainScreenTimer);
+      console.info("Banner Screen Timer:", BannerScreenTimer);
+      console.info("Cron Timer:", defaultCronTimer);
     }
-    
-    if (response.status == 200)
-    { 
-      const locationData = await response.json();
-      console.log(locationData);
-
-      localStorage.setItem('locationData', JSON.stringify(locationData));
-
-      return {
-        iconSrc: icon_PUMC,
-        name_point: locationData.name_point,
-        exit_point: locationData.exit_point,
-        timezone: locationData.timezone,
-      };
-      error = "false";
-    }
-
-    if (response.status==404)
+    catch (error) 
     {
-      return {
-        iconSrc: icon_PUMC,
-        name_point: " ",
-        exit_point: " ",
-        timezone: " ",
-      };  
-      error = "true";
+      console.error('Error fetching timer intervals:', error);
     }
-  } 
-  catch (error) 
+  };
+
+  // fetch location Data function
+  const fetchLocationData = async () => 
   {
-    console.error('Error fetching location data:', error);
-  }
-};
+    console.log("Fetching location data...");
+    try
+    {
+      const response = await fetch(`http://${wsip}:${wsport}/infos/get_location_data`);
+      if (!response.ok) 
+      {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      
+      if (response.status == 200)
+      { 
+        const locationData = await response.json();
+        console.log(locationData);
+
+        localStorage.setItem('locationData', JSON.stringify(locationData));
+
+        return {
+          iconSrc: icon_PUMC,
+          name_point: locationData.name_point,
+          exit_point: locationData.exit_point,
+          timezone: locationData.timezone,
+        };
+        error = "false";
+      }
+
+      if (response.status==404)
+      {
+        return {
+          iconSrc: icon_PUMC,
+          name_point: " ",
+          exit_point: " ",
+          timezone: " ",
+        };  
+        error = "true";
+      }
+    } 
+    catch (error) 
+    {
+      console.error('Error fetching location data:', error);
+    }
+  };
 
 
   const initializeApp = async () => 
@@ -139,6 +156,7 @@ const fetchLocationData = async () =>
     console.log("Initializing app...");
 
     await fetchTimerIntervals();
+    await fetchImagesFromApiMain();
 
     const savedMainScreenTimer = parseInt(localStorage.getItem('MainScreenTimer'), 10);
     const savedBannerScreenTimer = parseInt(localStorage.getItem('BannerScreenTimer'), 10);
@@ -150,6 +168,7 @@ const fetchLocationData = async () =>
       MainScreenTimer = savedMainScreenTimer;
       BannerScreenTimer = savedBannerScreenTimer;
       defaultCronTimer = savedCronTimer;
+
       console.log("Saved main screen timer wst el function . . . ",MainScreenTimer);
 
     }
@@ -160,11 +179,22 @@ const fetchLocationData = async () =>
     {
       setInfoData(locationData);
     }
-
-    const intervalId = setInterval(fetchTimerIntervals, cron);
-    console.log("el cron "+cron)
-    return () => clearInterval(intervalId);
   };
+
+  
+  useEffect(() => {
+    const fetchCronData = setInterval(() => {
+      fetchImagesFromApiMain();
+      fetchTimerIntervals();
+
+      window.location.reload(true); 
+      console.log("Cron job executed");
+
+    }, defaultCronTimer);
+
+    return () => clearInterval(fetchCronData);
+  }, [defaultCronTimer]);
+
 
   const connectWebSocket = () => {
     const socket = new WebSocket(`ws://${wsip}:${wsport}/ws`);

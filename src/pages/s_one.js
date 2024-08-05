@@ -13,7 +13,6 @@ export default function S_ONE({ timerInterval }) {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
-
     const fetchImagesFromApiMain = async () => {
       try {
         const response = await fetch(`http://${wsip}:${wsport}/get_mainScreen`);
@@ -22,8 +21,7 @@ export default function S_ONE({ timerInterval }) {
 
         const imagesArray = data.map(img => img.base64);
 
-        localStorage.removeItem('bannerImages');
-
+        localStorage.removeItem('mainScreenImages');
         localStorage.setItem('mainScreenImages', JSON.stringify(imagesArray));
 
         setImages(imagesArray);
@@ -42,12 +40,8 @@ export default function S_ONE({ timerInterval }) {
     };
     loadLocalImages();
 
-    const fetchInterval = setInterval(() => {
-      fetchImagesFromApiMain();
-    }, savedCronTimer* 3600000);
-
-    return () => clearInterval(fetchInterval);
-  }, []);
+    
+  }, [savedCronTimer]);
 
   useEffect(() => {
     if (images.length > 0) {

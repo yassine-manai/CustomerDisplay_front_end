@@ -33,7 +33,8 @@ function DateTimeInfo({ dateTime, timezone }) {
     year: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-    hour12: false // Use 24-hour format
+    second: '2-digit',
+    hour12: false 
   });
 
   return (
@@ -55,7 +56,7 @@ export default function InfoContainer({ iconSrc, name_point, exit , timezone }) 
   useEffect(() => {
     const interval = setInterval(() => {
       setDateTime(new Date());
-    }, 30000);
+    }, 10);
 
     return () => clearInterval(interval);
   }, []);

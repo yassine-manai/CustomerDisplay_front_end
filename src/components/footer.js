@@ -23,11 +23,10 @@ export default function Footer({ timerFooter }) {
       // Extract base64 images from API response
       const imagesBanner = data.map(img => img.base64);
 
-      // Clear main screen images from localStorage
-      localStorage.removeItem('mainScreenImages');
+      sessionStorage.removeItem('bannerImages');
 
       // Save banner images to localStorage
-      localStorage.setItem('bannerImages', JSON.stringify(imagesBanner));
+      sessionStorage.setItem('bannerImages', JSON.stringify(imagesBanner));
 
       // Set images state
       setImages(imagesBanner);
@@ -39,7 +38,7 @@ export default function Footer({ timerFooter }) {
   useEffect(() => {
     // Function to load locally saved images
     const loadLocalImages = () => {
-      const localImages = JSON.parse(localStorage.getItem('bannerImages'));
+      const localImages = JSON.parse(sessionStorage.getItem('bannerImages'));
       if (localImages && localImages.length > 0) {
         setImages(localImages);
       }
@@ -54,7 +53,7 @@ export default function Footer({ timerFooter }) {
     // Set interval to fetch images from API every hour
     const fetchIntervalImage = setInterval(() => {
       fetchImagesFromApiBanner();
-    }, savedCronTimer * 3600000);
+    }, savedCronTimer);
 
     // Clear interval on component unmount or dependency change
     return () => clearInterval(fetchIntervalImage);

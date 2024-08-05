@@ -3,7 +3,6 @@ import '../styles/errorScreen.css';
 
 import img_error from '../assets/img_error.png';
 import img_noImage from '../assets/img_noImage.png';
-import icon_PUMC from '../assets/icon_PUMC.svg';
 
 export default function ERRSCRN({ messageText }) {
     let imgSrc = '';
@@ -31,7 +30,7 @@ export default function ERRSCRN({ messageText }) {
     return (
       <div className="container0">
         <img src={imgSrc} alt={""} className="map-image0" />
-        <span className="texterror1">  {messageText}</span>
+        <span className="texterror1">  {messageText} </span>
       </div>
     );
   }
